@@ -11,7 +11,7 @@ void setup() {
 
 void draw() {
 
-  if (frameCount % 800 == 0){
+  if (frameCount % 1600 == 0){
     background(#AFEEFF);
   }
 
