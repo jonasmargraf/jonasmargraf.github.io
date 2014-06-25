@@ -18,7 +18,7 @@ void draw() {
   x = (x + 5) % ((width + diameter) - diameter/2);
 
   if (frameCount % 10 == 0){
-    y = (y + random(-50, 50)) % height;
+    y = (y + random(-50, 50)) % ((height-100)+50);
   }
 
   diameter = random(80) + 50;
