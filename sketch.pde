@@ -16,7 +16,7 @@ void draw() {
 	}
 
 	noFill();
-	beginShape();
+	beginShape(LINES);
 	vertex(x, y);
 
 	x = (x + 5) % ((width + diameter) - diameter/2);
@@ -32,5 +32,5 @@ void draw() {
 
 	stroke(random(125), 100);
 	fill(255, random(150));
-	ellipse(x, y, diameter, diameter);
+	// ellipse(x, y, diameter, diameter);
 }
