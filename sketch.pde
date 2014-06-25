@@ -2,7 +2,7 @@ float x, y;
 int diameter = 200;
 
 void setup() {
-  size(500, 500);
+  size($(window).width(), $(window).height());
   background(#AFEEFF);
   noStroke();
   x = -diameter/2;
