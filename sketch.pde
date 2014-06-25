@@ -15,13 +15,13 @@ void draw() {
 		background(#AFEEFF);
 	}
 	if (frameCount % 20 == 0){
-		y = (y + random(50)) % height;
+		y = (y + random(-50, 50)) % height;
 	}
 
 	diameter = random(100) + 50;
 
-	stroke(255, 100);
-	fill(random(255), 100);
+	stroke(random(125), 100);
+	fill(255, 100);
 	ellipse(x, y, diameter, diameter);
 	x = (x + 5) % ((width + diameter) - diameter/2);
 }
