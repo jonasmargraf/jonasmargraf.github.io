@@ -11,17 +11,17 @@ void setup() {
 
 void draw() {
 
-	if (frameCount % 400 == 0){
+	if (frameCount % 800 == 0){
 		background(#AFEEFF);
 	}
-	if (frameCount % 20 == 0){
+	if (frameCount % 10 == 0){
 		y = (y + random(-50, 50)) % height;
 	}
 
-	diameter = random(100) + 50;
+	diameter = random(80) + 50;
 
 	stroke(random(125), 100);
-	fill(255, 100);
+	fill(255, random(150));
 	ellipse(x, y, diameter, diameter);
 	x = (x + 5) % ((width + diameter) - diameter/2);
 }
