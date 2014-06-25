@@ -18,12 +18,12 @@ void draw() {
   x = (x + 5) % ((width + diameter) - diameter/2);
 
   if (frameCount % 10 == 0){
-    y = ((y + random(-50, 50)) % (height-100)) + 50;
+    y = (y + random(-50, 50)) % (height-100);
   }
 
   diameter = random(80) + 50;
 
   stroke(random(100)+155, 100);
   fill(#C64C4C, 100);
-  ellipse(x, y, diameter, diameter);
+  ellipse(x, y+50, diameter, diameter);
 }
