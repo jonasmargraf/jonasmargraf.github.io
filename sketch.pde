@@ -3,6 +3,7 @@ int diameter = 200;
 
 void setup() {
 	size(1200, 400);
+	strokeWeight(0.5);
 	background(#AFEEFF);
 	x = -diameter/2;
 	y = height/2;
@@ -10,16 +11,16 @@ void setup() {
 
 void draw() {
 
-	if (frameCount % 200 == 0){
+	if (frameCount % 400 == 0){
 		background(#AFEEFF);
 	}
 	if (frameCount % 20 == 0){
 		y = random(height);
 	}
 
-	diameter = random(150) + 50;
+	diameter = random(100) + 50;
 
-	stroke(random(255));
+	stroke(random(155));
 	fill(255, 100);
 	ellipse(x, y, diameter, diameter);
 	x = (x + 5) % ((width + diameter) - diameter/2);
