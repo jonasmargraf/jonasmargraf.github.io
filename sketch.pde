@@ -17,10 +17,10 @@ void draw() {
 
 	noFill();
 	stroke(#C64C4C);
-	while (x != 0){
-		beginShape(TRIANGLES);
-		vertex(x, y);
-	}
+
+	beginShape(TRIANGLES);
+	vertex(x, y);
+
 	x = (x + 5) % ((width + diameter) - diameter/2);
 
 	if (frameCount % 10 == 0){
