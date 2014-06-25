@@ -23,7 +23,7 @@ void draw() {
 
   diameter = random(80) + 50;
 
-  stroke(#C64C4C, 100);
-  fill(255, random(150));
+  stroke(random(100)+155, 100);
+  fill(#C64C4C, 100);
   ellipse(x, y, diameter, diameter);
 }
