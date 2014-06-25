@@ -18,7 +18,9 @@ void draw() {
 		y = random(height);
 	}
 
-	fill(255, 200);
+	diameter = random(150) + 50;
+
+	fill(255, 100);
 	ellipse(x, y, diameter, diameter);
 	x = (x + 5) % ((width + diameter) - diameter/2);
 }
