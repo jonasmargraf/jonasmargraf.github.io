@@ -2,7 +2,7 @@ float x, y;
 int diameter = 200;
 
 void setup() {
-  size(window.innerWidth, window.innerHeight-20);
+  size(window.innerWidth, (window.innerHeight-200));
   strokeWeight(0.5);
   background(#AFEEFF);
   x = -diameter/2;
