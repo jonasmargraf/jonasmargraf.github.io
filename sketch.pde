@@ -28,7 +28,7 @@ void draw() {
 
   // y = constrain(0+diameter, height-diameter);
 
-  diameter = random(80) + 50;
+  diameter = random(100) + 20;
 
   stroke(255, 200);
   fill(random(155)+100, 0, 40, 100);
