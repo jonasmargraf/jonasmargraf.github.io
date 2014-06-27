@@ -1,5 +1,5 @@
 float x, y;
-int diameter = 200;
+float diameter = 200;
 
 void setup() {
   smooth();
