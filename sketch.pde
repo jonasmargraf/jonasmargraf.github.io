@@ -16,6 +16,8 @@ void draw() {
     background(#B8DADE);
   }
 
+  diameter = random(100) + 20;
+
   x = (x + 5) % ((width + diameter) - diameter/2);
 
   if (frameCount % 10 == 0){
@@ -27,8 +29,6 @@ void draw() {
   }
 
   // y = constrain(0+diameter, height-diameter);
-
-  diameter = random(100) + 20;
 
   stroke(255, 200);
   fill(random(155)+100, 0, 40, 100);
