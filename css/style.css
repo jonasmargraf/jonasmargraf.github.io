@@ -96,3 +96,12 @@ iframe {
 	/*background-color: #0083b9;*/
 	/*opacity: 0.7;*/
 }
+
+a {
+	color: white;
+}
+
+a:hover {
+	font-weight: 700;
+	text-decoration: none;
+}
