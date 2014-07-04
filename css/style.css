@@ -7,6 +7,7 @@
 }*/
 
 #background {
+	z-index: -1;
 	min-height: 100%;
 	min-width: 1500px;
 
@@ -25,11 +26,44 @@
 	}
 }
 
-/*#background {
-	position: fixed;
-	top: 0;
-	left: 0;
+h1 {
+	font-family: 'Lato', sans-serif;
+	font-weight: 700;
+	font-size: 6em;
+	letter-spacing: 4px;
+	color: white;
+	text-align: center;
+}
 
-	min-width: 100%;
-	min-height: 100%;
-}*/
+h2 {
+	font-family: 'Lato', sans-serif;
+	font-weight: 700;
+	font-size: 4em;
+	letter-spacing: 4px;
+	color: white;
+	text-align: center;
+	margin-top: -50px;
+}
+
+p {
+	font-family: 'Lato', sans-serif;
+	font-weight: 300;
+	font-size: 1em;
+	/*letter-spacing: 4px;*/
+	color: white;
+	text-align: center;
+	width: 600px;
+	margin: -30px auto;
+}
+
+iframe {
+	display: inline;
+}
+
+#videos {
+	z-index: 10;
+	display: block;
+	width: 1125px;
+	height: 350px;
+	margin: 100 auto;
+}
