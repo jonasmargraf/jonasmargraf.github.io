@@ -57,13 +57,18 @@ p {
 }
 
 iframe {
-	display: inline;
+	display: block;
+	margin: 0 auto 20px auto;
+	/*min-width: 300px;*/
+	/*min-height: 100%;*/
+	width: 853px;
+	height: 480px;
 }
 
 #videos {
 	z-index: 10;
 	display: block;
-	width: 1125px;
-	height: 350px;
+	/*width: 100%;*/
+	/*height: auto;*/
 	margin: 100 auto;
 }
