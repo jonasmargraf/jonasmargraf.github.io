@@ -17,6 +17,7 @@
 	position: fixed;
 	top: 0;
 	left: 0;
+	/*opacity: 0.7;*/
 }
 
 @media screen and (max-width: 1500px) {
@@ -45,15 +46,36 @@ h2 {
 	margin-top: -50px;
 }
 
+#content {
+	width: 640px;
+	margin: -30px auto;
+	padding: 10px;
+	border-radius: 3px;
+	background: #0083b9;
+	background: rgba(0, 131, 185, 0.6);
+
+}
+
+#description {
+	width: 620px;
+	height: auto;
+	padding: 10px;
+	margin: -20px auto;
+	/*opacity: 0.7;*/
+	border-radius: 3px;
+}
+
 p {
 	font-family: 'Lato', sans-serif;
 	font-weight: 300;
-	font-size: 1em;
+	font-size: 1.2em;
 	/*letter-spacing: 4px;*/
 	color: white;
-	text-align: center;
-	width: 600px;
-	margin: -30px auto;
+	opacity: 1;
+	text-align: justify;
+	/*width: 600px;*/
+	/*padding: 20px;*/
+	/*margin: -30px auto;*/
 }
 
 iframe {
@@ -68,7 +90,9 @@ iframe {
 #videos {
 	z-index: 10;
 	display: block;
-	/*width: 100%;*/
+	width: 640px;
 	/*height: auto;*/
-	margin: 100 auto;
+	margin: 20px auto;
+	/*background-color: #0083b9;*/
+	/*opacity: 0.7;*/
 }
