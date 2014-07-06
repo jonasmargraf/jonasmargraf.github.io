@@ -19,7 +19,7 @@
 }
 
 /*mobile stylings for screens with maximum width of 480px*/
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 480px) {
 	h1 {
 		font-family: 'Lato', sans-serif;
 		font-weight: 700;
