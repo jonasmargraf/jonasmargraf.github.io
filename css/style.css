@@ -33,7 +33,7 @@
 		font-family: 'Lato', sans-serif;
 		font-weight: 700;
 		/*font-size: 2.5em;*/
-		font-size: 9.0vw;
+		font-size: 11.0vw;
 		letter-spacing: 4px;
 		color: white;
 		text-align: center;
@@ -47,7 +47,7 @@
 		text-align: center;
 		margin-top: -10px;
 		/*font-size: 1.8em;*/
-		font-size: 6.0vw;
+		font-size: 8.0vw;
 	}
 
 	#content {
