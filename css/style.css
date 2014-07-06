@@ -23,6 +23,7 @@
 	h1 {
 		font-family: 'Lato', sans-serif;
 		font-weight: 700;
+		font-size: 50px; /* fallback for older browsers */
 		font-size: 12.0vw;
 		letter-spacing: 4px;
 		color: white;
@@ -37,6 +38,7 @@
 		color: white;
 		text-align: center;
 		margin-top: -10px;
+		font-size: 35px; /* fallback for older browsers */
 		font-size: 8.0vw;
 	}
 
@@ -51,6 +53,7 @@
 	h1 {
 		font-family: 'Lato', sans-serif;
 		font-weight: 700;
+		font-size: 75px; /* fallback for older browsers */
 		font-size: 10.0vw;
 		letter-spacing: 4px;
 		color: white;
@@ -65,6 +68,7 @@
 		color: white;
 		text-align: center;
 		margin-top: -15px;
+		font-size: 45px; /* fallback for older browsers */
 		font-size: 6.0vw;
 	}
 
@@ -79,6 +83,7 @@
 	h1 {
 		font-family: 'Lato', sans-serif;
 		font-weight: 700;
+		font-size: 100px; /* fallback for older browsers */
 		font-size: 7.0vw;
 		letter-spacing: 4px;
 		color: white;
@@ -93,6 +98,7 @@
 		color: white;
 		text-align: center;
 		margin-top: -20px;
+		font-size: 56px; /* fallback for older browsers */
 		font-size: 4.0vw;
 	}
 
