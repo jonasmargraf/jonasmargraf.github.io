@@ -27,37 +27,54 @@
 	}
 }
 
-h1 {
-	font-family: 'Lato', sans-serif;
-	font-weight: 700;
-	letter-spacing: 4px;
-	color: white;
-	text-align: center;
-}
-
 /*mobile stylings for screens with maximum width of 550px*/
 @media screen and (max-width: 550px) {
 	h1 {
-		font-size: 4em;
+		font-family: 'Lato', sans-serif;
+		font-weight: 700;
+		/*font-size: 2.5em;*/
+		font-size: 9.0vw;
+		letter-spacing: 4px;
+		color: white;
+		text-align: center;
 	}
 
 	h2 {
-		font-size: 3em;
+		font-family: 'Lato', sans-serif;
+		font-weight: 700;
+		letter-spacing: 4px;
+		color: white;
+		text-align: center;
+		margin-top: -10px;
+		/*font-size: 1.8em;*/
+		font-size: 6.0vw;
 	}
 
 	#content {
-		width: 95%;
+		width: 90%;
 	}
 }
 
 /*desktop stylings for screens larger than 550px*/
 @media screen and (min-width: 551px) {
 	h1 {
-		font-size: 6em;
+		font-family: 'Lato', sans-serif;
+		font-weight: 700;
+		font-size: 7.0vw;
+		letter-spacing: 4px;
+		color: white;
+		text-align: center;
 	}
 
 	h2 {
-		font-size: 4em;
+		font-family: 'Lato', sans-serif;
+		font-weight: 700;
+		letter-spacing: 4px;
+		color: white;
+		text-align: center;
+		margin-top: -20px;
+		/*font-size: 4em;*/
+		font-size: 4.0vw;
 	}
 
 	#content {
@@ -67,17 +84,8 @@ h1 {
 
 }
 
-h2 {
-	font-family: 'Lato', sans-serif;
-	font-weight: 700;
-	letter-spacing: 4px;
-	color: white;
-	text-align: center;
-	margin-top: -50px;
-}
-
 #content {
-	margin: -30px auto;
+	margin: 5% auto;
 	padding: 10px;
 	border-radius: 3px;
 	background: #0083b9;
