@@ -27,14 +27,7 @@
 	}
 }
 
-h1 {
-	font-family: 'Lato', sans-serif;
-	font-weight: 700;
-	letter-spacing: 4px;
-	color: white;
-	text-align: center;
-}
-
+/*mobile stylings for screens with maximum width of 550px*/
 @media screen and (max-width: 550px) {
 	h1 {
 		font-size: 4em;
@@ -43,9 +36,13 @@ h1 {
 	h2 {
 		font-size: 3em;
 	}
+
+	#content {
+		width: 95%;
+	}
 }
 
-
+/*desktop stylings for screens larger than 550px*/
 @media screen and (min-width: 551px) {
 	h1 {
 		font-size: 6em;
@@ -54,6 +51,19 @@ h1 {
 	h2 {
 		font-size: 4em;
 	}
+
+	#content {
+		width: 65%;
+	}
+
+h1 {
+	font-family: 'Lato', sans-serif;
+	font-weight: 700;
+	letter-spacing: 4px;
+	color: white;
+	text-align: center;
+}
+
 }
 
 h2 {
@@ -66,7 +76,6 @@ h2 {
 }
 
 #content {
-	width: 65%;
 	margin: -30px auto;
 	padding: 10px;
 	border-radius: 3px;
