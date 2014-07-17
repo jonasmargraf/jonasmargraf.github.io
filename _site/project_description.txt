@@ -1,0 +1,5 @@
+Silk Vessels / Foam is a pair of audiovisual compositions for two projectors and surround sound.
+
+These pieces were written as part of my Bachelor's thesis in the Electronic Production and Design Department at Berklee College of Music. They present the result of my research in generative art, multi-screen projection and surround sound systems for musical performance.
+
+The pieces are performed using a custom performance system built in Processing, Max and Ableton Live.
