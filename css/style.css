@@ -126,11 +126,12 @@
 }
 
 p {
-	margin: 4%;
+	padding: 4%;
 	font-family: 'Lato', sans-serif;
 	font-weight: 500;
 	font-size: 1.4em;
-	color: white;
+	background: rgba(255, 255, 255, 0.4);
+	color: rgb(249, 231, 69); 
 	opacity: 1;
 	text-align: justify;
 }
