@@ -126,8 +126,9 @@
 }
 
 p {
+	margin: 10%;
 	font-family: 'Lato', sans-serif;
-	font-weight: 300;
+	font-weight: 700;
 	font-size: 1.2em;
 	color: white;
 	opacity: 1;
