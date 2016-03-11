@@ -134,7 +134,7 @@ span {
 	font-weight: 500;
 	font-size: 1.2em;
 	/* background: rgba(255, 255, 255, 0.8); */
-	background: rgba(0, 255, 174, 0.6);
+	background: rgba(0, 255, 174, 0.8);
 	border-radius: 2px;
 	/* color: rgb(249, 231, 69); */ 
 	/* color: #00FFAE; */
@@ -171,8 +171,9 @@ span {
 }
 
 a {
-	background-color: rgba(255, 255, 255, 0.6);
-	color: rgb(0, 255, 174);
+	/* background-color: rgba(255, 255, 255, 0.6); */
+	/* color: rgb(0, 255, 174); */
+	color: white;
 	text-decoration: none;
 	-webkit-transition: text-decoration 0.5s;
 	transition: text-decoration 0.5s;
