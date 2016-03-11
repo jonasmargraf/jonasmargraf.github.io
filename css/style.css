@@ -171,7 +171,8 @@ span {
 }
 
 a {
-	color: white;
+	background-color: rgba(255, 255, 255, 0.6);
+	color: rgb(0, 255, 174);
 	text-decoration: none;
 	-webkit-transition: text-decoration 0.5s;
 	transition: text-decoration 0.5s;
