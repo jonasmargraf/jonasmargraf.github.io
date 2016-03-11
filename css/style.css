@@ -125,13 +125,13 @@
 	border-radius: 3px;
 }
 
-p {
+p, a {
 	margin: 2%;
 	padding: 2%;
 	font-family: 'Lato', sans-serif;
 	font-weight: 500;
 	font-size: 1.3em;
-	background: rgba(255, 255, 255, 0.6);
+	background: rgba(255, 255, 255, 0.8);
 	border-radius: 2px;
 	/* color: rgb(249, 231, 69); */ 
 	color: #00FFAE;
