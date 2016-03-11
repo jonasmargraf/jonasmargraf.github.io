@@ -130,10 +130,12 @@ p {
 	padding: 2%;
 	font-family: 'Lato', sans-serif;
 	font-weight: 500;
-	font-size: 1.4em;
+	font-size: 1.3em;
 	background: rgba(255, 255, 255, 0.6);
+	border-radius: 2px;
 	/* color: rgb(249, 231, 69); */ 
-	color: white;
+	color: #00FFAE;
+	/* color: white; */
 	opacity: 1;
 	text-align: justify;
 	display: inline-block;
