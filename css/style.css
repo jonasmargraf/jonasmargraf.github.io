@@ -172,6 +172,7 @@ p {
 
 a {
 	color: white;
+	text-decoration: none;
 	-webkit-transition: text-decoration 0.5s;
 	transition: text-decoration 0.5s;
 	/* color: #00FFAE; */
