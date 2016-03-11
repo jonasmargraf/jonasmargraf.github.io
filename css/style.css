@@ -127,12 +127,12 @@
 
 p {
 	margin: 2%;
-	padding: 2%;
+	padding: 1%;
 	font-family: 'Lato', sans-serif;
 	font-weight: 500;
 	font-size: 1.2em;
 	/* background: rgba(255, 255, 255, 0.8); */
-	background: rgba(0, 255, 174, 0.8);
+	background: rgba(0, 255, 174, 0.6);
 	border-radius: 2px;
 	/* color: rgb(249, 231, 69); */ 
 	/* color: #00FFAE; */
