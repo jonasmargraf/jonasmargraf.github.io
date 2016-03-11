@@ -128,8 +128,8 @@
 span {
 	margin: 1%;
 	padding: 1%;
-	padding-right: 8%;
-	padding-bottom: 3%;
+	/* padding-right: 8%; */
+	/* padding-bottom: 3%; */
 	font-family: 'Lato', sans-serif;
 	font-weight: 500;
 	font-size: 1.2em;
