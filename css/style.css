@@ -130,7 +130,7 @@ p {
 	padding: 2%;
 	font-family: 'Lato', sans-serif;
 	font-weight: 500;
-	font-size: 1.3em;
+	font-size: 1.2em;
 	/* background: rgba(255, 255, 255, 0.8); */
 	background: rgba(0, 255, 174, 0.8);
 	border-radius: 2px;
@@ -170,11 +170,14 @@ p {
 
 a {
 	color: white;
+	-webkit-transition: text-decoration 0.5s;
+	transition: text-decoration 0.5s;
 	/* color: #00FFAE; */
 }
 
 a:hover {
 	/* font-weight: 700; */
-	text-decoration: none;
-	transition: 0.5s;
+	text-decoration: underline;
+	-webkit-transition: text-decoration 0.5s;
+	transition: text-decoration 0.5s;
 }
