@@ -1,7 +1,7 @@
 #background {
 	z-index: -1;
-	min-height: 100%;
-	min-width: 1300px;
+	/* min-height: 100%; */
+	/* min-width: 1300px; */
 
 	width: 100%;
 	height: auto;
@@ -13,8 +13,8 @@
 
 @media screen and (max-width: 1500px) {
 	#background {
-		left: 50%;
-		margin-left: -750px;
+		/* left: 50%; */
+		/* margin-left: -750px; */
 	}
 }
 
@@ -126,8 +126,8 @@
 }
 
 p {
-	margin: 2%;
-	margin-top: 8%;
+	margin-left: 4%;
+	margin-top: 4%;
 }
 
 span {
