@@ -126,15 +126,15 @@
 }
 
 span {
-	margin: 1%;
-	padding: 1%;
+	/* margin: 1%; */
+	padding: 0.5%;
 	/* padding-right: 8%; */
 	/* padding-bottom: 3%; */
 	font-family: 'Lato', sans-serif;
 	font-weight: 500;
 	font-size: 1.2em;
 	/* background: rgba(255, 255, 255, 0.8); */
-	background: rgba(0, 255, 174, 0.4);
+	background: rgba(0, 255, 174, 0.6);
 	border-radius: 2px;
 	/* color: rgb(249, 231, 69); */ 
 	/* color: #00FFAE; */
