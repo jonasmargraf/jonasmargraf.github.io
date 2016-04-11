@@ -3,66 +3,86 @@ html, * {
 	padding: 0;
 }
 
-#bg_div {
+main {
+	width: 100vw;
+	/* height: 100vh; */
+}
+
+#bg-div {
 	z-index: -1;
-	position: fixed;
-	height: 90%;
-	width: 90%;
-	top: 5%;
-	left: 5%;
-	border-radius: 5px;
-	box-shadow: 10px 20px 30px dimgray;
-	-webkit-box-shadow: 10px 20px 30px dimgray;
-	-moz-box-shadow: 10px 20px 30px dimgray;
 }
 
 #background {
 	z-index: -1;
-	position: fixed;
-	height: 90%;
-	width: auto;
-	transform: translate(-50%, 0);
-	top: 5%;
-	left: 50%;
 }
 
-@media screen and (max-width: 1500px) {
-	#background {
-		/* left: 50%; */
-		/* margin-left: -750px; */
-	}
+/* #bg_div { */
+/* 	z-index: -1; */
+/* 	position: fixed; */
+/* 	height: 90%; */
+/* 	width: 90%; */
+/* 	top: 5%; */
+/* 	left: 5%; */
+/* 	border-radius: 5px; */
+/* 	box-shadow: 10px 20px 30px dimgray; */
+/* 	-webkit-box-shadow: 10px 20px 30px dimgray; */
+/* 	-moz-box-shadow: 10px 20px 30px dimgray; */
+/* } */
+
+/* #background { */
+/* 	z-index: -1; */
+/* 	position: fixed; */
+/* 	height: 90%; */
+/* 	width: auto; */
+/* 	transform: translate(-50%, 0); */
+/* 	top: 5%; */
+/* 	left: 50%; */
+/* } */
+
+p, ul {
+	margin: 0 2vw;
+	z-index: 1;
+	position: absolute;
+	width: 90vw;
 }
 
-/*mobile stylings for screens with maximum width of 480px*/
-@media screen and (max-width: 480px) {
-
+#about {
+	top: 4%;
 }
 
-/*tablet stylings for screens with minimum width of 481px and maximum width of 768px*/
-@media screen and (min-width: 481px) and (max-width: 768px) {
-
+#links {
+	/* position: absolute; */
+	bottom: 2vh;
+	/* float: right; */
+	/* position: absolute; */
+	list-style-type: none;
+	/* padding: 0; */
+	right: -2vw;
 }
 
-/*desktop stylings for screens larger than 768px*/
-@media screen and (min-width: 769px) {
-
-}
-
-p {
-	margin: 4%;
+#links li {
+	display: inline;
+	float: right;
+	margin-right: 2vw;
 }
 
 span {
 	padding: 0.5%;
 	font-family: 'Lato', sans-serif;
 	font-weight: 500;
-	font-size: 1.3em;
+	font-size: 16pt;
 	background: rgba(0, 255, 174, 0.6);
 	border-radius: 2px;
 	color: white;
 	opacity: 1;
 	text-align: justify;
 	display: inline-block;
+}
+
+#links li span {
+	/* display: inline; */
+	/* margin-left: 5vw; */
+	padding: 2.0%;
 }
 
 a {
@@ -78,4 +98,13 @@ a:hover {
 	-webkit-transition: text-decoration 0.5s;
 	-moz-transition: text-decoration 0.5s;
 	transition: text-decoration 0.5s;
+}
+
+img {
+	width: 90vw;
+	margin: 5vh 5vw;
+	border-radius: 5px;
+	box-shadow: 10px 20px 30px dimgray;
+	-webkit-box-shadow: 10px 20px 30px dimgray;
+	-moz-box-shadow: 10px 20px 30px dimgray;
 }
