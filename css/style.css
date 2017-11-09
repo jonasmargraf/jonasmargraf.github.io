@@ -103,7 +103,7 @@ a:hover {
 img {
 	width: 90vw;
 	margin: 5vh 5vw;
-	border-radius: 5px;
+	/* border-radius: 5px; */
 	box-shadow: 10px 20px 30px dimgray;
 	-webkit-box-shadow: 10px 20px 30px dimgray;
 	-moz-box-shadow: 10px 20px 30px dimgray;
