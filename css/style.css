@@ -71,9 +71,11 @@ span {
 	font-family: 'Lato', sans-serif;
 	font-weight: 500;
 	font-size: 16pt;
-	background: rgba(102, 168, 163, 0.8);
-	border-radius: 2px;
-	color: white;
+	/* background: rgba(102, 168, 163, 0.8); */
+	background: white;
+	border-radius: 0px;
+	border: 2px rgb(0%, 0%, 80%) solid;
+	color: rgb(0%, 0%, 80%);
 	opacity: 1;
 	text-align: justify;
 	display: inline-block;
@@ -86,7 +88,7 @@ span {
 }
 
 a {
-	color: white;
+	color: rgb(0%, 0%, 80%);
 	text-decoration: none;
 	-webkit-transition: text-decoration 0.5s;
 	-moz-transition: text-decoration 0.5s;
