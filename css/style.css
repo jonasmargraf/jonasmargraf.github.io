@@ -74,8 +74,8 @@ span {
 	/* background: rgba(102, 168, 163, 0.8); */
 	background: white;
 	border-radius: 0px;
-	border: 2px rgb(0%, 0%, 80%) solid;
-	color: rgb(0%, 0%, 80%);
+	border: 2px rgb(10%, 10%, 10%) solid;
+	color: rgb(10%, 10%, 10%);
 	opacity: 1;
 	text-align: justify;
 	display: inline-block;
@@ -88,7 +88,7 @@ span {
 }
 
 a {
-	color: rgb(0%, 0%, 80%);
+	color: rgb(10%, 10%, 10%);
 	text-decoration: none;
 	-webkit-transition: text-decoration 0.5s;
 	-moz-transition: text-decoration 0.5s;
