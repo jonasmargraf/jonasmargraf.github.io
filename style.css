@@ -231,8 +231,12 @@ h3, span {
 
 @media screen and (max-width: 768px) {
 	h3 {
-		font-size: 20pt;
+		font-size: 18pt;
+		max-width: 70vw;
 		/* border: 1px solid #222222; */
+	}
+
+	#one {
 	}
 
 	span, p {
@@ -254,7 +258,7 @@ h3, span {
 	}
 
 	#one, #two, #three {
-		height: 60vh;
+		height: 62vh;
 	}
 
 	.bg {
