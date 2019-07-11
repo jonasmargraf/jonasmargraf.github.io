@@ -228,3 +228,42 @@ h3, span {
 
 #end > span {
 }
+
+@media screen and (max-width: 768px) {
+	h3 {
+		font-size: 20pt;
+		/* border: 1px solid #222222; */
+	}
+
+	span, p {
+		font-size: 14pt;
+		max-width: 90vw;
+	}
+
+	.text {
+		top: -25vh;
+		display: block;
+		margin-left: 5vw;
+		max-width: 90vw;
+	}
+
+	#one, #two, #three {
+		height: 60vh;
+	}
+
+	.bg {
+		padding-top: 20px;
+		padding-bottom: 20px;
+
+	}
+
+	.square {
+		float: none;
+		display: block;
+		width: 90vw;
+	}
+
+	.software_wrapper {
+		height: 75vh;
+	}
+}
