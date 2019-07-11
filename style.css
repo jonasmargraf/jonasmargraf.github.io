@@ -247,6 +247,12 @@ h3, span {
 		max-width: 90vw;
 	}
 
+ .last {
+	 	top: 0;
+		display: block;
+		width: 90vw;
+	}
+
 	#one, #two, #three {
 		height: 60vh;
 	}
