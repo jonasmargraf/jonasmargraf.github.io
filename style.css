@@ -5,6 +5,10 @@ html, * {
 	padding: 0;
 }
 
+body {
+	overflow-x: hidden;
+}
+
 img {
 	margin: 0;
 }
@@ -229,11 +233,14 @@ h3, span {
 #end > span {
 }
 
+
+
+
+
 @media screen and (max-width: 768px) {
 	h3 {
 		font-size: 18pt;
 		max-width: 70vw;
-		/* border: 1px solid #222222; */
 	}
 
 	#one {
@@ -251,14 +258,26 @@ h3, span {
 		max-width: 90vw;
 	}
 
+	#four > .text {
+		top: -10vh;
+	}
+
  .last {
 	 	top: 0;
 		display: block;
 		width: 90vw;
 	}
 
-	#one, #two, #three {
+	#end {
+		/* height: 60vh; */
+	}
+
+	#one, #two {
 		height: 62vh;
+	}
+
+	#three {
+		height: 40vh;
 	}
 
 	.bg {
@@ -273,7 +292,39 @@ h3, span {
 		width: 90vw;
 	}
 
-	.software_wrapper {
-		height: 75vh;
+	.side_by_side {
+		/* flex-direction: column; */
+		width: 110vw;
+		margin-left: -5vw;
+		margin-right: 0;
 	}
+
+	.side_by_side > img {
+		object-fit: contain;
+		max-width: 55vw;
+	}
+
+	.software_wrapper {
+		/* height: 75vh; */
+	}
+
+	#processing_control {
+		width: 105vw;
+	}
+
+	#mubu_som_js_02 {
+		width: 65vw;
+		left: 20vw;
+	}
+
+	#mubu_som_js_01 {
+		width: 75vw;
+	}
+
+	#superbooth16{
+		width: 65vw;
+		left: 25vw;
+		top: 65vh;
+	}
+
 }
