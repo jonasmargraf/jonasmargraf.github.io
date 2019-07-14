@@ -103,15 +103,15 @@ span {
 }
 
 a:link {
-	color: blue;
+	color: #222222;
 }
 
 a:visited {
-	color: blue;
+	color: #222222;
 }
 
 a:hover {
-	color: blue;
+	color: #222222;
 	text-decoration: none;
 }
 
