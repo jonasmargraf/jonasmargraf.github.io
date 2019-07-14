@@ -59,7 +59,11 @@ img {
 h3 {
 	/* font-size: 22pt; */
 	font-size: 2em;
-	border: 1px solid #222222;
+	/* border: 1px solid #222222; */
+	background-color: white;
+	/* color: #5C9996; */
+	/* color: #B461F2; */
+	color: #8F4AC2;
 }
 
 span, p {
@@ -89,10 +93,13 @@ h3 > em {
 h3, span {
 	z-index: 1;
 	display: inline;
-	background: white;
-	color: #222222;
 	padding: 0.5%;
 	line-height: 1.8em;
+}
+
+span {
+	background: white;
+	color: #222222;
 }
 
 a:link {
