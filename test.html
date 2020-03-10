@@ -85,17 +85,19 @@
 		mat2 rot = mat2(cos(0.5), sin(0.5), -sin(0.5), cos(0.5));
 
 		// ridge
-		for (int i = 0; i < octaves; i++) {
-			v += a * abs(noise(x*freq));
-			x = rot * x * 2.0 + shift;
-			maxAmp += a*octaveFalloff;
-			a *= octaveFalloff;
-			freq *= noiseLacunarity;
-		}
-		v = 1.0 - v;
-		v = pow(v, 5.0);
-		// Normalize noise value so that maximum amplitude = 1.0
-		v /= maxAmp;
+		// for (int i = 0; i < octaves; i++) {
+		// 	v += a * abs(noise(x*freq));
+		// 	x = rot * x * 2.0 + shift;
+		// 	maxAmp += a*octaveFalloff;
+		// 	a *= octaveFalloff;
+		// 	freq *= noiseLacunarity;
+		// }
+		// v = 1.0 - v;
+		// v = pow(v, 5.0);
+		// // Normalize noise value so that maximum amplitude = 1.0
+		// v /= maxAmp;
+
+		v = x.y;
 
 		return v;
 	}
@@ -105,36 +107,36 @@
 		return a + b * cos(6.28318 * (c * t + d));
 	}
 
-	// struct Result
-	// 	{
-	// 		float f;
-	// 		vec2 q;
-	// 		vec2 r;
-	// 	} result;
-	//
-	// Result func(in vec2 uv)
-	// {
-	//     vec4 var = vec4(0.1,
-	//                     0.03,
-	//                     u_time * 0.00164,
-	//                     u_time * -0.00251);
-	//
-	// 	Result result;
-	//
-	// 	vec2 q = vec2(fbm(qFreq.x*uv + vec2(var.x, var.y)),
-	// 								fbm(qFreq.y*uv + vec2(1.5*(atan(u_time*0.09)), 0.61*sin(u_time*0.053))));
-	//
-	// 	vec2 r = vec2(fbm(rFreq.x*uv + qAmp.x*q + uv + vec2(var.z, var.w)),
-	// 								fbm(rFreq.y*uv + qAmp.y*q + uv + vec2(u_time*0.0043, u_time*0.0123)));
-	//
-	// 	float mainFreq = mainFbmFrequency;
-	// 	float warpGain = mainWarpGain;
-	// 	float f = fbm(mainFreq*uv + warpGain*r);
-	// 	result.f = f;
-	// 	result.q = q;
-	// 	result.r = r;
-	// 	return result;
-	// }
+	struct Result
+		{
+			float f;
+			vec2 q;
+			vec2 r;
+		} result;
+
+	Result func(in vec2 uv)
+	{
+	    vec4 var = vec4(0.1,
+	                    0.03,
+	                    u_time * 0.00164,
+	                    u_time * -0.00251);
+
+		Result result;
+
+		vec2 q = vec2(fbm(qFreq.x*uv + vec2(var.x, var.y)),
+									fbm(qFreq.y*uv + vec2(1.5*(atan(u_time*0.09)), 0.61*sin(u_time*0.053))));
+
+		vec2 r = vec2(fbm(rFreq.x*uv + qAmp.x*q + uv + vec2(var.z, var.w)),
+									fbm(rFreq.y*uv + qAmp.y*q + uv + vec2(u_time*0.0043, u_time*0.0123)));
+
+		float mainFreq = mainFbmFrequency;
+		float warpGain = mainWarpGain;
+		float f = fbm(mainFreq*uv + warpGain*r);
+		result.f = f;
+		result.q = q;
+		result.r = r;
+		return result;
+	}
 
 	void main()
 	{
@@ -148,8 +150,8 @@
 	    uv += vec2(u_time)*scroll;
 
 		// Result res = func(uv + scroll*u_time*0.1);
-		// float f = fbm(uv);
-		float f = uv.y;
+		float f = fbm(uv);
+		// float f = uv.y;
 	    //Result res = func(uv);
 		// float f = res.f;
 		// vec2 q = res.q;
