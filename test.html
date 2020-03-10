@@ -85,19 +85,20 @@
 		mat2 rot = mat2(cos(0.5), sin(0.5), -sin(0.5), cos(0.5));
 
 		// ridge
-		// for (int i = 0; i < octaves; i++) {
-		// 	v += a * abs(noise(x*freq));
-		// 	x = rot * x * 2.0 + shift;
-		// 	maxAmp += a*octaveFalloff;
-		// 	a *= octaveFalloff;
-		// 	freq *= noiseLacunarity;
-		// }
-		// v = 1.0 - v;
-		// v = pow(v, 5.0);
-		// // Normalize noise value so that maximum amplitude = 1.0
-		// v /= maxAmp;
+		for (int i = 0; i < octaves; i++) {
+			// v += a * abs(noise(x*freq));
+			v += 0.1;
+			x = rot * x * 2.0 + shift;
+			maxAmp += a*octaveFalloff;
+			a *= octaveFalloff;
+			freq *= noiseLacunarity;
+		}
+		v = 1.0 - v;
+		v = pow(v, 5.0);
+		// Normalize noise value so that maximum amplitude = 1.0
+		v /= maxAmp;
 
-		v = x.x;
+		// v = x.x;
 
 		return v;
 	}
