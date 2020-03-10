@@ -1,13 +1,137 @@
 <!doctype html>
 <html>
 <head>
-  <title>GLSL Test</title>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <link href="test.css" rel="stylesheet" type="text/css"/>
-	<script type="text/javascript" src="https://rawgit.com/patriciogonzalezvivo/glslCanvas/master/dist/GlslCanvas.js"></script>
-</head>
-<body>
-  <canvas class="glslCanvas" data-fragment-url="shader.glsl" width="1920" height="1080"</canvas>
-</body>
-</html>
+	<title>GLSL Test</title>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<link href="test.css" rel="stylesheet" type="text/css"/>
+	<!-- <script type="text/javascript" src="https://rawgit.com/patriciogonzalezvivo/glslCanvas/master/dist/GlslCanvas.js"></script> -->
+	<script type="application/javascript" src="webgl-utils.js"></script>
+	<script src="J3DI.js"> </script>
+
+	<script type="x-shader/x-vertex" id="vertex-shader">
+	void main() {
+		gl_Position = vec4(0.0, 0.0, 0.0, 1.0);
+		gl_PointSize = 64.0;
+	}
+	</script>
+
+	<script type="x-shader/x-fragment" id="fragment-shader">
+	precision mediump float;
+	void main() {
+		gl_FragColor = vec4(0.18, 0.54, 0.34, 1.0);
+	}
+	</script>
+
+	<script>
+	var g = {};
+
+	function init()
+	{
+		// Initialize
+		var gl = initWebGL(
+			// The id of the Canvas Element
+			"example");
+			if (!gl) {
+				return;
+			}
+			var program = simpleSetup(
+				gl,
+				// The ids of the vertex and fragment shaders
+				"vertex-shader", "fragment-shader",
+				// The vertex attribute names used by the shaders.
+				// The order they appear here corresponds to their index
+				// used later.
+				[],
+				// The clear color and depth values
+				[ 0, 0, 0.5, 1 ], 10000);
+
+				return gl;
+			}
+
+			var requestId;
+
+			function reshape(gl)
+			{
+				// change the size of the canvas's backing store to match the size it is displayed.
+				var canvas = document.getElementById('example');
+				if (canvas.clientWidth == canvas.width && canvas.clientHeight == canvas.height)
+				return;
+
+				canvas.width = canvas.clientWidth;
+				canvas.height = canvas.clientHeight;
+
+				// Set the viewport and projection matrix for the scene
+				gl.viewport(0, 0, canvas.clientWidth, canvas.clientHeight);
+			}
+
+			function drawPicture(gl)
+			{
+				// Make sure the canvas is sized correctly.
+				reshape(gl);
+
+				// Clear the canvas
+				gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+
+				// Draw the cube
+				gl.drawElements(gl.TRIANGLES, 2, gl.UNSIGNED_BYTE, 0);
+
+				// Show the framerate
+				framerate.snapshot();
+
+				currentAngle += incAngle;
+				if (currentAngle > 360)
+				currentAngle -= 360;
+			}
+
+			function start()
+			{
+				var c = document.getElementById("example");
+
+				//c = WebGLDebugUtils.makeLostContextSimulatingCanvas(c);
+				// tell the simulator when to lose context.
+				//c.loseContextInNCalls(1);
+
+				c.addEventListener('webglcontextlost', handleContextLost, false);
+				c.addEventListener('webglcontextrestored', handleContextRestored, false);
+
+				var gl = init();
+				if (!gl) {
+					return;
+				}
+
+				currentAngle = 0;
+				incAngle = 0.5;
+				framerate = new Framerate("framerate");
+				var f = function() {
+					drawPicture(gl);
+					requestId = window.requestAnimFrame(f, c);
+				};
+				f();
+
+				function handleContextLost(e) {
+					e.preventDefault();
+					clearLoadingImages();
+					if (requestId !== undefined) {
+						window.cancelAnimFrame(requestId);
+						requestId = undefined;
+					}
+				}
+
+				function handleContextRestored() {
+					init();
+					f();
+				}
+			}
+			</script>
+
+
+		</head>
+		<body onload="start()">
+			<!-- <canvas class="glslCanvas" data-fragment-url="shader.glsl" width="1920" height="1080"</canvas> -->
+			<canvas id="example">
+				It no work :(
+			</canvas>
+			<div id="framerate"></div>
+		</body>
+		</html>
