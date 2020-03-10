@@ -54,7 +54,7 @@
 
 	// signed hash function (-1 to 1)
 	float shash(vec2 p) {
-		return -1.0 + 2.0*fract(1e4 + seed) * sin(17.0 * p.x + p.y * 0.1) * (0.1 + abs(sin(p.y * 13.0 + p.x)));
+		return -1.0 + 2.0*fract((1e4 + seed) * sin(17.0 * p.x + p.y * 0.1) * (0.1 + abs(sin(p.y * 13.0 + p.x))));
 		// return -1.0 + 2.0*fract((10000.0 + seed) * sin(17.0 * p.x + p.y * 0.1) *
 									// (0.1 + abs(sin(p.y * 13.0 + p.x))));
 	}
