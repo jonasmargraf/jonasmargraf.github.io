@@ -64,7 +64,10 @@
 	float shash2(vec2 p)
 	{
 		vec2 i = gl_FragCoord.xy / u_resolution.y;
-		return sin(i.x);
+		// i *= 0.00001;
+		// return sin(i.x);
+		return -1.0 + 2.0*fract((10000.0 + seed) * sin(17.0 * i.x + i.y * 0.1) *
+									(0.1 + abs(sin(i.y * 13.0 + i.x))));
 	}
 
 	// 2D noise
