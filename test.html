@@ -63,7 +63,8 @@
 
 	float shash2(vec2 p)
 	{
-		vec2 i = gl_FragCoord.xy / u_resolution.y;
+		// vec2 i = gl_FragCoord.xy / u_resolution.y;
+		vec2 i = p;
 		// i *= 0.00001;
 		// return sin(i.x);
 		return -1.0 + 2.0*fract((10000.0 + seed) * sin(17.0 * i.x + i.y * 0.1) *
