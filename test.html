@@ -65,13 +65,15 @@
 		vec2 f = fract(x);
 
 		// Four corners in 2D of a tile
-		float a = shash(i);
-		float b = shash(i + vec2(1.0, 0.0));
-		float c = shash(i + vec2(0.0, 1.0));
-		float d = shash(i + vec2(1.0, 1.0));
+		// float a = shash(i);
+		// float b = shash(i + vec2(1.0, 0.0));
+		// float c = shash(i + vec2(0.0, 1.0));
+		// float d = shash(i + vec2(1.0, 1.0));
+		float a, b, c, d = 0.5;
 
 		vec2 u = f * f * (3.0 - 2.0 * f);
 		return mix(a, b, u.x) + (c - a) * u.y * (1.0 - u.x) + (d - b) * u.x * u.y;
+		// return 0.014*x.y;
 	}
 
 	float fbm(vec2 x) {
@@ -86,8 +88,7 @@
 
 		// ridge
 		for (int i = 0; i < octaves; i++) {
-			// v += a * abs(noise(x*freq));
-			v += 0.1;
+			v += a * abs(noise(x*freq));
 			x = rot * x * 2.0 + shift;
 			maxAmp += a*octaveFalloff;
 			a *= octaveFalloff;
@@ -97,8 +98,6 @@
 		v = pow(v, 5.0);
 		// Normalize noise value so that maximum amplitude = 1.0
 		v /= maxAmp;
-
-		// v = x.x;
 
 		return v;
 	}
