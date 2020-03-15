@@ -53,13 +53,21 @@
 
 
 	// signed hash function (-1 to 1)
-	float shash(vec2 p) {
+	float shash3(vec2 p) {
 		// float tmp = p.x;
 		// return -1.0 + 2.0*fract((1e4 + seed) * sin(tmp));
 		// return -1.0 + 2.0*fract((1e4 + seed) * (p.x * 0.5));
 		return -1.0 + 2.0*fract((10000.0 + seed) * sin(17.0 * p.x + p.y * 0.1) *
 									(0.1 + abs(sin(p.y * 13.0 + p.x))));
 	}
+
+	float shash(vec2 p)
+	{
+		vec2 tmp = normalize(p);
+		return -1.0 + 2.0 * fract((1e4 + seed) * sin(17.0 * p.x + p.y * 0.1) *
+		(0.1 + abs(sin(13.0 * p.y + p.x))));
+	}
+
 
 	float shash2(vec2 p)
 	{
@@ -152,7 +160,7 @@
 									fbm(rFreq.y*uv + qAmp.y*q + uv + vec2(u_time*0.0043, u_time*0.0123)));
 
 		float mainFreq = mainFbmFrequency;
-		float warpGain = mainWarpGain;
+		float warpGain = mainWarpGain * (-1.778 + uv.x);
 		float f = fbm(mainFreq*uv + warpGain*r);
 		result.f = f;
 		result.q = q;
