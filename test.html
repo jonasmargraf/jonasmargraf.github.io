@@ -63,7 +63,7 @@
 
 	float shash(vec2 p)
 	{
-		vec2 tmp = normalize(p);
+		// vec2 tmp = normalize(p);
 		return -1.0 + 2.0 * fract((1e4 + seed) * sin(17.0 * p.x + p.y * 0.1) * (0.1 + abs(sin(13.0 * p.y + p.x))));
 	}
 
@@ -159,7 +159,7 @@
 									fbm(rFreq.y*uv + qAmp.y*q + uv + vec2(u_time*0.0043, u_time*0.0123)));
 
 		float mainFreq = mainFbmFrequency;
-		float warpGain = mainWarpGain * (-3.0 + uv.x);
+		float warpGain = mainWarpGain * (-1.0 + uv.x);
 		float f = fbm(mainFreq*uv + warpGain*r);
 		result.f = f;
 		result.q = q;
