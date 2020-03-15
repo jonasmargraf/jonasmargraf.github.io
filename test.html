@@ -64,8 +64,8 @@
 	float shash(vec2 p)
 	{
 		vec2 tmp = normalize(p);
-		return -1.0 + 2.0 * fract((1e4 + seed) * sin(17.0 * p.x + p.y * 0.1) *
-		(0.1 + abs(sin(13.0 * p.y + p.x))));
+		// return -1.0 + 2.0 * fract((1e4 + seed) * sin(17.0 * p.x + p.y * 0.1) * (0.1 + abs(sin(13.0 * p.y + p.x))));
+		return fract(10000.0 * tmp.x * tmp.y);
 	}
 
 
