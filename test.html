@@ -27,7 +27,7 @@
 	// 	// gl_FragColor = vec4(gl_FragCoord.x/uv, 0.0, 0.0, 1.0);
 	// }
 
-	precision mediump float;
+	precision highp float;
 
 	uniform float u_time;
 	// uniform vec2 u_resolution;
@@ -64,8 +64,7 @@
 	float shash(vec2 p)
 	{
 		vec2 tmp = normalize(p);
-		// return -1.0 + 2.0 * fract((1e4 + seed) * sin(17.0 * p.x + p.y * 0.1) * (0.1 + abs(sin(13.0 * p.y + p.x))));
-		return fract(10000.0 * tmp.x * tmp.y);
+		return -1.0 + 2.0 * fract((1e4 + seed) * sin(17.0 * p.x + p.y * 0.1) * (0.1 + abs(sin(13.0 * p.y + p.x))));
 	}
 
 
@@ -112,7 +111,7 @@
 		float maxAmp = a;
 		float freq = noiseFrequency;
 		float lac = noiseLacunarity;
-		vec2 shift = vec2(100);
+		vec2 shift = vec2(100.0);
 		// Rotate to reduce axial bias
 		mat2 rot = mat2(cos(0.5), sin(0.5), -sin(0.5), cos(0.5));
 
@@ -160,7 +159,7 @@
 									fbm(rFreq.y*uv + qAmp.y*q + uv + vec2(u_time*0.0043, u_time*0.0123)));
 
 		float mainFreq = mainFbmFrequency;
-		float warpGain = mainWarpGain * (-1.778 + uv.x);
+		float warpGain = mainWarpGain * (-3.0 + uv.x);
 		float f = fbm(mainFreq*uv + warpGain*r);
 		result.f = f;
 		result.q = q;
@@ -330,6 +329,6 @@
 		<canvas id="example">
 			It no work :(
 		</canvas>
-		<div id="framerate"></div>
+		<!-- <div id="framerate"></div> -->
 	</body>
 </html>
