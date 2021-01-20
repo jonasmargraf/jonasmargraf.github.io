@@ -146,5 +146,6 @@ void main(void)
 
 	// heightMap = vec4(vec3(f), 1.0);
 
-	gl_FragColor = vec4(color, 1.0);
+	// gl_FragColor = vec4(color, 1.0);
+	gl_FragColor = vec4(color, f);
 }

@@ -3,7 +3,7 @@ var canvas = document.getElementById('renderCanvas');
 // Load the 3D engine
 var engine = new BABYLON.Engine(canvas, true, {preserveDrawingBuffer: true, stencil: true});
 
-const uniforms = [
+const uniforms_noise = [
     "uTime",
     "uSeed",
     "uOctaves",
@@ -29,6 +29,21 @@ const uniforms = [
     "uScreenSize"
 ];
 
+const uniforms_lighting = [
+    "uTime",
+    "uContrast",
+    "uBrightness",
+    "uLightColor1",
+    "uLightColor2",
+    "uLightPosition1",
+    "uLightPosition2",
+    "uDiffuseStrength",
+    "uSpecularStrength",
+    "uSpecularExponent",
+    "uBumpScale",
+    "uScreenSize"
+];
+
 // CreateScene function that creates and return the scene
 var createScene = () => {
     // Create a basic BJS Scene object
@@ -40,7 +55,8 @@ var createScene = () => {
     // Attach the camera to the canvas
     camera.attachControl(canvas, false);
 
-    const noise_shader = new BABYLON.PostProcess("noise", "./fever_dream_noise", uniforms, null, 1.0, camera);
+    let noise_shader = new BABYLON.PostProcess("noise", "./fever_dream_noise", uniforms_noise, null, 1.0, camera);
+    let lighting_shader = new BABYLON.PostProcess("lighting", "./lighting_simple", uniforms_lighting, null, 1.0, camera);
 
     // Return the created scene
     return scene;
@@ -70,6 +86,7 @@ assetsManager.load();
 // This starts the render loop
 assetsManager.onFinish = (tasks) => {
     let noise_shader = scene.getPostProcessByName("noise")
+    let lighting_shader = scene.getPostProcessByName("lighting")
     let preset = presets[0]
 
     engine.runRenderLoop(() => {
@@ -83,7 +100,37 @@ assetsManager.onFinish = (tasks) => {
                 effect.setFloat("uTime", time);
                 // Iterate over uniforms array, grab stored value for each 
                 // element from current preset and pass to shader
-                uniforms.forEach(uniform => {
+                uniforms_noise.forEach(uniform => {
+                    if (uniform in preset) {
+                        let parameter_from_preset = preset[uniform];
+                        // If the uniform is just a float, 
+                        // we can call setFloat() directly
+                        if (typeof (parameter_from_preset) == "number") {
+                            effect.setFloat(uniform, parameter_from_preset);
+                        }
+                        // If the uniform is some kind of vector, we need
+                        // to create a babylon.js vector2/3/4 depending on
+                        // how long the array for this parameter is
+                        else if (typeof (parameter_from_preset) == "object") {
+                            let param = new BABYLON["Vector" + parameter_from_preset.length];
+                            param = param.fromArray(parameter_from_preset);
+                            effect["setVector" + parameter_from_preset.length](uniform, param);
+                        }
+                    };
+                });
+            };
+
+            // Pass uniforms to shader
+            lighting_shader.onApply = (effect) => {
+                effect.setFloat2(
+                    "uScreenSize", 
+                    1.0 / lighting_shader.width, 
+                    1.0 / lighting_shader.height
+                    );
+                effect.setFloat("uTime", time);
+                // Iterate over uniforms array, grab stored value for each 
+                // element from current preset and pass to shader
+                uniforms_lighting.forEach(uniform => {
                     if (uniform in preset) {
                         let parameter_from_preset = preset[uniform];
                         // If the uniform is just a float, 
