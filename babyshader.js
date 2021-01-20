@@ -40,7 +40,7 @@ var createScene = () => {
     // Attach the camera to the canvas
     camera.attachControl(canvas, false);
 
-    const noise_shader = new BABYLON.PostProcess("noise", "./fever_dream_uniforms", uniforms, null, 1.0, camera);
+    const noise_shader = new BABYLON.PostProcess("noise", "./fever_dream_noise", uniforms, null, 1.0, camera);
 
     // Return the created scene
     return scene;
