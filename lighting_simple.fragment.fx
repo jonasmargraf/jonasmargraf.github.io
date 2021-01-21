@@ -18,7 +18,7 @@ uniform float uSpecularExponent;
 varying vec2 vUV;
 
 float getHeight(vec2 uv) {
-	float h = texture(textureSampler, uv).a;
+	float h = texture2D(textureSampler, uv).a;
 	return h;
 }
 
@@ -38,7 +38,7 @@ vec3 bumpFromDepth(vec2 uv, float scale) {
 void main(void)
 {
     vec2 uv = vUV;
-    vec4 input_tex = texture(textureSampler, uv);
+    vec4 input_tex = texture2D(textureSampler, uv);
     vec3 color = input_tex.rgb;
 
 	float bumpScale = uBumpScale * 0.01;

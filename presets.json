@@ -19,7 +19,7 @@
         "uNoiseFrequency": 0.734000027179718,
         "uNoiseLacunarity": 1.4630000591278076,
         "uOctaveFalloff": 0.251,
-        "uOctaves": 6,
+        "uOctaves": 4,
         "uPaletteBrightness": [0.2, 0.2, 0.2],
         "uPaletteContrast": [0.2, 0.4, 0.8],
         "uPaletteFrequency": [1.0, 1.0, 1.0],
