@@ -112,10 +112,12 @@ void main(void)
 	vec2 uv = (vUV.st * zw) / zw.y + vec2(uScrollSpeed.x*time, uScrollSpeed.y*time);
 	uv = ((2.0*vUV.st - 1.0) * zw) / zw.y;
 	uv *= uvScale;
+	// uv.x *= 2.0;
 	float angle = 45.0;
 	mat2 rot = mat2(cos(angle), sin(angle), -sin(angle), cos(angle));
 	uv *= rot;
-	uv += vec2(time)*uScrollSpeed;
+	// uv += vec2(time)*uScrollSpeed;
+	uv += uTime;
 
 	vec3 color = vec3(0.0);
 

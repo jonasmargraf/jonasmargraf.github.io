@@ -3,7 +3,7 @@
 #endif
 
 uniform sampler2D textureSampler;
-uniform vec2 uScreenSize;
+uniform vec2 uStepSize;
 uniform vec3 uLightColor1;
 uniform vec3 uLightColor2;
 uniform vec3 uLightPosition1;
@@ -23,7 +23,9 @@ float getHeight(vec2 uv) {
 }
 
 vec3 bumpFromDepth(vec2 uv, float scale) {
-	vec2 step = uScreenSize;
+	vec2 step = uStepSize;
+	step *= 8.0;
+	// step *= 0.2;
 
 	float height = getHeight(uv);
 
@@ -66,6 +68,7 @@ void main(void)
 	float specular = dot(normalize(reflect(vec3(-2.0, 0.0, 10.0), normal)), normalize(vec3(2.0, 1.0, -9.0)));
 	specular = pow(specular, uSpecularExponent);
 	specular *= uSpecularStrength;
+	specular = clamp(specular, 0.0, 1.0);
 
 	color *= ambient + diffuse;
 	color += specular;
