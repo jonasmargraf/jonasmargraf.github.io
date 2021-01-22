@@ -140,7 +140,7 @@ assetsManager.onFinish = (tasks) => {
             effect.setFloat("uTime", time);
             applyUniformsFromPreset(effect, uniforms_noise, preset);
         };
-        Pass uniforms to shader
+        // Pass uniforms to shader
         lighting_shader.onApply = (effect) => {
             effect.setFloat2(
                 "uStepSize",
