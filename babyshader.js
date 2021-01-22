@@ -59,7 +59,7 @@ const createScene = () => {
     camera.attachControl(canvas, false);
 
     const noise_shader = new BABYLON.PostProcess("noise", "./fever_dream_noise", uniforms_noise, null, 1.0, camera);
-    // const lighting_shader = new BABYLON.PostProcess("lighting", "./lighting_simple", uniforms_lighting, null, 1.0, camera);
+    const lighting_shader = new BABYLON.PostProcess("lighting", "./lighting_simple", uniforms_lighting, null, 1.0, camera);
 
     // Return the created scene
     return scene;
@@ -140,16 +140,16 @@ assetsManager.onFinish = (tasks) => {
             effect.setFloat("uTime", time);
             applyUniformsFromPreset(effect, uniforms_noise, preset);
         };
-        // Pass uniforms to shader
-        // lighting_shader.onApply = (effect) => {
-        //     effect.setFloat2(
-        //         "uStepSize",
-        //         1.0 / lighting_shader.width,
-        //         1.0 / lighting_shader.height
-        //     );
-        //     effect.setFloat("uTime", time);
-        //     applyUniformsFromPreset(effect, uniforms_lighting, preset);
-        // };
+        Pass uniforms to shader
+        lighting_shader.onApply = (effect) => {
+            effect.setFloat2(
+                "uStepSize",
+                1.0 / lighting_shader.width,
+                1.0 / lighting_shader.height
+            );
+            effect.setFloat("uTime", time);
+            applyUniformsFromPreset(effect, uniforms_lighting, preset);
+        };
 
         scene.render();
     });
