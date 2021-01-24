@@ -69,18 +69,15 @@ const scene = createScene();
 let time = 0.0;
 let divFps = document.getElementById("fps");
 
-// Use AssetsManager to load presets from JSON file
+// Initialize Assets Manager
 let assetsManager = new BABYLON.AssetsManager(scene);
 assetsManager.useDefaultLoadingScreen = false;
+
+// Use AssetsManager to load presets from JSON file
 let presetsTask = assetsManager.addTextFileTask("presets task", "presets.json");
-assetsManager.load();
 
 presetsTask.onSuccess = (task) => {
     presets = JSON.parse(task.text);
-};
-
-presetsTask.onError = (task, message, exception) => {
-    console.log(message, exception);
 };
 
 let presets = [];
@@ -95,7 +92,10 @@ preset_radios.forEach(preset_radio => {
 
 function selectPreset(preset_index) {
     current_preset = preset_index;
+    console.log(current_preset);
 }
+
+assetsManager.load();
 
 function applyUniformsFromPreset(effect, uniforms, preset) {
     // Iterate over uniforms array, grab stored value for each 
@@ -158,4 +158,58 @@ assetsManager.onFinish = (tasks) => {
 // the canvas/window resize event handler
 window.addEventListener('resize', () => {
     engine.resize();
+});
+
+///////////////////////////////////////////////////////////////////////////
+// AUDIO PLAYER STUFF
+
+Amplitude.init({
+    songs: [
+        {
+            "name": "From The Wild Had Been Conquered",
+            "artist": "Jonas Margraf",
+            "album": "Drown In Ur Presence",
+            "url": "audio/01.mp3"
+        },
+        {
+            "name": "IRL Angel",
+            "artist": "Jonas Margraf",
+            "album": "Drown In Ur Presence",
+            "url": "audio/02.mp3"
+        },
+        {
+            "name": "Cave Song",
+            "artist": "Jonas Margraf",
+            "album": "Drown In Ur Presence",
+            "url": "audio/03.mp3"
+        },
+        {
+            "name": "Hands, Folded",
+            "artist": "Jonas Margraf",
+            "album": "Drown In Ur Presence",
+            "url": "audio/04.mp3"
+        },
+        {
+            "name": "Last and First Men",
+            "artist": "Jonas Margraf",
+            "album": "Drown In Ur Presence",
+            "url": "audio/05.mp3"
+        }
+    ],
+    callbacks: {
+        initialized: function() {
+            console.log("Amplitude.js initialized.");
+            // Have to pause Amplitude after init as a workaround for bug where
+            // the time / progress bar doesn't update on mobile / iOS.
+            // For more info see:
+            // https://github.com/521dimensions/amplitudejs/issues/447
+            Amplitude.pause();
+        },
+        song_change: function() {
+            console.log("Song changed.");
+            // console.log(Amplitude.getActiveIndex());
+            // console.log(selectPreset);
+            selectPreset(Amplitude.getActiveIndex());
+        }
+    }
 });
