@@ -5,116 +5,21 @@
     <title>Babylon Shader Test</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="stylesheet" type="text/css" href="css/babyshader.css"/>
     <link rel="stylesheet" type="text/css" href="css/audioplayer.css"/>
-    <style>
-        html, body {
-            overflow: hidden;
-            width: 100%;
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            font: 1rem "Fira Sans", sans-serif;
-        }
-
-        body {
-            background-color: white;
-        }
-
-        #renderCanvas {
-            width: 100%;
-            height: 100%;
-            touch-action: none;
-        }
-
-        #holder {
-            width: 100%;
-            height: 101%;
-            float: left;
-        }
-
-        #instructions {
-            width: 20%;
-            height: 100%;
-            float: left;
-            background-color: grey;
-        }
-        #fps {
-            position: absolute;
-            text-align: center;
-            font-size: 16px;
-            color: white;
-            top: 15px;
-            right: 10px;
-            width: 60px;
-            height: 20px;
-            text-shadow: 1px 1px 2px black, 0 0 1em red, 0 0 0.2em red;
-        }
-        #selector {
-            position: absolute;
-            top: 15px;
-        }
-    </style>
-    
     <script src="https://cdn.babylonjs.com/babylon.js"></script>
     <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
-    <script src="https://code.jquery.com/pep/0.4.3/pep.js"></script>
+    <!-- <script src="https://code.jquery.com/pep/0.4.3/pep.js"></script> -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/amplitudejs@5.2.0/dist/amplitude.js"></script>
-    <style>
-        [touch-action="none"] {
-            -ms-touch-action: none;
-            touch-action: none;
-        }
-    
-        [touch-action="auto"] {
-            -ms-touch-action: auto;
-            touch-action: auto;
-        }
-    
-        [touch-action="pan-x"] {
-            -ms-touch-action: pan-x;
-            touch-action: pan-x;
-        }
-    
-        [touch-action="pan-y"] {
-            -ms-touch-action: pan-y;
-            touch-action: pan-y;
-        }
-    
-        [touch-action="pan-x pan-y"],
-        [touch-action="pan-y pan-x"] {
-            -ms-touch-action: pan-x pan-y;
-            touch-action: pan-x pan-y;
-        }
-    </style>
-
 </head>
 
 <body>
     <div id="holder">
-        <canvas id="renderCanvas" touch-action="none"></canvas> <!-- touch-action="none" for best results from PEP -->
+        <!-- touch-action="none" for best results from PEP -->
+        <!-- <canvas id="renderCanvas" touch-action="none"></canvas> -->
+        <canvas id="renderCanvas"></canvas>
         <div id="fps">0</div>
-        <!-- <div id="selector">
-            <div>
-                <input type="radio" id="preset-0" name="preset" value="0" checked>
-                <label for="0">0</label>
-            </div>
-            <div>
-                <input type="radio" id="preset-1" name="preset" value="1">
-                <label for="1">1</label>
-            </div>
-            <div>
-                <input type="radio" id="preset-2" name="preset" value="2">
-                <label for="2">2</label>
-            </div>
-            <div>
-                <input type="radio" id="preset-3" name="preset" value="3">
-                <label for="3">3</label>
-            </div>
-            <div>
-                <input type="radio" id="preset-4" name="preset" value="4">
-                <label for="4">4</label>
-            </div>
-        </div> -->
         <div id="amplitude-player">
             <div id="control-container">
                 <div id="central-controls">
@@ -127,13 +32,10 @@
                     <div class="amplitude-next" id="next">
                         <span>next</span>
                     </div>
+                    <!-- Needed for Amplitude.getAnalyser() to work, see:
+                    https://github.com/serversideup/amplitudejs/issues/403 -->
+                    <div class="amplitude-wave-form"></div>
                 </div>
-            </div>
-
-            <div id="progress-container">
-                <input type="range" class="amplitude-song-slider" />
-                <!-- <progress id="song-played-progress" class="amplitude-song-played-progress"></progress> -->
-                <!-- <progress id="song-buffered-progress" class="amplitude-buffered-progress" value="0"></progress> -->
             </div>
         </div>
     </div>

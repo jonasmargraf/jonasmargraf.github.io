@@ -21,7 +21,9 @@ const uniforms_noise = [
     "uPaletteContrast",
     "uPaletteFrequency",
     "uPalettePhase",
-    "uScreenSize"
+    "uScreenSize",
+    "uScroll",
+    "uMousePosition"
 ];
 
 const uniforms_lighting = [
@@ -39,15 +41,22 @@ const uniforms_lighting = [
     "uStepSize"
 ];
 
+const holder = document.getElementById("holder");
+const div_more = "<div style='height:1000px; z-index:-100;'></div>";
 // Get the canvas DOM element
-const canvas = document.getElementById('renderCanvas');
+const canvas = document.getElementById("renderCanvas");
 // Toggle high dpi mode
 const adapt_to_device_ratio = false;
 // Load the 3D engine
-const engine = new BABYLON.Engine(canvas, true, { preserveDrawingBuffer: true, stencil: true }, adapt_to_device_ratio);
+const engine_options = { 
+    preserveDrawingBuffer: true,
+    stencil: true,
+    doNotHandleTouchAction: true,
+    // premultipliedAlpha: false
+};
+const engine = new BABYLON.Engine(canvas, true, engine_options, adapt_to_device_ratio);
 
-
-// CreateScene function that creates and return the scene
+// CreateScene function that creates and returns the scene
 const createScene = () => {
     // Create a basic BJS Scene object
     var scene = new BABYLON.Scene(engine);
@@ -56,7 +65,7 @@ const createScene = () => {
     // Target the camera to scene origin
     camera.setTarget(BABYLON.Vector3.Zero());
     // Attach the camera to the canvas
-    camera.attachControl(canvas, false);
+    // camera.attachControl(canvas, false);
 
     const noise_shader = new BABYLON.PostProcess("noise", "/glsl/fever_dream_noise", uniforms_noise, null, 1.0, camera);
     const lighting_shader = new BABYLON.PostProcess("lighting", "/glsl/lighting_simple", uniforms_lighting, null, 1.0, camera);
@@ -67,6 +76,11 @@ const createScene = () => {
 
 const scene = createScene();
 let time = 0.0;
+let song_start_time = 0.0;
+let mouse_x = 0.0;
+let mouse_y = 0.0;
+let scroll_x = 0.0;
+let scroll_y = 0.0;
 let divFps = document.getElementById("fps");
 
 // Initialize Assets Manager
@@ -130,15 +144,28 @@ assetsManager.onFinish = (tasks) => {
         // Update FPS display
         divFps.innerHTML = engine.getFps().toFixed() + " fps";
         // Increment timer
-        time += engine.getDeltaTime() * scene.getAnimationRatio() * 0.0001;
+        time += engine.getDeltaTime() * scene.getAnimationRatio() * 0.0001 * 0.2;
         // Get uniform values for current preset
         let preset = presets[current_preset];
+
+        analyzer.getFloatFrequencyData(freq_array);
+        if (Amplitude.getPlayerState() === "playing"){
+            const current_time = analyzer.context.currentTime - song_start_time;
+            console.log(current_time);
+        }
+        // console.log(analyzer.context.getOutputTimestamp())
 
         // Pass uniforms to shader
         noise_shader.onApply = (effect) => {
             effect.setFloat2("uScreenSize", noise_shader.width, noise_shader.height);
             effect.setFloat("uTime", time);
             applyUniformsFromPreset(effect, uniforms_noise, preset);
+            // effect.setFloat("uOctaveFalloff", mouse_x);
+            effect.setFloat2("uScroll", scroll_x, scroll_y);
+            effect.setFloat2("uMousePosition", mouse_x, mouse_y);
+            const noise_freq = preset["uNoiseFrequency"] + 0.005 * (100.0 - Math.abs(Math.max(freq_array[1], -100.0)));
+            // console.log(noise_freq);
+            effect.setFloat("uNoiseFrequency", noise_freq);
         };
         // Pass uniforms to shader
         lighting_shader.onApply = (effect) => {
@@ -155,13 +182,25 @@ assetsManager.onFinish = (tasks) => {
     });
 };
 
-// the canvas/window resize event handler
-window.addEventListener('resize', () => {
-    engine.resize();
-});
-
 ///////////////////////////////////////////////////////////////////////////
 // AUDIO PLAYER STUFF
+
+let analyzer = null;
+const fft_bin_count = 16;
+const freq_array = new Float32Array(fft_bin_count);
+
+function configureAnalyzer() {
+    console.log("hey");
+    analyzer = Amplitude.getAnalyser();
+    analyzer.fftSize = fft_bin_count * 2;
+    analyzer.smoothingTimeConstant = 0.99999;
+    // analyzer.smoothingTimeConstant = 1.0;
+    console.log(analyzer);
+    const context = analyzer.context;
+    const audio_element = Amplitude.getAudio();
+    const audio_node = context.createMediaElementSource(audio_element);
+    audio_node.connect(analyzer);
+}
 
 Amplitude.init({
     songs: [
@@ -169,31 +208,31 @@ Amplitude.init({
             "name": "From The Wild Had Been Conquered",
             "artist": "Jonas Margraf",
             "album": "Drown In Ur Presence",
-            "url": "audio/01.mp3"
+            "url": "audio/01_Jonas Margraf_From The Wild Had Been Conquered.mp3"
         },
         {
             "name": "IRL Angel",
             "artist": "Jonas Margraf",
             "album": "Drown In Ur Presence",
-            "url": "audio/02.mp3"
+            "url": "audio/02_Jonas Margraf_IRL Angel.mp3"
         },
         {
             "name": "Cave Song",
             "artist": "Jonas Margraf",
             "album": "Drown In Ur Presence",
-            "url": "audio/03.mp3"
+            "url": "audio/03_Jonas Margraf_Anchialine Pool.mp3"
         },
         {
             "name": "Hands, Folded",
             "artist": "Jonas Margraf",
             "album": "Drown In Ur Presence",
-            "url": "audio/04.mp3"
+            "url": "audio/04_Jonas Margraf_Hands, Folded.mp3"
         },
         {
             "name": "Last and First Men",
             "artist": "Jonas Margraf",
             "album": "Drown In Ur Presence",
-            "url": "audio/05.mp3"
+            "url": "audio/05_Jonas Margraf_Last And First Men.mp3"
         }
     ],
     callbacks: {
@@ -204,12 +243,96 @@ Amplitude.init({
             // For more info see:
             // https://github.com/521dimensions/amplitudejs/issues/447
             Amplitude.pause();
+            configureAnalyzer();
         },
         song_change: function() {
             console.log("Song changed.");
             // console.log(Amplitude.getActiveIndex());
             // console.log(selectPreset);
             selectPreset(Amplitude.getActiveIndex());
+        },
+        play: function() {
+            // console.log("play");
+            // console.log(Amplitude.getAnalyser().context);
+            // song_start_time = Amplitude.getAnalyser().context.currentTime;
+            // console.log(song_start_time);
+        },
+        playing: function() {
+            console.log("playing");
+            song_start_time = Amplitude.getAnalyser().context.currentTime;
+            console.log(song_start_time);
         }
     }
 });
+
+///////////////////////////////////////////////////////////////////////////
+// Callbacks & Event Handlers
+
+// the canvas/window resize event handler
+window.addEventListener('resize', () => {
+    canvas.width = canvas.innerWidth;
+    canvas.height = canvas.innerHeight;
+    engine.resize();
+});
+
+window.addEventListener("mousemove", (event) => {
+    mouse_x = event.clientX / canvas.width;
+    mouse_y = event.clientY / canvas.height;
+    mouse_y = 1.0 - mouse_y;
+    mouse_x = 2.0 * mouse_x - 1.0;
+    mouse_y = 2.0 * mouse_y - 1.0;
+//     mouse_y *= 5.0;
+//     mouse_y += 1.0;
+    // console.log(mouse_x, mouse_y);
+});
+
+window.addEventListener("touchmove", (event) => {
+    mouse_x = event.touches[0].clientX / canvas.width;
+    mouse_y = event.touches[0].clientY / canvas.height;
+    mouse_y = 1.0 - mouse_y;
+    mouse_x = 2.0 * mouse_x - 1.0;
+    mouse_y = 2.0 * mouse_y - 1.0;
+    // mouse_x = mouse_x - 0.5;
+    // mouse_y = mouse_y - 0.5;
+//     mouse_y *= 5.0;
+//     mouse_y *= 5.0;
+//     mouse_y += 1.0;
+//     // console.log(mouse_x, mouse_y);
+});
+
+window.addEventListener("scroll", (event) => {
+    scroll_x = window.scrollX / canvas.width;
+    scroll_y = window.scrollY / canvas.height;
+    // console.log(event)
+    // if ((window.scrollY + window.innerHeight + 100) > document.body.scrollHeight) {
+        // holder.innerHTML += div_more;
+    // };
+});
+
+// holder.innerHTML += div_more;
+
+window.addEventListener("click", (event) => {
+    // console.log(time);
+    console.log(presets[current_preset])
+
+    // const analyser = Amplitude.getAnalyser();
+    // analyser.fftSize = 32;
+    // const context = analyser.context;
+    // console.log(analyser)
+    // const audio_element = Amplitude.getAudio();
+    // // console.log(audio_element);
+    // const audio_node = context.createMediaElementSource(audio_element);
+    // audio_node.connect(analyser);
+    // const freq_array = new Float32Array(analyser.frequencyBinCount);
+
+    // analyzer.getFloatFrequencyData(freq_array);
+    // console.log(freq_array);
+});
+
+// window.scrollTo(0, 1000);
+window.addEventListener("load",function() {
+    setTimeout(function() {
+        window.scrollTo(0, 1000);
+    }, 1000);
+});
+

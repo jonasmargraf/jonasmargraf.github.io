@@ -4,9 +4,10 @@
   height: auto;
   position: absolute;
   bottom: 0;
-  /* left: 10px; */
+  left: 20px;
   /* background-color: blue; */
   cursor: default;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
 
 #amplitude-player * {
@@ -20,7 +21,7 @@
   line-height: 3rem;
   font-size: 2rem;
   color: white;
-  padding-left: 10px;
+  /* padding-left: 20px; */
   /* background-color: green; */
   text-shadow: 1px 1px 2px black, 0 0 1em red, 0 0 0.2em red;
 }

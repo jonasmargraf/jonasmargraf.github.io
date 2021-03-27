@@ -29,6 +29,8 @@ uniform vec3 uPalettePhase;
 uniform float uPalettePhaseOffset;
 // uniform float uRandomAngle;
 uniform vec2 uScreenSize;
+uniform vec2 uScroll;
+uniform vec2 uMousePosition;
 
 varying vec2 vUV;
 
@@ -109,15 +111,22 @@ void main(void)
 // 	and move 0,0 to center of screen
     vec2 zw = uScreenSize;
 	// vec2 vUV = gl_FragCoord.xy / zw;
-	vec2 uv = (vUV.st * zw) / zw.y + vec2(uScrollSpeed.x*time, uScrollSpeed.y*time);
-	uv = ((2.0*vUV.st - 1.0) * zw) / zw.y;
+	// vec2 uv = vUV;
+	// vec2 uv = (vUV.st * zw) / zw.y + vec2(uScrollSpeed.x*time, uScrollSpeed.y*time);
+	vec2 uv = ((2.0*vUV.st - 1.0) * zw) / zw.y;
+	vec2 mouse_position = (uMousePosition * zw) / zw.y;
+	float mouse_dist = distance(uv, mouse_position);
+	mouse_dist = mix(0.6, 1.0, 1.0 - smoothstep(0.0, 0.5, mouse_dist));
+	// uv *= 2.0 * clamp(distance(uv, mouse_position), 0.1, 0.5);
+	// uv *= mouse_dist;
+	uv -= uScroll;
 	uv *= uvScale;
 	// uv.x *= 2.0;
 	float angle = 45.0;
 	mat2 rot = mat2(cos(angle), sin(angle), -sin(angle), cos(angle));
 	uv *= rot;
 	// uv += vec2(time)*uScrollSpeed;
-	uv += uTime;
+	uv += uTime * uScrollSpeed;
 
 	vec3 color = vec3(0.0);
 
