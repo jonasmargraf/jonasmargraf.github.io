@@ -96,13 +96,6 @@ presetsTask.onSuccess = (task) => {
 
 let presets = [];
 let current_preset = 0;
-let preset_radios = document.getElementsByName("preset");
-
-preset_radios.forEach(preset_radio => {
-    preset_radio.addEventListener("click", () => {
-        selectPreset(preset_radio.value);
-    });
-});
 
 function selectPreset(preset_index) {
     current_preset = preset_index;
@@ -148,10 +141,10 @@ assetsManager.onFinish = (tasks) => {
         // Get uniform values for current preset
         let preset = presets[current_preset];
 
-        analyzer.getFloatFrequencyData(freq_array);
+        // analyzer.getFloatFrequencyData(freq_array);
         if (Amplitude.getPlayerState() === "playing"){
-            const current_time = analyzer.context.currentTime - song_start_time;
-            console.log(current_time);
+            // const current_time = analyzer.context.currentTime - song_start_time;
+            // console.log(current_time);
         }
         // console.log(analyzer.context.getOutputTimestamp())
 
@@ -163,9 +156,9 @@ assetsManager.onFinish = (tasks) => {
             // effect.setFloat("uOctaveFalloff", mouse_x);
             effect.setFloat2("uScroll", scroll_x, scroll_y);
             effect.setFloat2("uMousePosition", mouse_x, mouse_y);
-            const noise_freq = preset["uNoiseFrequency"] + 0.005 * (100.0 - Math.abs(Math.max(freq_array[1], -100.0)));
+            // const noise_freq = preset["uNoiseFrequency"] + 0.005 * (100.0 - Math.abs(Math.max(freq_array[1], -100.0)));
             // console.log(noise_freq);
-            effect.setFloat("uNoiseFrequency", noise_freq);
+            // effect.setFloat("uNoiseFrequency", noise_freq);
         };
         // Pass uniforms to shader
         lighting_shader.onApply = (effect) => {
@@ -243,7 +236,7 @@ Amplitude.init({
             // For more info see:
             // https://github.com/521dimensions/amplitudejs/issues/447
             Amplitude.pause();
-            configureAnalyzer();
+            // configureAnalyzer();
         },
         song_change: function() {
             console.log("Song changed.");
@@ -260,7 +253,7 @@ Amplitude.init({
         playing: function() {
             console.log("playing");
             song_start_time = Amplitude.getAnalyser().context.currentTime;
-            console.log(song_start_time);
+            // console.log(song_start_time);
         }
     }
 });
@@ -270,9 +263,10 @@ Amplitude.init({
 
 // the canvas/window resize event handler
 window.addEventListener('resize', () => {
-    canvas.width = canvas.innerWidth;
-    canvas.height = canvas.innerHeight;
+    canvas.width = Math.min(canvas.width, 200);
+    canvas.height = Math.min(canvas.height, 200);
     engine.resize();
+    console.log(canvas);
 });
 
 window.addEventListener("mousemove", (event) => {

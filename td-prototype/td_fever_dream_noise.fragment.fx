@@ -1,3 +1,5 @@
+#define PI 3.14159265359
+
 precision highp float;
 
 uniform float uTime;
@@ -36,10 +38,18 @@ uniform vec2 uMousePosition;
 
 out vec4 fragColor;
 
+float sinc(float x, float k)
+{
+    const float a = PI*(k*x-1.0);
+    return sin(a)/a;
+}
+
 // signed hash function (-1 to 1)
 float shash(vec2 p)
 {
-	return -1.0 + 2.0*fract((10000.0 + uSeed) * sin(17.0 * p.x + p.y * 0.1) *
+	// 1.0 if PRESET 5
+	float seed = uSeed + (floor(uTime * 200) * 0.005) * 1.0;
+	return -1.0 + 2.0*fract((10000.0 + seed) * sin(17.0 * p.x + p.y * 0.1) *
 								(0.1 + abs(sin(p.y * 13.0 + p.x))));
 }
 
@@ -71,6 +81,8 @@ float fbm(vec2 x)
 
     float freq = uNoiseFrequency;
     float lac = uNoiseLacunarity;
+	float octave_falloff = uOctaveFalloff;
+	octave_falloff *= 0.8 + 0.2 * sinc(sin(uTime * 0.2), 2);
 
     const int MAX_OCTAVES = 8;
     
@@ -82,8 +94,8 @@ float fbm(vec2 x)
         }
         v += a * abs(noise(x*freq));
         x = rot * x * 2.01 + shift;
-        maxAmp += a*uOctaveFalloff;
-        a *= uOctaveFalloff;
+        maxAmp += a*octave_falloff;
+        a *= octave_falloff;
         freq *= uNoiseLacunarity;
     }
     v = 1.0 - v;
@@ -100,7 +112,6 @@ vec3 palette(float t, vec3 a, vec3 b, vec3 c, vec3 d)
 	return a + b * cos(6.28318 * (c * t + d));
 }
 
-
 void main(void)
 {
 	vec4 var = vec4(0.0);
@@ -111,11 +122,22 @@ void main(void)
     float time = uTime;
 // 	Normalize coordinates to be aspect-ratio independent
 // 	and move 0,0 to center of screen
+	float lfo2 = sinc(sin(uTime * 0.4), 2);
+	// lfo2 = 1.0;
     vec2 zw = uScreenSize;
+	// PRESET 5
+	zw.y *= 0.6 + 0.5 * cos(uTime*2);
 	// vec2 vUV = gl_FragCoord.xy / zw;
 	// vec2 uv = vUV;
 	// vec2 uv = (vUV.st * zw) / zw.y + vec2(uScrollSpeed.x*time, uScrollSpeed.y*time);
-	vec2 uv = ((2.0*vUV.st - 1.0) * zw) / zw.y;
+	vec2 uv = (2.0*vUV.st - 1.0);
+	float angle = radians(uTime*30+uv.x*uv.x*uv.x*20);
+	// PRESET 1 / 5
+	// angle = 0.0;
+	mat2 rot = mat2(cos(angle), sin(angle), -sin(angle), cos(angle));
+	uv *= rot;
+	uv = (uv * zw) / zw.y;
+	uv *= 1.0 + lfo2 * 0.5;
 	vec2 mouse_position = (uMousePosition * zw) / zw.y;
 	float mouse_dist = distance(uv, mouse_position);
 	mouse_dist = mix(0.6, 1.0, 1.0 - smoothstep(0.0, 0.5, mouse_dist));
@@ -124,9 +146,6 @@ void main(void)
 	uv -= uScroll;
 	uv *= uvScale;
 	// uv.x *= 2.0;
-	float angle = 45.0;
-	mat2 rot = mat2(cos(angle), sin(angle), -sin(angle), cos(angle));
-	uv *= rot;
 	// uv += vec2(time)*uScrollSpeed;
 	uv += uTime * uScrollSpeed;
 
@@ -139,7 +158,10 @@ void main(void)
 								fbm(uRFrequency.y*uv + uQAmplitude.y*q + uv + vec2(0.0*sin(uTime*4.3), uTime*1.23)));
 
 
-	float f = fbm(uMainFbmFrequency*uv + uMainWarpGain*r);
+	float lfo1 = 0.5 * sin(uTime * 2.0) * 2.0 * cos(length(uv * 1.0));
+	float lfo3 = fbm(vec2(0.5 + 0.5 * lfo1, 0.5 + 0.5 * lfo2));
+
+	float f = fbm(uMainFbmFrequency*uv + uMainWarpGain*r*lfo1);
 
 	if (uColorMode >= 0.5)
 	{
