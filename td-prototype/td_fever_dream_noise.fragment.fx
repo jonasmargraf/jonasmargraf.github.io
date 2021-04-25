@@ -3,6 +3,7 @@
 precision highp float;
 
 uniform float uTime;
+uniform int uPreset;
 
 uniform float uSeed;
 // uniform vec4 var;
@@ -48,7 +49,8 @@ float sinc(float x, float k)
 float shash(vec2 p)
 {
 	// 1.0 if PRESET 5
-	float seed = uSeed + (floor(uTime * 200) * 0.005) * 1.0;
+	float seed = uSeed;
+	seed += mix(0.0, floor(uTime * 200) * 0.005, uPreset == 4 || uPreset == 2);
 	return -1.0 + 2.0*fract((10000.0 + seed) * sin(17.0 * p.x + p.y * 0.1) *
 								(0.1 + abs(sin(p.y * 13.0 + p.x))));
 }
@@ -85,22 +87,25 @@ float fbm(vec2 x)
 	octave_falloff *= 0.8 + 0.2 * sinc(sin(uTime * 0.2), 2);
 
     const int MAX_OCTAVES = 8;
-    
-    for (int i = 0; i < MAX_OCTAVES; i++)
-    {
-        if (i >= int(uOctaves))
-        {
-            break;
-        }
-        v += a * abs(noise(x*freq));
-        x = rot * x * 2.01 + shift;
-        maxAmp += a*octave_falloff;
-        a *= octave_falloff;
-        freq *= uNoiseLacunarity;
-    }
-    v = 1.0 - v;
-    v = pow(v, 5.0);
 
+	for (int i = 0; i < MAX_OCTAVES; i++)
+	{
+		if (i >= int(uOctaves))
+		{
+			break;
+		}
+		v += a * abs(noise(x*freq));
+		x = rot * x * 2.01 + shift;
+		maxAmp += a*octave_falloff;
+		a *= octave_falloff;
+		freq *= uNoiseLacunarity;
+	}
+	if (uFbmMode == 2.0)
+	{
+		v = 1.0 - v;
+		v = pow(v, 5.0);
+	}
+	
 	// Normalize noise value so that maximum amplitude = 1.0
 	v /= maxAmp;
 
@@ -126,17 +131,30 @@ void main(void)
 	// lfo2 = 1.0;
     vec2 zw = uScreenSize;
 	// PRESET 5
-	zw.y *= 0.6 + 0.5 * cos(uTime*2);
+	zw.y *= mix(1.0, 0.6 + 0.5 * cos(uTime*2), uPreset == 4);
 	// vec2 vUV = gl_FragCoord.xy / zw;
 	// vec2 uv = vUV;
 	// vec2 uv = (vUV.st * zw) / zw.y + vec2(uScrollSpeed.x*time, uScrollSpeed.y*time);
 	vec2 uv = (2.0*vUV.st - 1.0);
-	float angle = radians(uTime*30+uv.x*uv.x*uv.x*20);
+	float angle = 0.0;
+	angle = mix(angle, radians(uTime*30+uv.x*uv.x*uv.x*20), uPreset == 4);
 	// PRESET 1 / 5
 	// angle = 0.0;
+	float lfo4 = 0.5 * sin(-uTime * 0.2) * 2.0 * cos(0.5 * length(uv * 1.0));
+	// PRESET 2
+	angle = mix(angle, radians(sinc(fract(uTime*0.2), 4 * lfo4) * 110.0), uPreset == 1);
+	angle = mix(angle, mod(uTime, 360.0), uPreset == 3);
 	mat2 rot = mat2(cos(angle), sin(angle), -sin(angle), cos(angle));
-	uv *= rot;
+	// uv *= rot;
+	uv *= uPreset == 3? mat2(1.0) : rot;
 	uv = (uv * zw) / zw.y;
+	// PRESET 3
+	if (uPreset == 3)
+	{
+		uv.x = uv.x * cos(abs(uv.y));
+		// uv *= uPreset == 3 ? rot : mat2(1.0);
+		uv *= rot;
+	}
 	uv *= 1.0 + lfo2 * 0.5;
 	vec2 mouse_position = (uMousePosition * zw) / zw.y;
 	float mouse_dist = distance(uv, mouse_position);
@@ -144,7 +162,7 @@ void main(void)
 	// uv *= 2.0 * clamp(distance(uv, mouse_position), 0.1, 0.5);
 	// uv *= mouse_dist;
 	uv -= uScroll;
-	uv *= uvScale;
+	uv *= mix(uvScale, 1.0, uPreset == 2);
 	// uv.x *= 2.0;
 	// uv += vec2(time)*uScrollSpeed;
 	uv += uTime * uScrollSpeed;
@@ -158,7 +176,8 @@ void main(void)
 								fbm(uRFrequency.y*uv + uQAmplitude.y*q + uv + vec2(0.0*sin(uTime*4.3), uTime*1.23)));
 
 
-	float lfo1 = 0.5 * sin(uTime * 2.0) * 2.0 * cos(length(uv * 1.0));
+	float lfo1 = 1.0 + 0.5 * sin(uTime * 2.0) * 2.0 * cos(length(uv * 1.0));
+	lfo1 = mix(1.0, lfo1, uPreset == 0);
 	float lfo3 = fbm(vec2(0.5 + 0.5 * lfo1, 0.5 + 0.5 * lfo2));
 
 	float f = fbm(uMainFbmFrequency*uv + uMainWarpGain*r*lfo1);
@@ -169,13 +188,16 @@ void main(void)
 		vec3 b = uPaletteContrast;
 		vec3 c = uPaletteFrequency;
 		vec3 d = uPalettePhase;
-        d = fract(d + uPalettePhaseOffset);
+        d = fract(d + uPalettePhaseOffset + uTime);
 		color = palette(f, a, b, c, d);
 	}
 	else
 	{
 		color = mix(uBaseColor1, uBaseColor2, f);
+		// PRESET 3
+		r = mix(r, r * 1.0 + 0.04*step(0.5, fract(uTime * 5000)), uPreset == 3);
 		color = mix(color, uHighlightColor1, dot(r, r));
+		// color = color * step(0.5, fract(uTime * 5000));
 		color = mix(color, uHighlightColor2, 0.4*q.y*q.y);
 	}
 
