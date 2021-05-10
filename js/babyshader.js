@@ -1,5 +1,6 @@
 const uniforms_noise = [
     "uTime",
+    "uPreset",
     "uSeed",
     "uOctaves",
     "uOctaveFalloff",
@@ -28,6 +29,7 @@ const uniforms_noise = [
 
 const uniforms_lighting = [
     "uTime",
+    "uPreset",
     "uContrast",
     "uBrightness",
     "uLightColor1",
@@ -60,6 +62,7 @@ const engine = new BABYLON.Engine(canvas, true, engine_options, adapt_to_device_
 const createScene = () => {
     // Create a basic BJS Scene object
     var scene = new BABYLON.Scene(engine);
+    scene.clearColor = new BABYLON.Color4(0, 0, 0, 1);
     // Create a FreeCamera, and set its position to {x: 0, y: 5, z: -10}
     var camera = new BABYLON.FreeCamera('camera1', new BABYLON.Vector3(0, 5, -10), scene);
     // Target the camera to scene origin
@@ -137,7 +140,7 @@ assetsManager.onFinish = (tasks) => {
         // Update FPS display
         divFps.innerHTML = engine.getFps().toFixed() + " fps";
         // Increment timer
-        time += engine.getDeltaTime() * scene.getAnimationRatio() * 0.0001 * 0.2;
+        time += engine.getDeltaTime() * scene.getAnimationRatio() * 0.0001 * 0.5;
         // Get uniform values for current preset
         let preset = presets[current_preset];
 
@@ -150,6 +153,7 @@ assetsManager.onFinish = (tasks) => {
 
         // Pass uniforms to shader
         noise_shader.onApply = (effect) => {
+            effect.setInt("uPreset", current_preset);
             effect.setFloat2("uScreenSize", noise_shader.width, noise_shader.height);
             effect.setFloat("uTime", time);
             applyUniformsFromPreset(effect, uniforms_noise, preset);
@@ -162,6 +166,7 @@ assetsManager.onFinish = (tasks) => {
         };
         // Pass uniforms to shader
         lighting_shader.onApply = (effect) => {
+            effect.setInt("uPreset", current_preset);
             effect.setFloat2(
                 "uStepSize",
                 1.0 / lighting_shader.width,

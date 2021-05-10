@@ -2,6 +2,7 @@
     precision highp float;
 #endif
 
+uniform int uPreset;
 uniform sampler2D textureSampler;
 uniform vec2 uStepSize;
 uniform vec3 uLightColor1;
