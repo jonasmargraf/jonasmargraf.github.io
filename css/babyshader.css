@@ -77,13 +77,13 @@ body::-webkit-scrollbar {
 #fps {
     position: absolute;
     text-align: center;
-    font-size: 16px;
+    font-size: 14px;
     color: white;
     top: 15px;
     right: 10px;
     width: 60px;
     height: 20px;
-    text-shadow: 1px 1px 2px black, 0 0 1em red, 0 0 0.2em red;
+    text-shadow: 1px 1px 2px white, 0 0 1em white, 0 0 0.2em white;
 }
 #selector {
     position: absolute;

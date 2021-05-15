@@ -84,7 +84,7 @@ let mouse_x = 0.0;
 let mouse_y = 0.0;
 let scroll_x = 0.0;
 let scroll_y = 0.0;
-let divFps = document.getElementById("fps");
+// let divFps = document.getElementById("fps");
 
 // Initialize Assets Manager
 let assetsManager = new BABYLON.AssetsManager(scene);
@@ -138,7 +138,7 @@ assetsManager.onFinish = (tasks) => {
 
     engine.runRenderLoop(() => {
         // Update FPS display
-        divFps.innerHTML = engine.getFps().toFixed() + " fps";
+        // divFps.innerHTML = engine.getFps().toFixed();
         // Increment timer
         time += engine.getDeltaTime() * scene.getAnimationRatio() * 0.0001 * 0.5;
         // Get uniform values for current preset
@@ -215,7 +215,7 @@ Amplitude.init({
             "url": "audio/02_Jonas Margraf_IRL Angel.mp3"
         },
         {
-            "name": "Cave Song",
+            "name": "Anchialine Pool",
             "artist": "Jonas Margraf",
             "album": "Drown In Ur Presence",
             "url": "audio/03_Jonas Margraf_Anchialine Pool.mp3"
@@ -250,10 +250,17 @@ Amplitude.init({
             selectPreset(Amplitude.getActiveIndex());
         },
         play: function() {
-            // console.log("play");
+            console.log("play");
             // console.log(Amplitude.getAnalyser().context);
             // song_start_time = Amplitude.getAnalyser().context.currentTime;
             // console.log(song_start_time);
+            const button = document.getElementById("play-pause-icon");
+            button.innerHTML = "pause";
+        },
+        pause: function() {
+            console.log("pause");
+            const button = document.getElementById("play-pause-icon");
+            button.innerHTML = "play_arrow";
         },
         playing: function() {
             console.log("playing");

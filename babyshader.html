@@ -8,6 +8,8 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="stylesheet" type="text/css" href="css/babyshader.css"/>
     <link rel="stylesheet" type="text/css" href="css/audioplayer.css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
     <script src="https://cdn.babylonjs.com/babylon.js"></script>
     <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
     <!-- <script src="https://code.jquery.com/pep/0.4.3/pep.js"></script> -->
@@ -19,23 +21,21 @@
         <!-- touch-action="none" for best results from PEP -->
         <!-- <canvas id="renderCanvas" touch-action="none"></canvas> -->
         <canvas id="renderCanvas"></canvas>
-        <div id="fps">0</div>
+        <!-- <div id="fps">0</div> -->
         <div id="amplitude-player">
+            <div id="title-container">
+                <span class="song-name" data-amplitude-song-info="name"></span>
+            </div>
             <div id="control-container">
-                <div id="central-controls">
-                    <div class="amplitude-prev" id="previous">
-                        <span>previous</span>
-                    </div>
-                    <div class="amplitude-play-pause" id="play-pause">
-                        <span>play/pause</span>
-                    </div>
-                    <div class="amplitude-next" id="next">
-                        <span>next</span>
-                    </div>
-                    <!-- Needed for Amplitude.getAnalyser() to work, see:
-                    https://github.com/serversideup/amplitudejs/issues/403 -->
-                    <div class="amplitude-wave-form"></div>
-                </div>
+                <span class="amplitude-prev" id="previous">
+                    <span class="material-icons md-48">skip_previous</span>
+                </span>
+                <span class="amplitude-play-pause" id="play-pause">
+                    <span class="material-icons md-48" id="play-pause-icon">play_arrow</span>
+                </span>
+                <span class="amplitude-next" id="next">
+                    <span class="material-icons md-48">skip_next</span>
+                </span>
             </div>
         </div>
     </div>
