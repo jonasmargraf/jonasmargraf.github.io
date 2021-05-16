@@ -319,7 +319,7 @@ window.addEventListener("scroll", (event) => {
 
 window.addEventListener("click", (event) => {
     // console.log(time);
-    console.log(presets[current_preset])
+    // console.log(presets[current_preset])
 
     // const analyser = Amplitude.getAnalyser();
     // analyser.fftSize = 32;
@@ -342,3 +342,20 @@ window.addEventListener("load",function() {
     }, 1000);
 });
 
+const info_overlay = document.getElementById("info-overlay");
+const info_button = document.getElementById("info-button-icon");
+let show_info = false;
+
+info_button.addEventListener("click", () => {
+    show_info = !show_info;
+    console.log(show_info === true);
+    if (show_info === true) {
+        info_overlay.style.display = "flex";
+        info_button.innerHTML = "close";
+    }
+    else {
+        info_overlay.style.display = "none";
+        info_button.innerHTML = "expand_more";
+    }
+    // show_info === true ? info_overlay.style.display = "flex" : info_overlay.style.display = "none";
+})

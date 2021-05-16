@@ -20,8 +20,11 @@
     <div id="holder">
         <!-- touch-action="none" for best results from PEP -->
         <!-- <canvas id="renderCanvas" touch-action="none"></canvas> -->
+
         <canvas id="renderCanvas"></canvas>
+
         <!-- <div id="fps">0</div> -->
+
         <div id="amplitude-player">
             <div id="title-container">
                 <span class="song-name" data-amplitude-song-info="name"></span>
@@ -38,6 +41,30 @@
                 </span>
             </div>
         </div>
+
+        <div id="otium-button"></div>
+        <div id="info-button">
+            <span class="material-icons md-48" id="info-button-icon">expand_more</span>
+        </div>
+        <div id="info-overlay">
+            <div id="info-text">
+                <p>
+                    Aenean tincidunt risus quis tortor efficitur, sit amet faucibus justo scelerisque. Mauris id iaculis eros. Interdum et malesuada fames ac ante ipsum primis in faucibus. In quis consectetur quam, accumsan cursus sem. Praesent dignissim tellus a magna malesuada, eu iaculis eros finibus. Phasellus convallis congue lorem, id facilisis enim iaculis eu. Nunc eu erat quis nisl ornare fermentum. Phasellus in odio aliquet, tristique metus vel, ultricies risus. Vivamus sed ante quis tortor porta gravida gravida vitae ligula. Integer sollicitudin consequat imperdiet. Ut varius tincidunt condimentum. Quisque nec aliquam risus. Duis quis placerat diam. Sed ante nibh, dapibus eget sodales ut, blandit dictum augue. Praesent interdum erat vitae hendrerit pulvinar.
+                </p>
+            </div>
+            <div id="info-credits">
+                <h1>Drown In Ur Presence</h1>
+                <h2>Jonas Margraf</h2>
+                <span><a href="url" target="_blank" rel="noopener noreferrer">Buy on BandCamp</a></span>
+                <br>
+                <span>Sound, Visuals, Code by <a href="url" target="_blank" rel="noopener noreferrer">Jonas Margraf</a></span>
+                <span>Mastered by <a href="https://www.facebook.com/AgitPropStudio/" target="_blank" rel="noopener noreferrer">Agit Prop Studio</a></span>
+                <span>Design by <a href="url" target="_blank" rel="noopener noreferrer">Benoît Lefeuvre</a></span>
+            </div>
+            <div id="backdrop"></div>
+        </div>
+
+        
     </div>
 
 <script type="module" src="js/babyshader.js"></script>

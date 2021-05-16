@@ -8,7 +8,11 @@
   left: 0;
   /* background-color: blue; */
   cursor: default;
-  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  /* padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left); */
+  z-index: 0;
+  /* display: flex; */
+  /* flex-direction: column; */
+  margin-bottom: 20px;
 }
 
 #amplitude-player * {
@@ -16,6 +20,8 @@
   padding: 0;
   display: flex;
   flex-direction: row;
+  /* align-items: center; */
+  /* justify-content: center; */
 }
 
 /* #control-container {
@@ -31,9 +37,24 @@
   color: white;
   /* padding-left: 20px; */
   /* background-color: green; */
-  text-shadow: 1px 1px 2px white, 0 0 1em white, 0 0 0.2em white;
+  /* text-shadow: 1px 1px 2px white, 0 0 1em white, 0 0 0.2em white; */
+  /* text-shadow: 1px 1px 2px black, 0 0 1em white, 0 0 0.2em white; */
+  /* text-shadow: 0 0 3em black, 0 0 1em white, 0 0 0.2em white; */
+  text-shadow: 0 0 1em white, 0 0 0.2em white, 0 0 3em black;
   white-space: nowrap;
+  margin: 0;
+  /* padding: 0; */
+  /* max-width: 70%; */
+  /* padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left); */
 }
+/* 
+#control-container {
+  background-color: red;
+}
+
+#title-container {
+  background-color: green;
+} */
 
 #control-container > span {
   padding: 10px;
