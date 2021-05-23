@@ -254,13 +254,21 @@ Amplitude.init({
             // console.log(Amplitude.getAnalyser().context);
             // song_start_time = Amplitude.getAnalyser().context.currentTime;
             // console.log(song_start_time);
-            const button = document.getElementById("play-pause-icon");
-            button.innerHTML = "pause";
+            // const button = document.getElementById("play-pause-icon");
+            // button.innerHTML = "pause";
+            const play = document.getElementById("play-icon");
+            const pause = document.getElementById("pause-icon");
+            play.style.display = "none";
+            pause.style.display = "inline"
         },
         pause: function() {
             console.log("pause");
-            const button = document.getElementById("play-pause-icon");
-            button.innerHTML = "play_arrow";
+            // button.innerHTML = "play_arrow";
+            // const button = document.getElementById("play-pause-icon");
+            const play = document.getElementById("play-icon");
+            const pause = document.getElementById("pause-icon");
+            pause.style.display = "none";
+            play.style.display = "inline"
         },
         playing: function() {
             console.log("playing");

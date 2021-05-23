@@ -31,35 +31,68 @@
             </div>
             <div id="control-container">
                 <span class="amplitude-prev" id="previous">
-                    <span class="material-icons md-48">skip_previous</span>
+                    <!-- <span class="material-icons md-48">skip_previous</span> -->
+                    <img class="icon" src="svg/prev.svg" />
                 </span>
                 <span class="amplitude-play-pause" id="play-pause">
-                    <span class="material-icons md-48" id="play-pause-icon">play_arrow</span>
+                    <!-- <span class="material-icons md-48" id="play-pause-icon">play_arrow</span> -->
+                    <img class="icon" id="play-icon" src="svg/play.svg" />
+                    <img class="icon" id="pause-icon" src="svg/pause.svg" />
                 </span>
                 <span class="amplitude-next" id="next">
-                    <span class="material-icons md-48">skip_next</span>
+                    <!-- <span class="material-icons md-48">skip_next</span> -->
+                    <img class="icon" src="svg/next.svg" />
                 </span>
             </div>
         </div>
 
-        <div id="otium-button"></div>
+        <div id="otium-button">
+            <a href="https://otiumrec.bandcamp.com/" target="_blank" rel="noopener noreferrer">
+                <img src="svg/otium-logo.svg" />
+            </a>
+        </div>
         <div id="info-button">
             <span class="material-icons md-48" id="info-button-icon">expand_more</span>
         </div>
         <div id="info-overlay">
-            <div id="info-text">
-                <p>
-                    Aenean tincidunt risus quis tortor efficitur, sit amet faucibus justo scelerisque. Mauris id iaculis eros. Interdum et malesuada fames ac ante ipsum primis in faucibus. In quis consectetur quam, accumsan cursus sem. Praesent dignissim tellus a magna malesuada, eu iaculis eros finibus. Phasellus convallis congue lorem, id facilisis enim iaculis eu. Nunc eu erat quis nisl ornare fermentum. Phasellus in odio aliquet, tristique metus vel, ultricies risus. Vivamus sed ante quis tortor porta gravida gravida vitae ligula. Integer sollicitudin consequat imperdiet. Ut varius tincidunt condimentum. Quisque nec aliquam risus. Duis quis placerat diam. Sed ante nibh, dapibus eget sodales ut, blandit dictum augue. Praesent interdum erat vitae hendrerit pulvinar.
-                </p>
-            </div>
-            <div id="info-credits">
-                <h1>Drown In Ur Presence</h1>
-                <h2>Jonas Margraf</h2>
-                <span><a href="url" target="_blank" rel="noopener noreferrer">Buy on BandCamp</a></span>
-                <br>
-                <span>Sound, Visuals, Code by <a href="url" target="_blank" rel="noopener noreferrer">Jonas Margraf</a></span>
-                <span>Mastered by <a href="https://www.facebook.com/AgitPropStudio/" target="_blank" rel="noopener noreferrer">Agit Prop Studio</a></span>
-                <span>Design by <a href="url" target="_blank" rel="noopener noreferrer">Benoît Lefeuvre</a></span>
+            <div id="info-box">
+                <div id="info-text">
+                    <div id="info-title-mobile">
+                        <h1>Drown <br>In Ur <br>Presence</h1>
+                        <h2>Jonas Margraf</h2>
+                    </div>
+                    <span>
+                        Aenean tincidunt risus quis tortor efficitur, sit amet faucibus justo scelerisque. Mauris id iaculis eros. Interdum et malesuada fames ac ante ipsum primis in faucibus. In quis consectetur quam, accumsan cursus sem. Praesent dignissim tellus a magna malesuada, eu iaculis eros finibus. Phasellus convallis congue lorem, id facilisis enim iaculis eu. Nunc eu erat quis nisl ornare fermentum. Phasellus in odio aliquet, tristique metus vel, ultricies risus. Vivamus sed ante quis tortor porta gravida gravida vitae ligula. Integer sollicitudin consequat imperdiet. Ut varius tincidunt condimentum. Quisque nec aliquam risus. Duis quis placerat diam. Sed ante nibh, dapibus eget sodales ut, blandit dictum augue. Praesent interdum erat vitae hendrerit pulvinar.
+                    </span>
+                    <span id="bc-link-mobile"><a href="url" target="_blank" rel="noopener noreferrer">Buy on Bandcamp ↗</a></span>
+                </div>
+                <div id="info-credits">
+                    <div id="info-title">
+                        <h1>Drown In <br>Ur Presence</h1>
+                        <h2>Jonas Margraf</h2>
+                        <span id="bc-link"><a href="url" target="_blank" rel="noopener noreferrer">Buy on Bandcamp ↗</a></span>
+                    </div>
+                    <div id="info-credits-bottom">
+                        <span>
+                            Sound,
+                            <br>
+                            Visuals,
+                            <br>
+                            Code
+                            <br>
+                            <a href="https://www.instagram.com/jonas.margraf/" target="_blank" rel="noopener noreferrer">Jonas Margraf</a>
+                        </span>
+                        <span>Mastering
+                            <br>
+                            <a href="https://www.facebook.com/AgitPropStudio/" target="_blank" rel="noopener noreferrer">Agit Prop
+                                Studio</a>
+                        </span>
+                        <span>Design
+                            <br>
+                            <a href="https://www.instagram.com/benoitlefeuvre/" target="_blank" rel="noopener noreferrer">Benoît Lefeuvre</a>
+                        </span>
+                    </div>
+                </div>
             </div>
             <div id="backdrop"></div>
         </div>

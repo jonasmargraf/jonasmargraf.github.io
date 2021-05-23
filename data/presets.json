@@ -67,7 +67,7 @@
         "uScrollSpeed": [-5.0, -5.0],
         "uSeed": 200,
         "uSpecularExponent": 903.0,
-        "uSpecularStrength": 510.22
+        "uSpecularStrength": 0.0
     },
     {
         "uBaseColor1": [0.0105998, 0.010351, 0.011],
