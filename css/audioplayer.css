@@ -45,9 +45,6 @@
   align-items: center;
   /* height: 4rem; */
   /* line-height: 4rem; */
-  font-size: 3.0rem;
-  font-family: "Gamour";
-  text-transform: uppercase;
   text-align: center;
   color: white;
   /* padding-left: 20px; */
@@ -63,6 +60,12 @@
   /* padding: 0; */
   /* max-width: 70%; */
   /* padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left); */
+}
+
+#amplitude-player span {
+  font-size: 3.0rem;
+  font-family: "Gamour";
+  text-transform: uppercase;
 }
 /* 
 #control-container {

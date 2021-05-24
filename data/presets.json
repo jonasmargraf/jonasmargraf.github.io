@@ -29,7 +29,7 @@
         "uQamplitude": [0.0, 0.0], 
         "uQFrequency": [0.5, 1.17],
         "uRFrequency": [0.5, 0.7],
-        "uScrollSpeed": [-5.0, -5.0],
+        "uScrollSpeed": [0.0, -5.0],
         "uSeed": 375,
         "uSpecularExponent": 197.0,
         "uSpecularStrength": 0.9150000214576721

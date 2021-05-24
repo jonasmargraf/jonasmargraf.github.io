@@ -78,8 +78,12 @@ const createScene = () => {
 };
 
 const scene = createScene();
-let time = 0.0;
-let song_start_time = 0.0;
+// let time = 0.0;
+// let song_start_time = 0.0;
+// For random initial state use current time (% 100 to avoid overflow issues)
+let time = Date.now() % 100;
+console.log(time);
+let song_start_time = time;
 let mouse_x = 0.0;
 let mouse_y = 0.0;
 let scroll_x = 0.0;
@@ -356,7 +360,6 @@ let show_info = false;
 
 info_button.addEventListener("click", () => {
     show_info = !show_info;
-    console.log(show_info === true);
     if (show_info === true) {
         info_overlay.style.display = "flex";
         info_button.innerHTML = "close";
@@ -366,4 +369,24 @@ info_button.addEventListener("click", () => {
         info_button.innerHTML = "expand_more";
     }
     // show_info === true ? info_overlay.style.display = "flex" : info_overlay.style.display = "none";
-})
+});
+
+const enter_button = document.getElementById("enter");
+const landing_overlay = document.getElementById("landing");
+const interface_overlay = document.getElementById("interface");
+
+const enter_buttons = document.getElementsByClassName("enter");
+
+[].forEach.call(enter_buttons, (e) => {
+    e.addEventListener("click", () => {
+        console.log("enter click")
+        landing_overlay.style.display = "none";
+        interface_overlay.style.display = "initial"
+    });
+});
+
+// enter_button.addEventListener("click", () => {
+//     console.log("enter click")
+//     landing_overlay.style.display = "none";
+//     interface_overlay.style.display = "initial"
+// });
