@@ -361,17 +361,25 @@ let show_info = false;
 info_button.addEventListener("click", () => {
     show_info = !show_info;
     if (show_info === true) {
+        info_overlay.classList.remove("fadeout_fast");
+        info_overlay.classList.add("fadein_fast");
         info_overlay.style.display = "flex";
         info_button.innerHTML = "close";
     }
     else {
-        info_overlay.style.display = "none";
+        // info_overlay.style.display = "none";
         info_button.innerHTML = "expand_more";
+        info_overlay.classList.remove("fadein_fast");
+        info_overlay.classList.add("fadeout_fast");
+        const transition = document.querySelector(".fadeout_fast")
+        transition.addEventListener("transitionend", () => {
+            info_overlay.style.display = "none";
+        });
     }
     // show_info === true ? info_overlay.style.display = "flex" : info_overlay.style.display = "none";
 });
 
-const enter_button = document.getElementById("enter");
+// const enter_button = document.getElementById("enter");
 const landing_overlay = document.getElementById("landing");
 const interface_overlay = document.getElementById("interface");
 
@@ -380,10 +388,16 @@ const enter_buttons = document.getElementsByClassName("enter");
 [].forEach.call(enter_buttons, (e) => {
     e.addEventListener("click", () => {
         console.log("enter click")
-        landing_overlay.style.display = "none";
-        interface_overlay.style.display = "initial"
+        // landing_overlay.style.display = "none";
+        landing_overlay.classList.add("fadeout");
+        const transition_landing_fadeout = document.querySelector(".fadeout")
+        transition_landing_fadeout.addEventListener("transitionend", () => {
+                landing_overlay.style.display = "none";
+        });
+        interface_overlay.style.display = "initial";
     });
 });
+
 
 // enter_button.addEventListener("click", () => {
 //     console.log("enter click")

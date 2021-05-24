@@ -91,6 +91,39 @@ body::-webkit-scrollbar {
 
 #interface {
     display: none;
+    /* -webkit-transition: opacity 3s ease-in 1s;
+    -moz-transition: opacity 3s ease-in 1s;
+    -o-transition: opacity 3s ease-in 1s;
+    -ms-transition: opacity 3s ease-in 1s; */
+    /* transition: opacity 3s ease-in 1s; */
+}
+
+.fadeout {
+    /* animation: fadeout 3s ease-in; */
+    -webkit-transition: opacity 1s ease-in;
+    -moz-transition: opacity 1s ease-in;
+    -o-transition: opacity 1s ease-in;
+    -ms-transition: opacity 1s ease-in;
+    transition: opacity 1s ease-in;
+    opacity: 0;
+}
+
+.fadein_slow {
+    animation: fadein 3s ease-in;
+}
+
+.fadein_fast {
+    animation: fadein 0.3s ease-in;
+}
+
+.fadeout_fast {
+    /* animation: fadeout 0.1s ease-in; */
+    -webkit-transition: opacity 0.3s ease-in;
+    -moz-transition: opacity 0.3s ease-in;
+    -o-transition: opacity 0.3s ease-in;
+    -ms-transition: opacity 0.3s ease-in;
+    transition: opacity 0.3s ease-in;
+    opacity: 0;
 }
 
 #fps {
@@ -139,6 +172,15 @@ body::-webkit-scrollbar {
 
 #landing-title-mobile {
     display: none;
+}
+
+#landing-title, #landing-title-mobile {
+    /* animation: fadein 3s ease-in; */
+    /* -webkit-transition: opacity 3s ease-in 1s;
+    -moz-transition: opacity 3s ease-in 1s;
+    -o-transition: opacity 3s ease-in 1s;
+    -ms-transition: opacity 3s ease-in 1s;
+    transition: opacity 3s ease-in 1s; */
 }
 
 #landing, #backdrop {
@@ -207,7 +249,7 @@ span, a, p, h1, h2 {
 h1, h2 {
     font-family: "Gamour";
     text-transform: uppercase;
-    text-align: center;
+    /* text-align: center; */
     /* line-height: 2.5rem; */
     line-height: 82%;
 }
@@ -234,7 +276,7 @@ h2 {
 }
 
 #info-title > span {
-    line-height: 200%;
+    line-height: 6.0rem;
 }
 
 #info-credits-bottom > span, #info-credits-bottom > span > a {
@@ -281,6 +323,25 @@ h2 {
     text-align: center;
     text-decoration: underline;
     text-transform: uppercase;
+    animation: fadein 3s ease-in-out alternate infinite;
+}
+
+@keyframes fadein {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeout {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
 }
 
 .enter:hover {
@@ -288,6 +349,10 @@ h2 {
 }
 
 @media only screen and (max-width: 600px) {
+    h1, h2 {
+        text-align: center;
+    }
+
     h1 {
         font-size: 4.0rem;
     }
