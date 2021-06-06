@@ -40,23 +40,36 @@
 
         <div id="interface" class="fadein_slow">
             <div id="amplitude-player">
-                <div id="title-container">
+                <div id="title-container" class="player-container">
+                    <span id="song-index">01.</span>
                     <span class="song-name" data-amplitude-song-info="name"></span>
                 </div>
-                <div id="control-container">
-                    <span class="amplitude-prev" id="previous">
+                <div id="transport-container" class="player-container">
+                    <!-- <span class="amplitude-prev icon" id="previous" style="background-image: url('svg/prev.svg')"> -->
+                    <span class="amplitude-prev icon" id="previous">
                         <!-- <span class="material-icons md-48">skip_previous</span> -->
                         <img class="icon" src="svg/prev.svg" />
                     </span>
-                    <span class="amplitude-play-pause" id="play-pause">
+                    <!-- <span class="amplitude-play-pause icon" id="play-pause" style="background-image: url('svg/play.svg')"> -->
+                    <span class="amplitude-play-pause icon" id="play-pause">
                         <!-- <span class="material-icons md-48" id="play-pause-icon">play_arrow</span> -->
                         <img class="icon" id="play-icon" src="svg/play.svg" />
                         <img class="icon" id="pause-icon" src="svg/pause.svg" />
                     </span>
-                    <span class="amplitude-next" id="next">
+                    <!-- <span class="amplitude-next icon" id="next" style="background-image: url('svg/next.svg')"> -->
+                    <span class="amplitude-next icon" id="next">
                         <!-- <span class="material-icons md-48">skip_next</span> -->
                         <img class="icon" src="svg/next.svg" />
                     </span>
+                </div>
+                <div id="mute-container" class="player-container">
+                    <!-- <span class="amplitude-mute icon" id="mute-button" style="background-image: url('svg/sound-on.svg')"> -->
+                    <span class="amplitude-mute icon" id="mute-button">
+                        <!-- <img class="icon" src="svg/sound-on.svg" /> -->
+                        <img class="icon" id="icon-sound-on" src="svg/sound-off.svg" style="display: none" />
+                        <img class="icon" id="icon-sound-off" src="svg/sound-on.svg" style="display: inline" />
+                    </span>
+                    <span class="amplitude-time-remaining"></span>
                 </div>
             </div>
             

@@ -1,7 +1,1 @@
-<svg width="35" height="30" viewBox="0 0 35 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="32" y="12" width="2.5" height="6" rx="1.25" fill="white"/>
-<rect x="24" y="7" width="2.5" height="16" rx="1.25" fill="white"/>
-<rect x="16" width="2.5" height="30" rx="1.25" fill="white"/>
-<rect x="8" y="5" width="2.5" height="20" rx="1.25" fill="white"/>
-<rect y="9" width="2.5" height="12" rx="1.25" fill="white"/>
-</svg>
+<svg id="Calque_1" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31.25 24"><defs><style>.cls-1{fill:#fff;}</style></defs><rect class="cls-1" x="21.25" y="5" width="2" height="14"/><rect class="cls-1" x="29.25" y="2" width="2" height="20"/><path class="cls-1" d="M.25,6.67V17.33h4.4L14.25,23V1L4.65,6.67Zm12.58-2.8V20.13L5,15.48H1.67v-7H5Z"/><path class="cls-1" d="M14.5,23.44,4.58,17.58H0V6.42H4.58L14.5.56ZM.5,17.08H4.72l.06,0L14,22.56V1.44L4.72,6.92H.5Zm12.58,3.49L4.89,15.73H1.42V8.27H4.89l8.19-4.84ZM1.92,15.23H5l0,0,7.5,4.43V4.31L5,8.77H1.92Z"/></svg>

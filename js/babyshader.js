@@ -82,7 +82,6 @@ const scene = createScene();
 // let song_start_time = 0.0;
 // For random initial state use current time (% 100 to avoid overflow issues)
 let time = Date.now() % 100;
-console.log(time);
 let song_start_time = time;
 let mouse_x = 0.0;
 let mouse_y = 0.0;
@@ -239,45 +238,31 @@ Amplitude.init({
     ],
     callbacks: {
         initialized: function() {
-            console.log("Amplitude.js initialized.");
+            // console.log("Amplitude.js initialized.");
             // Have to pause Amplitude after init as a workaround for bug where
             // the time / progress bar doesn't update on mobile / iOS.
             // For more info see:
             // https://github.com/521dimensions/amplitudejs/issues/447
             Amplitude.pause();
-            // configureAnalyzer();
         },
         song_change: function() {
-            console.log("Song changed.");
-            // console.log(Amplitude.getActiveIndex());
-            // console.log(selectPreset);
             selectPreset(Amplitude.getActiveIndex());
+            const song_index = document.getElementById("song-index");
+            const index = Amplitude.getActiveIndex() + 1;
+            const track_number = "0" + index + "."
+            song_index.innerHTML = track_number;
         },
         play: function() {
-            console.log("play");
-            // console.log(Amplitude.getAnalyser().context);
-            // song_start_time = Amplitude.getAnalyser().context.currentTime;
-            // console.log(song_start_time);
-            // const button = document.getElementById("play-pause-icon");
-            // button.innerHTML = "pause";
             const play = document.getElementById("play-icon");
             const pause = document.getElementById("pause-icon");
             play.style.display = "none";
             pause.style.display = "inline"
         },
         pause: function() {
-            console.log("pause");
-            // button.innerHTML = "play_arrow";
-            // const button = document.getElementById("play-pause-icon");
             const play = document.getElementById("play-icon");
             const pause = document.getElementById("pause-icon");
             pause.style.display = "none";
             play.style.display = "inline"
-        },
-        playing: function() {
-            console.log("playing");
-            song_start_time = Amplitude.getAnalyser().context.currentTime;
-            // console.log(song_start_time);
         }
     }
 });
@@ -290,7 +275,6 @@ window.addEventListener('resize', () => {
     canvas.width = Math.min(canvas.width, 200);
     canvas.height = Math.min(canvas.height, 200);
     engine.resize();
-    console.log(canvas);
 });
 
 window.addEventListener("mousemove", (event) => {
@@ -347,11 +331,28 @@ window.addEventListener("click", (event) => {
     // console.log(freq_array);
 });
 
-// window.scrollTo(0, 1000);
-window.addEventListener("load",function() {
-    setTimeout(function() {
-        window.scrollTo(0, 1000);
-    }, 1000);
+const mute_button = document.getElementById("mute-button");
+const icon_sound_on = document.getElementById("icon-sound-on");
+const icon_sound_off = document.getElementById("icon-sound-off");
+mute_button.addEventListener("click", (e) => {
+    console.log(e.target)
+    console.log(e.target.id == "icon-sound-off")
+    if (e.target.id == "icon-sound-off") {
+        icon_sound_off.style.display = "none";
+        icon_sound_on.style.display = "inline";
+    }
+    else if (e.target.id == "icon-sound-on") {
+        icon_sound_on.style.display = "none";
+        icon_sound_off.style.display = "inline";
+    }
+    // if e.target.classList.contains("amplitude-not-muted") {
+    //     icon_sound_on.style.display = "none";
+    //     icon_sound_off.style.display = "inline";
+    // }
+    // else {
+    //     icon_sound_off.style.display = "none";
+    //     icon_sound_on.style.display = "inline";
+    // }
 });
 
 const info_overlay = document.getElementById("info-overlay");
