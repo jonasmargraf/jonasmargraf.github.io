@@ -23,8 +23,8 @@ uniform vec2 uQAmplitude;
 uniform vec2 uRFrequency;
 uniform float uFbmMode;
 uniform float uColorMode;
-// uniform float uUvScale;
-const float uvScale = 3.0;
+uniform float uvScale;
+// const float uvScale = 7.0;
 uniform vec3 uPaletteBrightness;
 uniform vec3 uPaletteContrast;
 uniform vec3 uPaletteFrequency;
@@ -34,6 +34,7 @@ uniform float uPalettePhaseOffset;
 uniform vec2 uScreenSize;
 uniform vec2 uScroll;
 uniform vec2 uMousePosition;
+uniform float uStutter;
 
 // varying vec2 vUV;
 
@@ -50,7 +51,7 @@ float shash(vec2 p)
 {
 	// 1.0 if PRESET 5
 	float seed = uSeed;
-	seed += mix(0.0, floor(uTime * 200) * 0.005, uPreset == 4 || uPreset == 2);
+	seed += mix(0.0, floor(uTime * uStutter) * 0.005, uPreset == 4 || uPreset == 2);
 	return -1.0 + 2.0*fract((10000.0 + seed) * sin(17.0 * p.x + p.y * 0.1) *
 								(0.1 + abs(sin(p.y * 13.0 + p.x))));
 }
@@ -86,7 +87,7 @@ float fbm(vec2 x)
 	float octave_falloff = uOctaveFalloff;
 	octave_falloff *= 0.8 + 0.2 * sinc(sin(uTime * 0.2), 2);
 
-    const int MAX_OCTAVES = 8;
+    const int MAX_OCTAVES = 18;
 
 	for (int i = 0; i < MAX_OCTAVES; i++)
 	{
@@ -163,6 +164,7 @@ void main(void)
 	// uv *= mouse_dist;
 	uv -= uScroll;
 	uv *= mix(uvScale, 1.0, uPreset == 2);
+	uv *= vec2(2, 1);
 	// uv.x *= 2.0;
 	// uv += vec2(time)*uScrollSpeed;
 	uv += uTime * uScrollSpeed;
