@@ -1,14 +1,14 @@
-@media screen and (min-width: 600px) {
+@media screen and (max-width: 599px) {
     #interface {
-        padding: 50px;
-        width: calc(100% - 100px);
+        padding: 50px 20px;
+        width: calc(100% - 40px);
         height: calc(100% - 100px);
         max-height: calc(100vh - 100px);
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         /* grid-template-rows: 3rem auto 36px; */
-        grid-template-rows: 3rem minmax(0, 1fr) 36px;
-        /* grid-template-rows: 3rem minmax(0, calc(100vh - 100px - 3rem - 36px - 80px)) 36px; */
+        /* grid-template-rows: 3rem minmax(0, 1fr) 72px; */
+        grid-template-rows: 3rem minmax(0, 1fr) 72px;
         grid-gap: 40px;
         /* background-color: rgba(0, 0, 0, 0.9); */
         overflow-y: scroll;
@@ -23,7 +23,6 @@
         grid-column: 1;
         grid-row: 1;
         /* background-color: red; */
-        /* justify-self: center; */
     }
 
     #info-button {
@@ -37,32 +36,24 @@
         grid-row: 2;
         align-self: center;
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        /* grid-template-rows: minmax(100px, 800px); */
-        /* grid-template-rows: repeat(2, minmax(0, 1fr)); */
-        column-gap: 40px;
-        /* max-height: 200px; */
-        max-height: 100%;
-        /* max-height: calc(100vh - 3rem - 36px - 100px); */
+        grid-template-rows: 1fr 1fr;
+        row-gap: 40px;
         overflow-y: scroll;
         scrollbar-width: none;
-    }
+        max-height: 100%;
     }
 
     #info-text {
         grid-column: 1;
         grid-row: 2;
         align-self: center;
-        /* max-height: 100%; */
-        /* max-height: calc(100% - 3rem - 36px); */
-        /* max-height: calc(100% - 0px); */
-        /* overflow-y: scroll;
-        scrollbar-width: none; */
+        /* overflow-y: scroll; */
+        /* scrollbar-width: none; */
     }
 
     #info-title {
-        grid-column: 2;
-        grid-row: 2;
+        grid-column: 1;
+        grid-row: 1;
         display: grid;
         grid-gap: 5px;
         grid-template-columns: repeat(3, 1fr);
@@ -76,11 +67,11 @@
     }
 
     h1 {
-        font-size: 5rem;
+        font-size: 3rem;
     }
 
     h2 {
-        font-size: 2.5rem;
+        font-size: 1.5rem;
     }
 
     .credits {
@@ -93,21 +84,26 @@
         grid-column: span 2;
         grid-row: 3;
         display: grid;
-        grid-template-columns: 1fr 200px 1fr;
-        grid-template-rows: auto;
-        align-items: center;
+        /* grid-template-columns: 1fr 200px 1fr; */
+        grid-template-columns: auto;
+        grid-template-rows: 2fr 1fr;
+        justify-items: center;
+        /* background-color: blue; */
     }
 
     #song-title {
         grid-column: 1;
         grid-row: 1;
-        align-self: center;
+        align-self: end;
+        justify-self: center;
+        text-align: center;
     }
 
     #transport {
-        grid-column: 2;
-        grid-row: 1;
+        grid-column: 1;
+        grid-row: 2;
         align-self: center;
+        width: 200px;
         display: grid;
         /* grid-gap: 5px; */
         grid-template-columns: auto 33% auto;
@@ -136,25 +132,28 @@
     }
 
     #mute-time {
-        grid-column: 3;
+        display: none;
+        /* grid-column: 3;
         grid-row: 1;
         display: grid;
         grid-template-columns: 1fr 120px;
         grid-template-rows: auto;
         justify-items: end;
         align-items: center;
-        height: 36px;
+        height: 36px; */
     }
 
     #mute {
-        display: inline-block;
+        display: none;
+        /* display: inline-block;
         grid-column: 1;
-        grid-row: 1;
+        grid-row: 1; */
     }
 
     #time {
-        grid-column: 2;
-        grid-row: 1;
+        display: none;
+        /* grid-column: 2;
+        grid-row: 1; */
         /* justify-self: end; */
     }
 }
