@@ -296,7 +296,6 @@ mute_button.addEventListener("click", (e) => {
 });
 
 const interface_overlay = document.getElementById("interface");
-// const info_overlay = document.getElementById("info");
 const info_panels = document.getElementsByClassName("info-panel")
 const info_button = document.getElementById("info-button-icon");
 let show_info = false;
@@ -304,46 +303,35 @@ let show_info = false;
 info_button.addEventListener("click", () => {
     show_info = !show_info;
     if (show_info === true) {
-        // info_overlay.classList.remove("fadeout_fast");
-        // info_overlay.classList.add("fadein_fast");
-        // info_overlay.style.display = "flex";
+        info_button.innerHTML = "close";
         interface_overlay.classList.remove("no-background");
         interface_overlay.classList.add("background");
-        for (let panel of info_panels){
+        for (let panel of info_panels) {
             panel.classList.remove("hide");
             panel.classList.add("show");
         }
-        info_button.innerHTML = "close";
     }
     else {
         info_button.innerHTML = "expand_more";
-        // info_overlay.classList.remove("fadein_fast");
-        // info_overlay.classList.add("fadeout_fast");
         interface_overlay.classList.remove("background");
         interface_overlay.classList.add("no-background");
-        for (let panel of info_panels){
+        for (let panel of info_panels) {
             panel.classList.remove("show");
             panel.classList.add("hide");
         }
-        // const transition = document.querySelector(".fadeout_fast")
-        // transition.addEventListener("transitionend", () => {
-        //     info_overlay.style.display = "none";
-        // });
     }
 });
 
 const landing_overlay = document.getElementById("landing");
-// const interface_overlay = document.getElementById("interface");
 
 const enter_buttons = document.getElementsByClassName("enter");
 
 [].forEach.call(enter_buttons, (e) => {
     e.addEventListener("click", () => {
-        landing_overlay.classList.add("fadeout");
-        const transition_landing_fadeout = document.querySelector(".fadeout")
-        transition_landing_fadeout.addEventListener("transitionend", () => {
-                landing_overlay.style.display = "none";
-        });
-        // interface_overlay.style.display = "initial";
+        landing_overlay.classList.add("hide");
+        // const transition_landing_fadeout = document.querySelector(".fadeout")
+        // transition_landing_fadeout.addEventListener("transitionend", () => {
+                // landing_overlay.style.display = "none";
+        // });
     });
 });
