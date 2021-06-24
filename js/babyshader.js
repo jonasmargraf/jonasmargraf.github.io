@@ -105,7 +105,6 @@ let current_preset = 0;
 
 function selectPreset(preset_index) {
     current_preset = preset_index;
-    console.log(current_preset);
 }
 
 assetsManager.load();
@@ -147,13 +146,6 @@ assetsManager.onFinish = (tasks) => {
         // Get uniform values for current preset
         let preset = presets[current_preset];
 
-        // analyzer.getFloatFrequencyData(freq_array);
-        if (Amplitude.getPlayerState() === "playing"){
-            // const current_time = analyzer.context.currentTime - song_start_time;
-            // console.log(current_time);
-        }
-        // console.log(analyzer.context.getOutputTimestamp())
-
         // Pass uniforms to shader
         noise_shader.onApply = (effect) => {
             effect.setInt("uPreset", current_preset);
@@ -185,23 +177,6 @@ assetsManager.onFinish = (tasks) => {
 
 ///////////////////////////////////////////////////////////////////////////
 // AUDIO PLAYER STUFF
-
-let analyzer = null;
-const fft_bin_count = 16;
-const freq_array = new Float32Array(fft_bin_count);
-
-function configureAnalyzer() {
-    console.log("hey");
-    analyzer = Amplitude.getAnalyser();
-    analyzer.fftSize = fft_bin_count * 2;
-    analyzer.smoothingTimeConstant = 0.99999;
-    // analyzer.smoothingTimeConstant = 1.0;
-    console.log(analyzer);
-    const context = analyzer.context;
-    const audio_element = Amplitude.getAudio();
-    const audio_node = context.createMediaElementSource(audio_element);
-    audio_node.connect(analyzer);
-}
 
 Amplitude.init({
     songs: [
@@ -238,7 +213,6 @@ Amplitude.init({
     ],
     callbacks: {
         initialized: function() {
-            // console.log("Amplitude.js initialized.");
             // Have to pause Amplitude after init as a workaround for bug where
             // the time / progress bar doesn't update on mobile / iOS.
             // For more info see:
@@ -305,38 +279,12 @@ window.addEventListener("touchmove", (event) => {
 window.addEventListener("scroll", (event) => {
     scroll_x = window.scrollX / canvas.width;
     scroll_y = window.scrollY / canvas.height;
-    // console.log(event)
-    // if ((window.scrollY + window.innerHeight + 100) > document.body.scrollHeight) {
-        // holder.innerHTML += div_more;
-    // };
-});
-
-// holder.innerHTML += div_more;
-
-window.addEventListener("click", (event) => {
-    // console.log(time);
-    // console.log(presets[current_preset])
-
-    // const analyser = Amplitude.getAnalyser();
-    // analyser.fftSize = 32;
-    // const context = analyser.context;
-    // console.log(analyser)
-    // const audio_element = Amplitude.getAudio();
-    // // console.log(audio_element);
-    // const audio_node = context.createMediaElementSource(audio_element);
-    // audio_node.connect(analyser);
-    // const freq_array = new Float32Array(analyser.frequencyBinCount);
-
-    // analyzer.getFloatFrequencyData(freq_array);
-    // console.log(freq_array);
 });
 
 const mute_button = document.getElementById("mute-button");
 const icon_sound_on = document.getElementById("icon-sound-on");
 const icon_sound_off = document.getElementById("icon-sound-off");
 mute_button.addEventListener("click", (e) => {
-    console.log(e.target)
-    console.log(e.target.id == "icon-sound-off")
     if (e.target.id == "icon-sound-off") {
         icon_sound_off.style.display = "none";
         icon_sound_on.style.display = "inline";
@@ -345,63 +293,57 @@ mute_button.addEventListener("click", (e) => {
         icon_sound_on.style.display = "none";
         icon_sound_off.style.display = "inline";
     }
-    // if e.target.classList.contains("amplitude-not-muted") {
-    //     icon_sound_on.style.display = "none";
-    //     icon_sound_off.style.display = "inline";
-    // }
-    // else {
-    //     icon_sound_off.style.display = "none";
-    //     icon_sound_on.style.display = "inline";
-    // }
 });
 
-const info_overlay = document.getElementById("info-overlay");
+const interface_overlay = document.getElementById("interface");
+// const info_overlay = document.getElementById("info");
+const info_panels = document.getElementsByClassName("info-panel")
 const info_button = document.getElementById("info-button-icon");
 let show_info = false;
 
 info_button.addEventListener("click", () => {
     show_info = !show_info;
     if (show_info === true) {
-        info_overlay.classList.remove("fadeout_fast");
-        info_overlay.classList.add("fadein_fast");
-        info_overlay.style.display = "flex";
+        // info_overlay.classList.remove("fadeout_fast");
+        // info_overlay.classList.add("fadein_fast");
+        // info_overlay.style.display = "flex";
+        interface_overlay.classList.remove("no-background");
+        interface_overlay.classList.add("background");
+        for (let panel of info_panels){
+            panel.classList.remove("hide");
+            panel.classList.add("show");
+        }
         info_button.innerHTML = "close";
     }
     else {
-        // info_overlay.style.display = "none";
         info_button.innerHTML = "expand_more";
-        info_overlay.classList.remove("fadein_fast");
-        info_overlay.classList.add("fadeout_fast");
-        const transition = document.querySelector(".fadeout_fast")
-        transition.addEventListener("transitionend", () => {
-            info_overlay.style.display = "none";
-        });
+        // info_overlay.classList.remove("fadein_fast");
+        // info_overlay.classList.add("fadeout_fast");
+        interface_overlay.classList.remove("background");
+        interface_overlay.classList.add("no-background");
+        for (let panel of info_panels){
+            panel.classList.remove("show");
+            panel.classList.add("hide");
+        }
+        // const transition = document.querySelector(".fadeout_fast")
+        // transition.addEventListener("transitionend", () => {
+        //     info_overlay.style.display = "none";
+        // });
     }
-    // show_info === true ? info_overlay.style.display = "flex" : info_overlay.style.display = "none";
 });
 
-// const enter_button = document.getElementById("enter");
 const landing_overlay = document.getElementById("landing");
-const interface_overlay = document.getElementById("interface");
+// const interface_overlay = document.getElementById("interface");
 
 const enter_buttons = document.getElementsByClassName("enter");
 
 [].forEach.call(enter_buttons, (e) => {
     e.addEventListener("click", () => {
-        console.log("enter click")
-        // landing_overlay.style.display = "none";
         landing_overlay.classList.add("fadeout");
         const transition_landing_fadeout = document.querySelector(".fadeout")
         transition_landing_fadeout.addEventListener("transitionend", () => {
                 landing_overlay.style.display = "none";
         });
-        interface_overlay.style.display = "initial";
+        // interface_overlay.style.display = "initial";
     });
 });
-
-
-// enter_button.addEventListener("click", () => {
-//     console.log("enter click")
-//     landing_overlay.style.display = "none";
-//     interface_overlay.style.display = "initial"
-// });
