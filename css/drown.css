@@ -53,6 +53,27 @@ body::-webkit-scrollbar {
     -ms-touch-action: pan-y;
 }
 
+.blur {
+    filter:blur(80px);
+    -o-filter:blur(80px);
+    -ms-filter:blur(80px);
+    -moz-filter:blur(80px);
+    -webkit-filter:blur(80px);
+}
+
+.no-blur {
+    -webkit-transition: -webkit-filter 2s ease-out;
+    -moz-transition: -moz-filter 2s ease-out;
+    -o-transition: -o-filter 2s ease-out;
+    -ms-transition: -ms-filter 2s ease-out;
+    transition: 2s filter ease-out, 2s -webkit-filter ease-out;
+    filter:blur(0px);
+    -o-filter:blur(0px);
+    -ms-filter:blur(0px);
+    -moz-filter:blur(0px);
+    -webkit-filter:blur(0px);
+}
+
 #holder {
     position: fixed;
     top: 0;
@@ -69,19 +90,11 @@ body::-webkit-scrollbar {
     left: 0;
     mix-blend-mode: hard-light;
     /* background-color: rgba(255, 255, 255, 0.9); */
-    background-color: rgba(0, 0, 0, 0.95);
+    /* background-color: rgba(0, 0, 0, 0.95); */
     z-index: 10;
-    /* filter:blur(8px);
-    -o-filter:blur(8px);
-    -ms-filter:blur(8px);
-    -moz-filter:blur(8px);
-    -webkit-filter:blur(8px); */
     font-family: Fracktif;
-    font-style: normal;
-    font-weight: 300;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.75);
-    text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.7), 0px 0px 4px #FFFFFF, 0px 0px 4px #000000;
+    /* text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.7), 0px 0px 4px #FFFFFF, 0px 0px 4px #000000; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -90,17 +103,28 @@ body::-webkit-scrollbar {
 
 #landing > h3 {
     font-size: 2.0rem;
+    font-style: normal;
+    font-weight: 300;
     line-height: 150%;
-    /* mix-blend-mode: overlay; */
+    color: rgba(255, 255, 255, 0.75);
+    mix-blend-mode: overlay;
     height: 50px;
-    /* isolation: isolate; */
+    /* text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.7), 0px 0px 4px #000000; */
+    text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.7), 0px 0px 4px #FFFFFF, 0px 0px 4px #000000;
+    /* color: rgba(255, 255, 255, 0.2); */
+    isolation: isolate;
     /* background-color: red; */
 }
 
 #landing > span {
+    mix-blend-mode: overlay;
     display: block;
     font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 300;
     line-height: 300%;
+    color: rgba(255, 255, 255, 0.75);
+    text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.7), 0px 0px 4px #FFFFFF, 0px 0px 4px #000000;
     /* padding-top: 100px; */
     height: 50px;
     text-decoration: underline;
@@ -110,6 +134,7 @@ body::-webkit-scrollbar {
 #landing > svg {
     mix-blend-mode: hard-light;
     /* mix-blend-mode: overlay; */
+    /* box-sizing: border-box; */
     /* box-shadow: inset 0px 1.2px 1px rgba(86, 54, 100, 0.6); */
     /* background-color: blue; */
     /* -webkit-filter: drop-shadow(0px 0px 40px rgba(249, 233, 255, 0.5));
@@ -126,6 +151,13 @@ body::-webkit-scrollbar {
     color: white;
     text-shadow: 0px 0px 8px #FFFFFF, 0px 0px 4px #FFFFFF, 0px 0px 4px #000000;
     text-transform: uppercase;
+    /* -webkit-transition: opacity 1s ease-out;
+    -moz-transition: opacity 1s ease-out;
+    -o-transition: opacity 1s ease-out;
+    -ms-transition: opacity 1s ease-out;
+    transition: opacity 1s ease-out;
+    opacity: 1;
+    opacity: 0; */
 }
 
 #otium-button img {

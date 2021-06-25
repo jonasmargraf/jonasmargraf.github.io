@@ -323,12 +323,29 @@ info_button.addEventListener("click", () => {
 });
 
 const landing_overlay = document.getElementById("landing");
+const interface_elements = document.getElementsByClassName("interface-element");
 
 const enter_buttons = document.getElementsByClassName("enter");
 
 [].forEach.call(enter_buttons, (e) => {
     e.addEventListener("click", () => {
         landing_overlay.classList.add("hide");
+        canvas.classList.remove("blur");
+        canvas.classList.add("no-blur");
+        // interface_overlay.classList.remove("hide");
+        // interface_overlay.classList.add("show");
+        for (let e of interface_elements) {
+            e.classList.remove("hide");
+            e.classList.add("show");
+        }
+        // otium_button.classList.add("show");
+        // setTimeout(() => {
+        //     interface_overlay.classList.add("show");
+        // }, 1000);
+        // const transition = document.querySelector(".show");
+        // transition.addEventListener("transitionend", () => {
+        //     console.log("END");
+        // });
         // const transition_landing_fadeout = document.querySelector(".fadeout")
         // transition_landing_fadeout.addEventListener("transitionend", () => {
                 // landing_overlay.style.display = "none";
