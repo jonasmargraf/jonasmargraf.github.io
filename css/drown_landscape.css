@@ -1,4 +1,4 @@
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 700px) {
     #interface {
         padding: 50px;
         width: calc(100% - 100px);
@@ -92,22 +92,23 @@
     #player {
         grid-column: span 2;
         grid-row: 3;
+        align-self: end;
         display: grid;
         grid-template-columns: 1fr 200px 1fr;
         grid-template-rows: auto;
-        align-items: center;
+        align-items: end;
     }
 
     #song-title {
         grid-column: 1;
         grid-row: 1;
-        align-self: center;
+        /* align-self: center; */
     }
 
     #transport {
         grid-column: 2;
         grid-row: 1;
-        align-self: center;
+        /* align-self: center; */
         display: grid;
         /* grid-gap: 5px; */
         grid-template-columns: auto 33% auto;

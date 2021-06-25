@@ -39,7 +39,7 @@ html, body {
     background-color: black;
 }
 
-body::-webkit-scrollbar {
+*::-webkit-scrollbar {
     display: none;
     width: 0;
     height: 0;
@@ -129,6 +129,8 @@ body::-webkit-scrollbar {
     height: 50px;
     text-decoration: underline;
     /* background-color: green; */
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
 #landing > svg {
@@ -162,9 +164,17 @@ body::-webkit-scrollbar {
 
 #otium-button img {
     display: inline-block;
-    object-fit: contain;
+    /* object-fit: contain; */
     /* width: 100%; */
-    max-height: 100%;
+    /* max-height: 100%; */
+    height: 100%
+    /* justify-self: start; */
+}
+
+#otium-button > a {
+    /* width: min-content; */
+    height: 100%;
+    display: inline-block;
 }
 
 #bc-link {

@@ -1,15 +1,19 @@
-@media screen and (max-width: 599px) {
+@media screen and (max-width: 699px) {
+    #landing > svg {
+        margin-left: 370px;
+    }
+
     #interface {
-        padding: 50px 20px;
+        padding: 20px 20px 50px;
         width: calc(100% - 40px);
-        height: calc(100% - 100px);
-        max-height: calc(100vh - 100px);
+        height: calc(100% - 70px);
+        max-height: calc(100vh - 70px);
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         /* grid-template-rows: 3rem auto 36px; */
         /* grid-template-rows: 3rem minmax(0, 1fr) 72px; */
-        grid-template-rows: 3rem minmax(0, 1fr) 72px;
-        grid-gap: 40px;
+        grid-template-rows: 3rem minmax(0, 1fr) 92px;
+        grid-gap: 20px;
         /* background-color: rgba(0, 0, 0, 0.9); */
         overflow-y: scroll;
         scrollbar-width: none;
@@ -83,10 +87,12 @@
     #player {
         grid-column: span 2;
         grid-row: 3;
+        align-self: end;
         display: grid;
         /* grid-template-columns: 1fr 200px 1fr; */
         grid-template-columns: auto;
         grid-template-rows: 2fr 1fr;
+        row-gap: 20px;
         justify-items: center;
         /* background-color: blue; */
     }
