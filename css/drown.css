@@ -177,6 +177,28 @@ html, body {
     display: inline-block;
 }
 
+#player-or-info {
+    position: relative;
+    grid-column: span 2;
+    grid-row: 2;
+    /* overflow-y: scroll; */
+    /* scrollbar-width: none; */
+    max-height: 100%;
+    /* max-height: calc(100% - 3rem); */
+    display: flex;
+}
+
+#player {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* position: fixed;
+    bottom: 0;
+    margin-bottom: 50px;
+    margin-right: 50px;
+    width: calc(100% - 100px); */
+}
+
 #bc-link {
     line-height: 6rem;
 }
@@ -185,9 +207,15 @@ html, body {
     font-size: 1rem;
 }
 
+h1 {
+    /* font-family: "Gamour"; */
+    max-width: ;
+}
+
 h1, h2 {
     font-family: "Gamour";
     line-height: 82%;
+    font-weight: normal;
 }
 
 a {

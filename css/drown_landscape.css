@@ -5,12 +5,10 @@
         height: calc(100% - 100px);
         max-height: calc(100vh - 100px);
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        /* grid-template-rows: 3rem auto 36px; */
-        grid-template-rows: 3rem minmax(0, 1fr) 36px;
-        /* grid-template-rows: 3rem minmax(0, calc(100vh - 100px - 3rem - 36px - 80px)) 36px; */
+        grid-template-columns: 1fr 1fr;
+        /* grid-template-rows: 3rem minmax(0, 1fr) 36px; */
+        grid-template-rows: 3rem 1fr;
         grid-gap: 40px;
-        /* background-color: rgba(0, 0, 0, 0.9); */
         overflow-y: scroll;
         scrollbar-width: none;
     }
@@ -35,6 +33,7 @@
     #info {
         grid-column: span 2;
         grid-row: 2;
+        /* margin: auto 0; */
         align-self: center;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -44,6 +43,7 @@
         /* max-height: 200px; */
         max-height: 100%;
         /* max-height: calc(100vh - 3rem - 36px - 100px); */
+        overflow-x: hidden;
         overflow-y: scroll;
         scrollbar-width: none;
     }
@@ -51,7 +51,7 @@
 
     #info-text {
         grid-column: 1;
-        grid-row: 2;
+        grid-row: 1;
         align-self: center;
         /* max-height: 100%; */
         /* max-height: calc(100% - 3rem - 36px); */
@@ -62,12 +62,13 @@
 
     #info-title {
         grid-column: 2;
-        grid-row: 2;
+        grid-row: 1;
         display: grid;
         grid-gap: 5px;
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: 1fr auto;
         align-self: stretch;
+        max-height: 100%;
     }
 
     #info-title-header {
@@ -80,7 +81,7 @@
     }
 
     h2 {
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
 
     .credits {
@@ -90,9 +91,9 @@
     }
 
     #player {
-        grid-column: span 2;
+        /* grid-column: span 2;
         grid-row: 3;
-        align-self: end;
+        align-self: end; */
         display: grid;
         grid-template-columns: 1fr 200px 1fr;
         grid-template-rows: auto;

@@ -52,92 +52,94 @@
                 <span class="material-icons md-48" id="info-button-icon">expand_more</span>
             </div>
             
-            <div id="info" class="cell info-panel hide">
-                <div id="info-text" class="cell info-panel hide">
-                    <p>
-                        Created by Jonas Margraf between Berlin, Paris, Los Angeles and Riyadh, <b>Drown In Ur Presence</b> is the first
-                        digital-only release on Ōtium. Based on his CGI experimentations and musical works, we teamed up to develop an
-                        enhanced digital experience that you can explore here.
-                        <br>
-                        <br>
-                        <b>Drown in Ur Presence</b> is critical fusion. Post-digital songs, born out of curiosity and earth-shattering
-                        moments.
-                        Flickery synths, glimmers of industrial rhythm and iridescent textures are coaxed into a sensitive and incisive
-                        vision of a highly-emotive pop record.
-                        <br>
-                        <br>
-                        Jonas’ creative practice is defined by similarities in process—techniques such as feedback loops, walls of noise
-                        and purely synthetic textures are applied to both audio & video contents. By discovering common characteristics
-                        across sounds, shapes and colors, he subtly gives perspective to the audiovisual correspondence of this
-                        all-encompassing piece.
-                    </p>
+            <div id="player-or-info">
+                <div id="info" class="cell info-panel hide">
+                    <div id="info-text" class="cell info-panel hide">
+                        <p>
+                            Created by Jonas Margraf between Berlin, Paris, Los Angeles and Riyadh, <b>Drown In Ur Presence</b> is the first
+                            digital-only release on Ōtium. Based on his CGI experimentations and musical works, we teamed up to develop an
+                            enhanced digital experience that you can explore here.
+                            <br>
+                            <br>
+                            <b>Drown in Ur Presence</b> is critical fusion. Post-digital songs, born out of curiosity and earth-shattering
+                            moments.
+                            Flickery synths, glimmers of industrial rhythm and iridescent textures are coaxed into a sensitive and incisive
+                            vision of a highly-emotive pop record.
+                            <br>
+                            <br>
+                            Jonas’ creative practice is defined by similarities in process—techniques such as feedback loops, walls of noise
+                            and purely synthetic textures are applied to both audio & video contents. By discovering common characteristics
+                            across sounds, shapes and colors, he subtly gives perspective to the audiovisual correspondence of this
+                            all-encompassing piece.
+                        </p>
+                    </div>
+                    
+                    <div id="info-title" class="cell info-panel hide">
+                        <div id="info-title-header" class="cell info-panel hide">
+                            <h1>Drown In<br>Ur Presence</h1>
+                            <h2>Jonas Margraf</h2>
+                            <span id="bc-link"><a href="https://otiumrec.bandcamp.com/album/drown-in-ur-presence" target="_blank" rel="noopener noreferrer">Buy on Bandcamp ↗</a></span>
+                        </div>
+                    
+                        <div class="cell credits info-panel hide">
+                            <span>
+                                Sound,
+                                <br>
+                                Visuals,
+                                <br>
+                                Code
+                                <br>
+                                <a href="https://www.instagram.com/jonas.margraf/" target="_blank" rel="noopener noreferrer">Jonas
+                                    Margraf</a>
+                            </span>
+                        </div>
+                        <div class="cell credits info-panel hide">
+                            <span>Mastering
+                                <br>
+                                <a href="https://www.facebook.com/AgitPropStudio/" target="_blank" rel="noopener noreferrer">Agit
+                                    Prop
+                                    Studio</a>
+                            </span>
+                        </div>
+                        <div class="cell credits info-panel hide">
+                            <span>Design
+                                <br>
+                                <a href="https://www.instagram.com/benoitlefeuvre/" target="_blank" rel="noopener noreferrer">Benoît
+                                    Lefeuvre</a>
+                            </span>
+                        </div>
+                    </div>
                 </div>
-                
-                <div id="info-title" class="cell info-panel hide">
-                    <div id="info-title-header" class="cell info-panel hide">
-                        <h1>Drown In<br>Ur Presence</h1>
-                        <h2>Jonas Margraf</h2>
-                        <span id="bc-link"><a href="https://otiumrec.bandcamp.com/album/drown-in-ur-presence" target="_blank" rel="noopener noreferrer">Buy on Bandcamp ↗</a></span>
+
+                <div id="player" class="cell interface-element hide">
+                    <div id="song-title" class="player-container cell">
+                        <span id="song-index">01.</span>
+                        <span class="song-name" data-amplitude-song-info="name"></span>
                     </div>
-                
-                    <div class="cell credits info-panel hide">
-                        <span>
-                            Sound,
-                            <br>
-                            Visuals,
-                            <br>
-                            Code
-                            <br>
-                            <a href="https://www.instagram.com/jonas.margraf/" target="_blank" rel="noopener noreferrer">Jonas
-                                Margraf</a>
+
+                    <div id="transport" class="player-container cell">
+                        <span class="amplitude-prev icon" id="previous">
+                            <img class="icon" src="svg/prev.svg" />
+                        </span>
+                        <span class="amplitude-play-pause icon" id="play-pause">
+                            <img class="icon" id="play-icon" src="svg/play.svg" style="display: inline"/>
+                            <img class="icon" id="pause-icon" src="svg/pause.svg" style="display: none"/>
+                        </span>
+                        <span class="amplitude-next icon" id="next">
+                            <img class="icon" src="svg/next.svg" />
                         </span>
                     </div>
-                    <div class="cell credits info-panel hide">
-                        <span>Mastering
-                            <br>
-                            <a href="https://www.facebook.com/AgitPropStudio/" target="_blank" rel="noopener noreferrer">Agit
-                                Prop
-                                Studio</a>
+
+                    <div id="mute-time" class="player-container cell">
+                        <span class="amplitude-mute icon" id="mute-button">
+                            <img class="icon" id="icon-sound-on" src="svg/sound-off.svg" style="display: none" />
+                            <img class="icon" id="icon-sound-off" src="svg/sound-on.svg" style="display: inline" />
                         </span>
-                    </div>
-                    <div class="cell credits info-panel hide">
-                        <span>Design
-                            <br>
-                            <a href="https://www.instagram.com/benoitlefeuvre/" target="_blank" rel="noopener noreferrer">Benoît
-                                Lefeuvre</a>
-                        </span>
+                        <span id="time" class="amplitude-time-remaining"></span>
                     </div>
                 </div>
-            </div>
-
-        <div id="player" class="cell interface-element hide">
-            <div id="song-title" class="player-container cell">
-                <span id="song-index">01.</span>
-                <span class="song-name" data-amplitude-song-info="name"></span>
-            </div>
-
-            <div id="transport" class="player-container cell">
-                <span class="amplitude-prev icon" id="previous">
-                    <img class="icon" src="svg/prev.svg" />
-                </span>
-                <span class="amplitude-play-pause icon" id="play-pause">
-                    <img class="icon" id="play-icon" src="svg/play.svg" style="display: inline"/>
-                    <img class="icon" id="pause-icon" src="svg/pause.svg" style="display: none"/>
-                </span>
-                <span class="amplitude-next icon" id="next">
-                    <img class="icon" src="svg/next.svg" />
-                </span>
-            </div>
-
-            <div id="mute-time" class="player-container cell">
-                <span class="amplitude-mute icon" id="mute-button">
-                    <img class="icon" id="icon-sound-on" src="svg/sound-off.svg" style="display: none" />
-                    <img class="icon" id="icon-sound-off" src="svg/sound-on.svg" style="display: inline" />
-                </span>
-                <span id="time" class="amplitude-time-remaining"></span>
             </div>
         </div>
-
     </div>
 
 <script type="module" src="js/babyshader.js"></script>

@@ -12,7 +12,8 @@
         grid-template-columns: repeat(2, 1fr);
         /* grid-template-rows: 3rem auto 36px; */
         /* grid-template-rows: 3rem minmax(0, 1fr) 72px; */
-        grid-template-rows: 3rem minmax(0, 1fr) 92px;
+        /* grid-template-rows: 3rem minmax(0, 1fr) 92px; */
+        grid-template-rows: 3rem 1fr;
         grid-gap: 20px;
         /* background-color: rgba(0, 0, 0, 0.9); */
         overflow-y: scroll;
@@ -36,8 +37,10 @@
     }
 
     #info {
-        grid-column: span 2;
-        grid-row: 2;
+        position: absolute;
+        /* grid-column: span 2; */
+        /* grid-row: 2; */
+        /* grid-row: span 2; */
         align-self: center;
         display: grid;
         grid-template-rows: 1fr 1fr;
@@ -85,9 +88,10 @@
     }
 
     #player {
-        grid-column: span 2;
-        grid-row: 3;
-        align-self: end;
+        /* grid-column: span 2; */
+        /* grid-row: 3; */
+        /* grid-row: -1; */
+        /* align-self: end; */
         display: grid;
         /* grid-template-columns: 1fr 200px 1fr; */
         grid-template-columns: auto;

@@ -298,6 +298,7 @@ mute_button.addEventListener("click", (e) => {
 const interface_overlay = document.getElementById("interface");
 const info_panels = document.getElementsByClassName("info-panel")
 const info_button = document.getElementById("info-button-icon");
+const player = document.getElementById("player");
 let show_info = false;
 
 info_button.addEventListener("click", () => {
@@ -310,6 +311,8 @@ info_button.addEventListener("click", () => {
             panel.classList.remove("hide");
             panel.classList.add("show");
         }
+        player.classList.remove("show");
+        player.classList.add("hide");
     }
     else {
         info_button.innerHTML = "expand_more";
@@ -319,6 +322,8 @@ info_button.addEventListener("click", () => {
             panel.classList.remove("show");
             panel.classList.add("hide");
         }
+        player.classList.remove("hide");
+        player.classList.add("show");
     }
 });
 
