@@ -54,6 +54,11 @@ html, body {
 }
 
 .blur {
+    -webkit-transition: -webkit-filter 1s ease-in;
+    -moz-transition: -moz-filter 1s ease-in;
+    -o-transition: -o-filter 1s ease-in;
+    -ms-transition: -ms-filter 1s ease-in;
+    transition: 1s filter ease-in, 1s -webkit-filter ease-in;
     filter:blur(80px);
     -o-filter:blur(80px);
     -ms-filter:blur(80px);
@@ -62,11 +67,11 @@ html, body {
 }
 
 .no-blur {
-    -webkit-transition: -webkit-filter 2s ease-out;
-    -moz-transition: -moz-filter 2s ease-out;
-    -o-transition: -o-filter 2s ease-out;
-    -ms-transition: -ms-filter 2s ease-out;
-    transition: 2s filter ease-out, 2s -webkit-filter ease-out;
+    -webkit-transition: -webkit-filter 1s ease-out;
+    -moz-transition: -moz-filter 1s ease-out;
+    -o-transition: -o-filter 1s ease-out;
+    -ms-transition: -ms-filter 1s ease-out;
+    transition: 1s filter ease-out, 1s -webkit-filter ease-out;
     filter:blur(0px);
     -o-filter:blur(0px);
     -ms-filter:blur(0px);
@@ -109,28 +114,54 @@ html, body {
     color: rgba(255, 255, 255, 0.75);
     mix-blend-mode: overlay;
     height: 50px;
-    /* text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.7), 0px 0px 4px #000000; */
-    text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.7), 0px 0px 4px #FFFFFF, 0px 0px 4px #000000;
+    /* text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.7), 0px 0px 4px #FFFFFF, 0px 0px 4px #000000; */
+    text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.7), 0px 0px 4px #FFFFFF;
     /* color: rgba(255, 255, 255, 0.2); */
     isolation: isolate;
     /* background-color: red; */
 }
 
-#landing > span {
+.enter {
     mix-blend-mode: overlay;
     display: block;
     font-size: 1.5rem;
     font-style: normal;
     font-weight: 300;
-    line-height: 300%;
+    /* line-height: 300%; */
     color: rgba(255, 255, 255, 0.75);
-    text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.7), 0px 0px 4px #FFFFFF, 0px 0px 4px #000000;
+    border: 2px solid rgba(255, 255, 255, 0.75);
+    padding: 20px 40px;
+    margin-top: 100px;
+    border-radius: 100vw;
+    /* text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.7), 0px 0px 4px #FFFFFF, 0px 0px 4px #000000; */
+    /* text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.7), 0px 0px 4px #FFFFFF; */
     /* padding-top: 100px; */
-    height: 50px;
-    text-decoration: underline;
+    /* height: 50px; */
+    /* text-decoration: underline; */
     /* background-color: green; */
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
+    -webkit-filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.7)) drop-shadow(0px 0px 4px #ffffff);
+    filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.7)) drop-shadow(0px 0px 4px #ffffff);
+}
+
+.enter:hover {
+    -webkit-transition: text-decoration 1s ease-in;
+    -moz-transition: text-decoration 1s ease-in;
+    -o-transition: text-decoration 1s ease-in;
+    -ms-transition: text-decoration 1s ease-in;
+    transition: text-decoration 1s ease-in;
+    text-decoration: underline;
+}
+
+.logo {
+    opacity: 1.0;
+    mix-blend-mode: hard-light;
+    align-self: center;
+    /* -webkit-filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.7)) drop-shadow(0px 0px 4px rgba(255, 255, 255, 0.5)) drop-shadow(0px 0px 14px rgba(255, 255, 255, 0.5)); */
+    /* filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.7)) drop-shadow(0px 0px 4px rgba(255, 255, 255, 0.5)) drop-shadow(0px 0px 14px rgba(255, 255, 255, 0.5)); */
+    -webkit-filter: drop-shadow(0px 0px 1px rgba(255, 255, 255, 0.7)) drop-shadow(0px 0px 2px #fff);
+    filter: drop-shadow(0px 0px 1px rgba(255, 255, 255, 0.7)) drop-shadow(0px 0px 2px #fff);
 }
 
 #landing > svg {
@@ -141,8 +172,8 @@ html, body {
     /* background-color: blue; */
     /* -webkit-filter: drop-shadow(0px 0px 40px rgba(249, 233, 255, 0.5));
     filter: drop-shadow(0px 0px 40px rgba(249, 233, 255, 0.5)); */
-    -webkit-filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.7)) drop-shadow(0px 0px 4px rgba(255, 255, 255, 0.5)) drop-shadow(0px 0px 14px rgba(255, 255, 255, 0.5));
-    filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.7)) drop-shadow(0px 0px 4px rgba(255, 255, 255, 0.5)) drop-shadow(0px 0px 14px rgba(255, 255, 255, 0.5));
+    /* -webkit-filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.7)) drop-shadow(0px 0px 4px rgba(255, 255, 255, 0.5)) drop-shadow(0px 0px 14px rgba(255, 255, 255, 0.5)); */
+    /* filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.7)) drop-shadow(0px 0px 4px rgba(255, 255, 255, 0.5)) drop-shadow(0px 0px 14px rgba(255, 255, 255, 0.5)); */
 }
 
 #interface {
@@ -151,7 +182,8 @@ html, body {
     left: 0;
     font: 1.5rem "Fracktif", sans-serif;
     color: white;
-    text-shadow: 0px 0px 8px #FFFFFF, 0px 0px 4px #FFFFFF, 0px 0px 4px #000000;
+    /* text-shadow: 0px 0px 8px #FFFFFF, 0px 0px 4px #FFFFFF, 0px 0px 4px #000000; */
+    text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.7), 0px 0px 4px #FFFFFF;
     text-transform: uppercase;
     /* -webkit-transition: opacity 1s ease-out;
     -moz-transition: opacity 1s ease-out;
@@ -209,7 +241,7 @@ html, body {
 
 h1 {
     /* font-family: "Gamour"; */
-    max-width: ;
+    /* max-width: ; */
 }
 
 h1, h2 {
@@ -232,9 +264,11 @@ a {
     -webkit-backface-visibility: hidden;
 }
 
-img {
-    -webkit-filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.7)) drop-shadow(0px 0px 4px #ffffff) drop-shadow(0px 0px 4px #000000);
-    filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.7)) drop-shadow(0px 0px 4px #ffffff) drop-shadow(0px 0px 4px #000000);
+.glow {
+    /* -webkit-filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.7)) drop-shadow(0px 0px 4px #ffffff) drop-shadow(0px 0px 4px #000000); */
+    /* filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.7)) drop-shadow(0px 0px 4px #ffffff) drop-shadow(0px 0px 4px #000000); */
+    -webkit-filter: drop-shadow(0px 0px 4px rgba(255, 255, 255, 0.7)) drop-shadow(0px 0px 2px #ffffff);
+    filter: drop-shadow(0px 0px 4px rgba(255, 255, 255, 0.7)) drop-shadow(0px 0px 2px #ffffff);
 }
 
 .hide {
@@ -276,5 +310,5 @@ img {
     -o-transition: background-color 1s ease-out;
     -ms-transition: background-color 1s ease-out;
     transition: background-color 1s ease-out;
-    background-color: rgba(0, 0,  0, 0.9);
+    background-color: rgba(0, 0,  0, 0.3);
 }

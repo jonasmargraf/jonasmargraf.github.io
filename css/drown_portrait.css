@@ -1,7 +1,16 @@
 @media screen and (max-width: 699px) {
-    #landing > svg {
+    /* #landing > svg {
         margin-left: 370px;
+    } */
+
+    .logo {
+        content: url("../svg/DrownInUrPresence-mobile.svg");
+        max-width: 100%;
     }
+
+    /* #landing {
+        margin: 20px;
+    } */
 
     #interface {
         padding: 20px 20px 50px;
@@ -13,7 +22,7 @@
         /* grid-template-rows: 3rem auto 36px; */
         /* grid-template-rows: 3rem minmax(0, 1fr) 72px; */
         /* grid-template-rows: 3rem minmax(0, 1fr) 92px; */
-        grid-template-rows: 3rem 1fr;
+        grid-template-rows: 2rem 1fr;
         grid-gap: 20px;
         /* background-color: rgba(0, 0, 0, 0.9); */
         overflow-y: scroll;
@@ -53,7 +62,7 @@
     #info-text {
         grid-column: 1;
         grid-row: 2;
-        align-self: center;
+        /* align-self: center; */
         /* overflow-y: scroll; */
         /* scrollbar-width: none; */
     }
@@ -63,13 +72,16 @@
         grid-row: 1;
         display: grid;
         grid-gap: 5px;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: 1fr auto;
+        /* grid-template-columns: repeat(3, 1fr); */
+        /* grid-template-rows: 1fr auto; */
+        /* grid-template-columns: 1fr; */
+        /* grid-template-rows: 1fr auto; */
         align-self: stretch;
     }
 
     #info-title-header {
-        grid-column: span 3;
+        /* grid-column: span 3; */
+        grid-column: 1;
         grid-row: 1;
     }
 
@@ -82,6 +94,7 @@
     }
 
     .credits {
+        grid-column: 1;
         /* grid-column: span 1; */
         /* background-color: rgba(0, 0, 255, 0.5); */
         align-self: end;

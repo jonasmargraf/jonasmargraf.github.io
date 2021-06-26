@@ -44,7 +44,12 @@ const uniforms_lighting = [
 ];
 
 const holder = document.getElementById("holder");
-const div_more = "<div style='height:1000px; z-index:-100;'></div>";
+// const div_more = "<div style='height:1000px; z-index:-100;'></div>";
+const interface_overlay = document.getElementById("interface");
+const info_panels = document.getElementsByClassName("info-panel")
+const otium_button = document.getElementById("otium-button");
+const info_button = document.getElementById("info-button-icon");
+const player = document.getElementById("player");
 // Get the canvas DOM element
 const canvas = document.getElementById("renderCanvas");
 // Toggle high dpi mode
@@ -279,6 +284,10 @@ window.addEventListener("touchmove", (event) => {
 window.addEventListener("scroll", (event) => {
     scroll_x = window.scrollX / canvas.width;
     scroll_y = window.scrollY / canvas.height;
+    // if (player.classList.contains("show")) {
+    //     scroll_x = window.scrollX / canvas.width;
+    //     scroll_y = window.scrollY / canvas.height;
+    // }
 });
 
 const mute_button = document.getElementById("mute-button");
@@ -295,10 +304,6 @@ mute_button.addEventListener("click", (e) => {
     }
 });
 
-const interface_overlay = document.getElementById("interface");
-const info_panels = document.getElementsByClassName("info-panel")
-const info_button = document.getElementById("info-button-icon");
-const player = document.getElementById("player");
 let show_info = false;
 
 info_button.addEventListener("click", () => {
@@ -307,23 +312,31 @@ info_button.addEventListener("click", () => {
         info_button.innerHTML = "close";
         interface_overlay.classList.remove("no-background");
         interface_overlay.classList.add("background");
+        canvas.classList.remove("no-blur");
+        canvas.classList.add("blur");
         for (let panel of info_panels) {
             panel.classList.remove("hide");
             panel.classList.add("show");
         }
         player.classList.remove("show");
         player.classList.add("hide");
+        otium_button.classList.remove("show");
+        otium_button.classList.add("hide");
     }
     else {
         info_button.innerHTML = "expand_more";
         interface_overlay.classList.remove("background");
         interface_overlay.classList.add("no-background");
+        canvas.classList.remove("blur");
+        canvas.classList.add("no-blur");
         for (let panel of info_panels) {
             panel.classList.remove("show");
             panel.classList.add("hide");
         }
         player.classList.remove("hide");
         player.classList.add("show");
+        otium_button.classList.remove("hide");
+        otium_button.classList.add("show");
     }
 });
 
