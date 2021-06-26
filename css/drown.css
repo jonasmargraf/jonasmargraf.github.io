@@ -106,14 +106,27 @@ html, body {
     align-items: center;
 }
 
-#landing > h3 {
+#landing > div {
+    position: relative;
+    flex: 1;
+}
+
+#landing > div:first-child {
+    display: flex;
+    align-items: flex-end;
+}
+
+#landing h3 {
+    /* position: absolute; */
+    /* bottom: 0; */
+    /* flex: 1; */
     font-size: 2.0rem;
     font-style: normal;
     font-weight: 300;
-    line-height: 150%;
+    line-height: 190%;
     color: rgba(255, 255, 255, 0.75);
     mix-blend-mode: overlay;
-    height: 50px;
+    /* height: 50px; */
     /* text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.7), 0px 0px 4px #FFFFFF, 0px 0px 4px #000000; */
     text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.7), 0px 0px 4px #FFFFFF;
     /* color: rgba(255, 255, 255, 0.2); */
@@ -122,6 +135,7 @@ html, body {
 }
 
 .enter {
+    /* flex: 1; */
     mix-blend-mode: overlay;
     display: block;
     font-size: 1.5rem;
@@ -129,9 +143,9 @@ html, body {
     font-weight: 300;
     /* line-height: 300%; */
     color: rgba(255, 255, 255, 0.75);
-    border: 2px solid rgba(255, 255, 255, 0.75);
+    border: 3px solid rgba(255, 255, 255, 0.75);
     padding: 20px 40px;
-    margin-top: 100px;
+    margin-top: 80px;
     border-radius: 100vw;
     /* text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.7), 0px 0px 4px #FFFFFF, 0px 0px 4px #000000; */
     /* text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.7), 0px 0px 4px #FFFFFF; */
@@ -145,14 +159,14 @@ html, body {
     filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.7)) drop-shadow(0px 0px 4px #ffffff);
 }
 
-.enter:hover {
+/* .enter:hover {
     -webkit-transition: text-decoration 1s ease-in;
     -moz-transition: text-decoration 1s ease-in;
     -o-transition: text-decoration 1s ease-in;
     -ms-transition: text-decoration 1s ease-in;
     transition: text-decoration 1s ease-in;
     text-decoration: underline;
-}
+} */
 
 .logo {
     opacity: 1.0;

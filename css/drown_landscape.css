@@ -4,7 +4,7 @@
     } */
 
     .logo {
-        max-width: 90%;
+        max-width: 70%;
     }
 
     #interface {
@@ -80,7 +80,8 @@
         grid-gap: 5px;
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: 1fr auto;
-        align-self: stretch;
+        /* align-self: stretch; */
+        align-self: start;
         max-height: 100%;
     }
 
@@ -156,7 +157,7 @@
         grid-column: 3;
         grid-row: 1;
         display: grid;
-        grid-template-columns: 1fr 120px;
+        grid-template-columns: 1fr 100px;
         grid-template-rows: auto;
         justify-items: end;
         align-items: center;

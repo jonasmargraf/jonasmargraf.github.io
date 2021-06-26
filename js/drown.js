@@ -189,31 +189,36 @@ Amplitude.init({
             "name": "From The Wild Had Been Conquered",
             "artist": "Jonas Margraf",
             "album": "Drown In Ur Presence",
-            "url": "audio/01_Jonas Margraf_From The Wild Had Been Conquered.mp3"
+            "url": "audio/01_Jonas Margraf_From The Wild Had Been Conquered.mp3",
+            "cover_art_url": "img/DrownInUrPresence.png"
         },
         {
             "name": "IRL Angel",
             "artist": "Jonas Margraf",
             "album": "Drown In Ur Presence",
-            "url": "audio/02_Jonas Margraf_IRL Angel.mp3"
+            "url": "audio/02_Jonas Margraf_IRL Angel.mp3",
+            "cover_art_url": "img/DrownInUrPresence.png"
         },
         {
             "name": "Anchialine Pool",
             "artist": "Jonas Margraf",
             "album": "Drown In Ur Presence",
-            "url": "audio/03_Jonas Margraf_Anchialine Pool.mp3"
+            "url": "audio/03_Jonas Margraf_Anchialine Pool.mp3",
+            "cover_art_url": "img/DrownInUrPresence.png"
         },
         {
             "name": "Hands, Folded",
             "artist": "Jonas Margraf",
             "album": "Drown In Ur Presence",
-            "url": "audio/04_Jonas Margraf_Hands, Folded.mp3"
+            "url": "audio/04_Jonas Margraf_Hands, Folded.mp3",
+            "cover_art_url": "img/DrownInUrPresence.png"
         },
         {
             "name": "Last and First Men",
             "artist": "Jonas Margraf",
             "album": "Drown In Ur Presence",
-            "url": "audio/05_Jonas Margraf_Last And First Men.mp3"
+            "url": "audio/05_Jonas Margraf_Last And First Men.mp3",
+            "cover_art_url": "img/DrownInUrPresence.png"
         }
     ],
     callbacks: {
