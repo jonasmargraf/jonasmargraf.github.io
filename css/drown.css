@@ -181,8 +181,8 @@ html, body {
     position: relative;
     grid-column: span 2;
     grid-row: 2;
-    /* overflow-y: scroll; */
-    /* scrollbar-width: none; */
+    overflow-y: hidden;
+    scrollbar-width: none;
     max-height: 100%;
     /* max-height: calc(100% - 3rem); */
     display: flex;
