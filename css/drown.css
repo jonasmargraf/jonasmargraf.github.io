@@ -200,6 +200,10 @@ html, body {
     justify-content: center;
 }
 
+#info-button-close {
+    max-height: 20px;
+}
+
 #player-or-info {
     position: relative;
     grid-column: span 2;
