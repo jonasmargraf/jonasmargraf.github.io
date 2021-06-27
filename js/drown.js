@@ -114,6 +114,54 @@ function selectPreset(preset_index) {
     current_preset = preset_index;
 }
 
+function fade_in() {
+    const canvas_container = document.getElementById("canvasContainer");
+    canvas_container.classList.remove("brightness-fade-out");
+    canvas_container.classList.add("brightness-fade-in");
+}
+
+function fade_out() {
+    const canvas_container = document.getElementById("canvasContainer");
+    canvas_container.classList.remove("brightness-fade-in");
+    canvas_container.classList.add("brightness-fade-out");
+}
+
+let info_open = false;
+
+function show_info() {
+    info_button_open.style.display = "none";
+    info_button_close.style.display = "inline-block";
+    interface_overlay.classList.remove("no-background");
+    interface_overlay.classList.add("background");
+    canvas.classList.remove("no-blur");
+    canvas.classList.add("blur");
+    for (let panel of info_panels) {
+        panel.classList.remove("hide");
+        panel.classList.add("show");
+    }
+    player.classList.remove("show");
+    player.classList.add("hide");
+    otium_button.classList.remove("show");
+    otium_button.classList.add("hide");
+}
+
+function hide_info() {
+    info_button_close.style.display = "none";
+    info_button_open.style.display = "inline";
+    interface_overlay.classList.remove("background");
+    interface_overlay.classList.add("no-background");
+    canvas.classList.remove("blur");
+    canvas.classList.add("no-blur");
+    for (let panel of info_panels) {
+        panel.classList.remove("show");
+        panel.classList.add("hide");
+    }
+    player.classList.remove("hide");
+    player.classList.add("show");
+    otium_button.classList.remove("hide");
+    otium_button.classList.add("show");
+}
+
 assetsManager.load();
 
 function applyUniformsFromPreset(effect, uniforms, preset) {
@@ -192,35 +240,59 @@ Amplitude.init({
             "artist": "Jonas Margraf",
             "album": "Drown In Ur Presence",
             "url": "audio/01_Jonas Margraf_From The Wild Had Been Conquered.mp3",
-            "cover_art_url": "img/DrownInUrPresence.png"
+            "time_callbacks": {
+                0: fade_in,
+                // 1: function() {
+                //     console.log("here");
+                //     fade_in();
+                // }
+                // 1: fade_in(),
+                255: fade_out
+            }
         },
         {
             "name": "IRL Angel",
             "artist": "Jonas Margraf",
             "album": "Drown In Ur Presence",
             "url": "audio/02_Jonas Margraf_IRL Angel.mp3",
-            "cover_art_url": "img/DrownInUrPresence.png"
+            "time_callbacks": {
+                1: fade_in,
+                283: fade_out
+            }
         },
         {
             "name": "Anchialine Pool",
             "artist": "Jonas Margraf",
             "album": "Drown In Ur Presence",
             "url": "audio/03_Jonas Margraf_Anchialine Pool.mp3",
-            "cover_art_url": "img/DrownInUrPresence.png"
+            "time_callbacks": {
+                1: fade_in,
+                226: fade_out
+            }
         },
         {
             "name": "Hands, Folded",
             "artist": "Jonas Margraf",
             "album": "Drown In Ur Presence",
             "url": "audio/04_Jonas Margraf_Hands, Folded.mp3",
-            "cover_art_url": "img/DrownInUrPresence.png"
+            "time_callbacks": {
+                1: fade_in,
+                191: fade_out
+            }
         },
         {
             "name": "Last and First Men",
             "artist": "Jonas Margraf",
             "album": "Drown In Ur Presence",
             "url": "audio/05_Jonas Margraf_Last And First Men.mp3",
-            "cover_art_url": "img/DrownInUrPresence.png"
+            "time_callbacks": {
+                1: fade_in,
+                341: function() {
+                    fade_out();
+                    info_open = !info_open;
+                    show_info();
+                }
+            }
         }
     ],
     callbacks: {
@@ -311,53 +383,43 @@ mute_button.addEventListener("click", (e) => {
     }
 });
 
-let show_info = false;
-
 info_button.addEventListener("click", () => {
-    show_info = !show_info;
-    if (show_info === true) {
-        // info_button.innerHTML = "close";
-        // info_button
-        info_button_open.style.display = "none";
-        info_button_close.style.display = "inline-block";
-        // info_button_open.classList.remove("show");
-        // info_button_open.classList.add("hide");
-        // info_button_close.classList.remove("hide");
-        // info_button_close.classList.add("show");
-        interface_overlay.classList.remove("no-background");
-        interface_overlay.classList.add("background");
-        canvas.classList.remove("no-blur");
-        canvas.classList.add("blur");
-        for (let panel of info_panels) {
-            panel.classList.remove("hide");
-            panel.classList.add("show");
-        }
-        player.classList.remove("show");
-        player.classList.add("hide");
-        otium_button.classList.remove("show");
-        otium_button.classList.add("hide");
-    }
-    else {
-        info_button_close.style.display = "none";
-        info_button_open.style.display = "inline";
-        // info_button_close.classList.remove("show");
-        // info_button_close.classList.add("hide");
-        // info_button_open.classList.remove("hide");
-        // info_button_open.classList.add("show");
-        // info_button.innerHTML = "expand_more";
-        interface_overlay.classList.remove("background");
-        interface_overlay.classList.add("no-background");
-        canvas.classList.remove("blur");
-        canvas.classList.add("no-blur");
-        for (let panel of info_panels) {
-            panel.classList.remove("show");
-            panel.classList.add("hide");
-        }
-        player.classList.remove("hide");
-        player.classList.add("show");
-        otium_button.classList.remove("hide");
-        otium_button.classList.add("show");
-    }
+    info_open = !info_open;
+    info_open ? show_info() : hide_info();
+    // if (info_open) {
+    //     show_info();
+    //     // info_button_open.style.display = "none";
+    //     // info_button_close.style.display = "inline-block";
+    //     // interface_overlay.classList.remove("no-background");
+    //     // interface_overlay.classList.add("background");
+    //     // canvas.classList.remove("no-blur");
+    //     // canvas.classList.add("blur");
+    //     // for (let panel of info_panels) {
+    //     //     panel.classList.remove("hide");
+    //     //     panel.classList.add("show");
+    //     // }
+    //     // player.classList.remove("show");
+    //     // player.classList.add("hide");
+    //     // otium_button.classList.remove("show");
+    //     // otium_button.classList.add("hide");
+    // }
+    // else {
+    //     hide_info();
+    //     // info_button_close.style.display = "none";
+    //     // info_button_open.style.display = "inline";
+    //     // interface_overlay.classList.remove("background");
+    //     // interface_overlay.classList.add("no-background");
+    //     // canvas.classList.remove("blur");
+    //     // canvas.classList.add("no-blur");
+    //     // for (let panel of info_panels) {
+    //     //     panel.classList.remove("show");
+    //     //     panel.classList.add("hide");
+    //     // }
+    //     // player.classList.remove("hide");
+    //     // player.classList.add("show");
+    //     // otium_button.classList.remove("hide");
+    //     // otium_button.classList.add("show");
+    // }
 });
 
 const landing_overlay = document.getElementById("landing");
