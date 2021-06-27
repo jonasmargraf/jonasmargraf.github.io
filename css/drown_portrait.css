@@ -135,10 +135,6 @@
         height: 36px;
     }
 
-    #transport > span {
-        /* background-color: blue; */
-    }
-
     #previous {
         justify-self: start;
         margin-left: 1px;

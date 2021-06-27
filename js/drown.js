@@ -48,7 +48,9 @@ const holder = document.getElementById("holder");
 const interface_overlay = document.getElementById("interface");
 const info_panels = document.getElementsByClassName("info-panel")
 const otium_button = document.getElementById("otium-button");
-const info_button = document.getElementById("info-button-icon");
+const info_button = document.getElementById("info-button");
+const info_button_open = document.getElementById("info-button-open");
+const info_button_close = document.getElementById("info-button-close");
 const player = document.getElementById("player");
 // Get the canvas DOM element
 const canvas = document.getElementById("renderCanvas");
@@ -314,7 +316,14 @@ let show_info = false;
 info_button.addEventListener("click", () => {
     show_info = !show_info;
     if (show_info === true) {
-        info_button.innerHTML = "close";
+        // info_button.innerHTML = "close";
+        // info_button
+        info_button_open.style.display = "none";
+        info_button_close.style.display = "inline-block";
+        // info_button_open.classList.remove("show");
+        // info_button_open.classList.add("hide");
+        // info_button_close.classList.remove("hide");
+        // info_button_close.classList.add("show");
         interface_overlay.classList.remove("no-background");
         interface_overlay.classList.add("background");
         canvas.classList.remove("no-blur");
@@ -329,7 +338,13 @@ info_button.addEventListener("click", () => {
         otium_button.classList.add("hide");
     }
     else {
-        info_button.innerHTML = "expand_more";
+        info_button_close.style.display = "none";
+        info_button_open.style.display = "inline";
+        // info_button_close.classList.remove("show");
+        // info_button_close.classList.add("hide");
+        // info_button_open.classList.remove("hide");
+        // info_button_open.classList.add("show");
+        // info_button.innerHTML = "expand_more";
         interface_overlay.classList.remove("background");
         interface_overlay.classList.add("no-background");
         canvas.classList.remove("blur");

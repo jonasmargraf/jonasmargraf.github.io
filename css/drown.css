@@ -88,12 +88,12 @@ html, body {
 }
 
 #landing {
+    mix-blend-mode: overlay;
     position: fixed;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
-    mix-blend-mode: hard-light;
     /* background-color: rgba(255, 255, 255, 0.9); */
     /* background-color: rgba(0, 0, 0, 0.95); */
     z-index: 10;
@@ -123,7 +123,7 @@ html, body {
     font-size: 2.0rem;
     font-style: normal;
     font-weight: 300;
-    line-height: 190%;
+    line-height: 130%;
     color: rgba(255, 255, 255, 0.75);
     mix-blend-mode: overlay;
     /* height: 50px; */
@@ -144,7 +144,7 @@ html, body {
     /* line-height: 300%; */
     color: rgba(255, 255, 255, 0.75);
     border: 3px solid rgba(255, 255, 255, 0.75);
-    padding: 20px 40px;
+    padding: 15px 40px;
     margin-top: 80px;
     border-radius: 100vw;
     /* text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.7), 0px 0px 4px #FFFFFF, 0px 0px 4px #000000; */
@@ -221,6 +221,12 @@ html, body {
     /* width: min-content; */
     height: 100%;
     display: inline-block;
+}
+
+#info-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 #player-or-info {
