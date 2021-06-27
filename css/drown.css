@@ -20,7 +20,6 @@
 
 html, body {
     cursor: default;
-    /* overflow: hidden; */
     overflow-y: scroll;
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -125,22 +124,14 @@ html, body {
     height: 100%;
     top: 0;
     left: 0;
-    /* background-color: rgba(255, 255, 255, 0.9); */
-    /* background-color: rgba(0, 0, 0, 0.95); */
     z-index: 10;
     font-family: Fracktif;
     text-transform: uppercase;
-    /* text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.7), 0px 0px 4px #FFFFFF, 0px 0px 4px #000000; */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-
-/* #landing > div {
-    position: relative;
-    flex: 1;
-} */
 
 #landing > div:first-child {
     display: flex;
@@ -148,43 +139,27 @@ html, body {
 }
 
 #landing h3 {
-    /* position: absolute; */
-    /* bottom: 0; */
-    /* flex: 1; */
     font-size: 2.0rem;
     font-style: normal;
     font-weight: 300;
     line-height: 130%;
     color: rgba(255, 255, 255, 0.75);
     mix-blend-mode: overlay;
-    /* height: 50px; */
-    /* text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.7), 0px 0px 4px #FFFFFF, 0px 0px 4px #000000; */
     text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.7), 0px 0px 4px #FFFFFF;
-    /* color: rgba(255, 255, 255, 0.2); */
     isolation: isolate;
-    /* background-color: red; */
 }
 
 .enter {
-    /* flex: 1; */
     mix-blend-mode: overlay;
     display: block;
     font-size: 1.5rem;
     font-style: normal;
     font-weight: 300;
-    /* line-height: 300%; */
     color: rgba(255, 255, 255, 0.75);
     border: 3px solid rgba(255, 255, 255, 0.75);
     padding: 15px 40px;
     margin-top: 5vh;
-    /* margin-top: 80px; */
     border-radius: 100vw;
-    /* text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.7), 0px 0px 4px #FFFFFF, 0px 0px 4px #000000; */
-    /* text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.7), 0px 0px 4px #FFFFFF; */
-    /* padding-top: 100px; */
-    /* height: 50px; */
-    /* text-decoration: underline; */
-    /* background-color: green; */
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     -webkit-filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.7)) drop-shadow(0px 0px 4px #ffffff);
@@ -195,42 +170,26 @@ html, body {
     opacity: 1.0;
     mix-blend-mode: hard-light;
     align-self: center;
-    /* -webkit-filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.7)) drop-shadow(0px 0px 4px rgba(255, 255, 255, 0.5)) drop-shadow(0px 0px 14px rgba(255, 255, 255, 0.5)); */
-    /* filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.7)) drop-shadow(0px 0px 4px rgba(255, 255, 255, 0.5)) drop-shadow(0px 0px 14px rgba(255, 255, 255, 0.5)); */
     -webkit-filter: drop-shadow(0px 0px 1px rgba(255, 255, 255, 0.7)) drop-shadow(0px 0px 2px #fff);
     filter: drop-shadow(0px 0px 1px rgba(255, 255, 255, 0.7)) drop-shadow(0px 0px 2px #fff);
 }
 
 #interface {
-    /* padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left); */
     position: fixed;
     top: 0;
     left: 0;
     font: 1.5rem "Fracktif", sans-serif;
     color: white;
-    /* text-shadow: 0px 0px 8px #FFFFFF, 0px 0px 4px #FFFFFF, 0px 0px 4px #000000; */
     text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.7), 0px 0px 4px #FFFFFF;
     text-transform: uppercase;
-    /* -webkit-transition: opacity 1s ease-out;
-    -moz-transition: opacity 1s ease-out;
-    -o-transition: opacity 1s ease-out;
-    -ms-transition: opacity 1s ease-out;
-    transition: opacity 1s ease-out;
-    opacity: 1;
-    opacity: 0; */
 }
 
 #otium-button img {
     display: inline-block;
-    /* object-fit: contain; */
-    /* width: 100%; */
-    /* max-height: 100%; */
     height: 100%
-    /* justify-self: start; */
 }
 
 #otium-button > a {
-    /* width: min-content; */
     height: 100%;
     display: inline-block;
 }
@@ -248,7 +207,6 @@ html, body {
     overflow-y: hidden;
     scrollbar-width: none;
     max-height: 100%;
-    /* max-height: calc(100% - 3rem); */
     display: flex;
 }
 
@@ -256,11 +214,6 @@ html, body {
     position: absolute;
     bottom: 0;
     width: 100%;
-    /* position: fixed;
-    bottom: 0;
-    margin-bottom: 50px;
-    margin-right: 50px;
-    width: calc(100% - 100px); */
 }
 
 #bc-link {
@@ -269,11 +222,6 @@ html, body {
 
 .credits {
     font-size: 1rem;
-}
-
-h1 {
-    /* font-family: "Gamour"; */
-    /* max-width: ; */
 }
 
 h1, h2 {
@@ -289,16 +237,11 @@ a {
 .icon {
     object-fit: contain;
     height: 1.5rem;
-    /* max-height: 100%; */
-    /* filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.7)), drop-shadow(0px 0px 4px #FFFFFF), drop-shadow(0px 0px 4px #000000); */
-    /* -webkit-backface-visibility: hidden; */
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
 }
 
 .glow {
-    /* -webkit-filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.7)) drop-shadow(0px 0px 4px #ffffff) drop-shadow(0px 0px 4px #000000); */
-    /* filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.7)) drop-shadow(0px 0px 4px #ffffff) drop-shadow(0px 0px 4px #000000); */
     -webkit-filter: drop-shadow(0px 0px 4px rgba(255, 255, 255, 0.7)) drop-shadow(0px 0px 2px #ffffff);
     filter: drop-shadow(0px 0px 4px rgba(255, 255, 255, 0.7)) drop-shadow(0px 0px 2px #ffffff);
 }
@@ -313,15 +256,12 @@ a {
     -ms-transition: opacity 1s ease-in;
     transition: opacity 1s ease-in;
     opacity: 0;
-    /* display: none; */
 }
 
 .show {
-    /* display: block; */
     pointer-events: auto;
     touch-action: auto;
     -ms-touch-action: auto;
-    /* visibility: visible; */
     -webkit-transition: opacity 1s ease-out;
     -moz-transition: opacity 1s ease-out;
     -o-transition: opacity 1s ease-out;
@@ -331,7 +271,6 @@ a {
 }
 
 .no-background {
-    /* background-color: none; */
     -webkit-transition: background-color 1s ease-in;
     -moz-transition: background-color 1s ease-in;
     -o-transition: background-color 1s ease-in;

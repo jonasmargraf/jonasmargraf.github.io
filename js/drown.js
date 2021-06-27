@@ -85,8 +85,6 @@ const createScene = () => {
 };
 
 const scene = createScene();
-// let time = 0.0;
-// let song_start_time = 0.0;
 // For random initial state use current time (% 100 to avoid overflow issues)
 let time = Date.now() % 100;
 let song_start_time = time;
@@ -211,12 +209,8 @@ assetsManager.onFinish = (tasks) => {
             effect.setFloat2("uScreenSize", noise_shader.width, noise_shader.height);
             effect.setFloat("uTime", time);
             applyUniformsFromPreset(effect, uniforms_noise, preset);
-            // effect.setFloat("uOctaveFalloff", mouse_x);
             effect.setFloat2("uScroll", scroll_x, scroll_y);
             effect.setFloat2("uMousePosition", mouse_x, mouse_y);
-            // const noise_freq = preset["uNoiseFrequency"] + 0.005 * (100.0 - Math.abs(Math.max(freq_array[1], -100.0)));
-            // console.log(noise_freq);
-            // effect.setFloat("uNoiseFrequency", noise_freq);
         };
         // Pass uniforms to shader
         lighting_shader.onApply = (effect) => {
@@ -346,9 +340,6 @@ window.addEventListener("mousemove", (event) => {
     mouse_y = 1.0 - mouse_y;
     mouse_x = 2.0 * mouse_x - 1.0;
     mouse_y = 2.0 * mouse_y - 1.0;
-//     mouse_y *= 5.0;
-//     mouse_y += 1.0;
-    // console.log(mouse_x, mouse_y);
 });
 
 window.addEventListener("touchmove", (event) => {
@@ -357,12 +348,6 @@ window.addEventListener("touchmove", (event) => {
     mouse_y = 1.0 - mouse_y;
     mouse_x = 2.0 * mouse_x - 1.0;
     mouse_y = 2.0 * mouse_y - 1.0;
-    // mouse_x = mouse_x - 0.5;
-    // mouse_y = mouse_y - 0.5;
-//     mouse_y *= 5.0;
-//     mouse_y *= 5.0;
-//     mouse_y += 1.0;
-//     // console.log(mouse_x, mouse_y);
 });
 
 window.addEventListener("scroll", (event) => {
@@ -397,9 +382,9 @@ const enter_buttons = document.getElementsByClassName("enter");
 [].forEach.call(enter_buttons, (e) => {
     e.addEventListener("click", () => {
         landing_overlay.classList.add("hide");
-        for (let e of landing_overlay.children) {
-            e.classList.add("hide");
-        }
+        landing_overlay.addEventListener("transitionend", () => {
+            landing_overlay.style.display = "none";
+        });
         canvas.classList.remove("blur");
         canvas.classList.add("no-blur");
         for (let e of interface_elements) {

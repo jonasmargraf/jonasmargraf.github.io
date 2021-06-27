@@ -1,8 +1,4 @@
 @media screen and (min-width: 700px) {
-    /* #landing {
-        margin: 50px;
-    } */
-
     #landing > div {
         position: relative;
         flex: 1;
@@ -13,28 +9,21 @@
     }
 
     #interface {
-        padding: 50px;
-        width: calc(100% - 100px);
-        height: calc(100% - 100px);
-        max-height: calc(100vh - 100px);
+        padding: 40px;
+        width: calc(100% - 80px);
+        height: calc(100% - 80px);
+        max-height: calc(100vh - 80px);
         display: grid;
         grid-template-columns: 1fr 1fr;
-        /* grid-template-rows: 3rem minmax(0, 1fr) 36px; */
         grid-template-rows: 2rem 1fr;
         grid-gap: 40px;
         overflow-y: scroll;
         scrollbar-width: none;
     }
 
-    .cell {
-        /* background-color:rgba(255, 0, 0, 0.5); */
-    }
-
     #otium-button {
         grid-column: 1;
         grid-row: 1;
-        /* background-color: red; */
-        /* justify-self: center; */
     }
 
     #info-button {
@@ -44,21 +33,9 @@
     }
 
     #info {
-        /* grid-column: span 2; */
-        /* grid-row: 2; */
-        /* margin: auto 0; */
         align-self: center;
         display: flex;
-        /* display: grid; */
-        /* grid-template-columns: repeat(2, 1fr); */
-        /* column-gap: 40px; */
-
-        /* grid-template-rows: minmax(100px, 800px); */
-        /* grid-template-rows: repeat(2, minmax(0, 1fr)); */
-        /* max-height: 200px; */
-
         max-height: 100%;
-        /* max-height: calc(100vh - 3rem - 36px - 100px); */
         overflow-x: hidden;
         overflow-y: scroll;
         scrollbar-width: none;
@@ -67,25 +44,16 @@
     #info-text {
         flex: 1 1 0px;
         margin-right: 40px;
-        /* grid-column: 1;
-        grid-row: 1; */
-        /* align-self: center; */
-        /* max-height: 100%; */
-        /* max-height: calc(100% - 3rem - 36px); */
-        /* max-height: calc(100% - 0px); */
         overflow-y: scroll;
         scrollbar-width: none;
     }
 
     #info-title {
         flex: 1 1 0px;
-        /* grid-column: 2;
-        grid-row: 1; */
         display: grid;
         grid-gap: 5px;
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: 1fr auto;
-        /* align-self: stretch; */
         align-self: start;
         max-height: 100%;
     }
@@ -106,15 +74,10 @@
     }
 
     .credits {
-        /* grid-column: span 1; */
-        /* background-color: rgba(0, 0, 255, 0.5); */
         align-self: end;
     }
 
     #player {
-        /* grid-column: span 2;
-        grid-row: 3;
-        align-self: end; */
         display: grid;
         grid-template-columns: 1fr 200px 1fr;
         grid-template-rows: auto;
@@ -124,23 +87,16 @@
     #song-title {
         grid-column: 1;
         grid-row: 1;
-        /* align-self: center; */
     }
 
     #transport {
         grid-column: 2;
         grid-row: 1;
-        /* align-self: center; */
         display: grid;
-        /* grid-gap: 5px; */
         grid-template-columns: auto 33% auto;
         grid-template-rows: auto;
         align-items: center;
         height: 36px;
-    }
-
-    #transport > span {
-        /* background-color: blue; */
     }
 
     #previous {
@@ -150,7 +106,6 @@
 
     #play-pause {
         justify-self: center;
-        /* background-color: blue; */
     }
 
     #next {
@@ -178,6 +133,5 @@
     #time {
         grid-column: 2;
         grid-row: 1;
-        /* justify-self: end; */
     }
 }
