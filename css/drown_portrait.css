@@ -3,14 +3,15 @@
         margin-left: 370px;
     } */
 
+    #landing > div {
+        position: relative;
+        flex: 0;
+    }
+
     .logo {
         content: url("../svg/DrownInUrPresence-mobile.svg");
         max-width: 100%;
     }
-
-    /* #landing {
-        margin: 20px;
-    } */
 
     #interface {
         padding: 20px 20px 50px;

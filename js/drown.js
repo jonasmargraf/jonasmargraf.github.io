@@ -197,7 +197,11 @@ assetsManager.onFinish = (tasks) => {
         // Update FPS display
         // divFps.innerHTML = engine.getFps().toFixed();
         // Increment timer
-        time += engine.getDeltaTime() * scene.getAnimationRatio() * 0.0001 * 0.5;
+        let time_inc = engine.getDeltaTime() * scene.getAnimationRatio() * 0.0001 * 0.5;
+        // if (Amplitude.getPlayerState() != "playing") {
+            // time_inc *= 0.5;
+        // }
+        time += time_inc;
         // Get uniform values for current preset
         let preset = presets[current_preset];
 
@@ -234,6 +238,7 @@ assetsManager.onFinish = (tasks) => {
 // AUDIO PLAYER STUFF
 
 Amplitude.init({
+    volume: 100,
     songs: [
         {
             "name": "From The Wild Had Been Conquered",
@@ -363,10 +368,6 @@ window.addEventListener("touchmove", (event) => {
 window.addEventListener("scroll", (event) => {
     scroll_x = window.scrollX / canvas.width;
     scroll_y = window.scrollY / canvas.height;
-    // if (player.classList.contains("show")) {
-    //     scroll_x = window.scrollX / canvas.width;
-    //     scroll_y = window.scrollY / canvas.height;
-    // }
 });
 
 const mute_button = document.getElementById("mute-button");
@@ -386,40 +387,6 @@ mute_button.addEventListener("click", (e) => {
 info_button.addEventListener("click", () => {
     info_open = !info_open;
     info_open ? show_info() : hide_info();
-    // if (info_open) {
-    //     show_info();
-    //     // info_button_open.style.display = "none";
-    //     // info_button_close.style.display = "inline-block";
-    //     // interface_overlay.classList.remove("no-background");
-    //     // interface_overlay.classList.add("background");
-    //     // canvas.classList.remove("no-blur");
-    //     // canvas.classList.add("blur");
-    //     // for (let panel of info_panels) {
-    //     //     panel.classList.remove("hide");
-    //     //     panel.classList.add("show");
-    //     // }
-    //     // player.classList.remove("show");
-    //     // player.classList.add("hide");
-    //     // otium_button.classList.remove("show");
-    //     // otium_button.classList.add("hide");
-    // }
-    // else {
-    //     hide_info();
-    //     // info_button_close.style.display = "none";
-    //     // info_button_open.style.display = "inline";
-    //     // interface_overlay.classList.remove("background");
-    //     // interface_overlay.classList.add("no-background");
-    //     // canvas.classList.remove("blur");
-    //     // canvas.classList.add("no-blur");
-    //     // for (let panel of info_panels) {
-    //     //     panel.classList.remove("show");
-    //     //     panel.classList.add("hide");
-    //     // }
-    //     // player.classList.remove("hide");
-    //     // player.classList.add("show");
-    //     // otium_button.classList.remove("hide");
-    //     // otium_button.classList.add("show");
-    // }
 });
 
 const landing_overlay = document.getElementById("landing");
@@ -430,25 +397,14 @@ const enter_buttons = document.getElementsByClassName("enter");
 [].forEach.call(enter_buttons, (e) => {
     e.addEventListener("click", () => {
         landing_overlay.classList.add("hide");
+        for (let e of landing_overlay.children) {
+            e.classList.add("hide");
+        }
         canvas.classList.remove("blur");
         canvas.classList.add("no-blur");
-        // interface_overlay.classList.remove("hide");
-        // interface_overlay.classList.add("show");
         for (let e of interface_elements) {
             e.classList.remove("hide");
             e.classList.add("show");
         }
-        // otium_button.classList.add("show");
-        // setTimeout(() => {
-        //     interface_overlay.classList.add("show");
-        // }, 1000);
-        // const transition = document.querySelector(".show");
-        // transition.addEventListener("transitionend", () => {
-        //     console.log("END");
-        // });
-        // const transition_landing_fadeout = document.querySelector(".fadeout")
-        // transition_landing_fadeout.addEventListener("transitionend", () => {
-                // landing_overlay.style.display = "none";
-        // });
     });
 });

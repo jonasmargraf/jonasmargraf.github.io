@@ -3,6 +3,11 @@
         margin: 50px;
     } */
 
+    #landing > div {
+        position: relative;
+        flex: 1;
+    }
+
     .logo {
         max-width: 70%;
     }
