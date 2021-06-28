@@ -213,6 +213,7 @@ html, body {
     overflow-y: hidden;
     scrollbar-width: none;
     max-height: 100%;
+    height: 100%;
     display: flex;
 }
 
