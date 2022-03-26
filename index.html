@@ -1,96 +1,155 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="css/style.css"/>
-		<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700" rel="stylesheet">
-		<title>Jonas Margraf</title>
-	</head>
 
-	<body>
-		<div id="body_wrapper">
-		<!-- <h1>Jonas Margraf</h1> -->
+<head>
+    <title>Drown In Ur Presence</title>
+    <meta name="description"
+        content="Created by Jonas Margraf between Berlin, Paris, Los Angeles and Riyadh, Drown In Ur Presence is the first digital-only release on Ōtium. Based on his CGI experimentations and musical works, we teamed up to develop an enhanced digital experience that you can discover here.">
 
-			<div class="bg" id="one">
-				<h3>
-					<em>Jonas Margraf</em> makes sound and art with computers.
-				</h3>
-				<img src="img/turq-purp-web.jpg" class="horizontal_img shadow">
-			</div>
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="http://otiumrec.fr">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Jonas Margraf - Drown In Ur Presence">
+    <meta property="og:description"
+        content="Created by Jonas Margraf between Berlin, Paris, Los Angeles and Riyadh, Drown In Ur Presence is the first digital-only release on Ōtium. Based on his CGI experimentations and musical works, we teamed up to develop an enhanced digital experience that you can discover here.">
+    <meta property="og:image" content="http://otiumrec.fr/img/drowninurpresence-preview.jpg">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="icon" type="image/x-icon" href="img/otium-favicon.ico"/>
+    <link rel="apple-touch-icon" href="img/touch-icon.png">
+    <link rel="stylesheet" type="text/css" href="css/drown.css"/>
+    <link rel="stylesheet" type="text/css" href="css/drown_landscape.css"/>
+    <link rel="stylesheet" type="text/css" href="css/drown_portrait.css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+    <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/amplitudejs@5.2.0/dist/amplitude.js"></script>
+</head>
 
-			<div class="bg" id="two">
-				<div class="text">
-					<span class="highlight-shadow">
-						I’m currently a graduate student in the Audio Communication Group at Technical University Berlin, where I also work at the Electronic Studio. Sparked by some work I did during an internship at IRCAM in the fall of 2017, I’ve written a master’s thesis that deals with machine learning and music information retrieval (<em>Self-Organizing Maps for Sound Corpus Organization </em>, find it <a href="https://jonasmargraf.com/data/Margraf_MSc_Thesis_SOMs-for-Sound-Corpus-Organization.pdf">here</a>).
-					<!-- <br> -->
-					<!-- <br> -->
-						<!-- Previously, I’ve studied at Berklee College of Music in Boston, Massachusetts with a focus on computer music and media art. -->
-					</span>
-				</div>
-				<img src="img/purp-web.jpg" class="horizontal_img shadow" id="1">
-			</div>
+<body>
+    <div id="holder">
 
-			<div class="bg" id="three">
-				<div class="text">
-					<span class="highlight-shadow">
-						I’ve performed and shown work at Zentrum für Kunst und Medien (ZKM) Karlsruhe, MIT Media Lab, Institute of Contemporary Art Boston, Museum of Human Achievement Austin, Hraničář Cultural Center Ústí nad Labem (Czech Republic), Sonic Ground Festival Munich and Superbooth Berlin.
-					</span>
-				</div>
-				<img src="img/blue-yellow-web.jpg" class="horizontal_img shadow" id="1">
-			</div>
+        <div id="canvasContainer" class="brightness-fade-in">
+            <canvas id="renderCanvas" class="blur"></canvas>
+        </div>
 
-			<div class="bg" id="four">
-				<div class="text">
-					<span class="highlight-shadow">
-					All work shown here has been created using custom software built in JavaScript, TouchDesigner, Max and Processing.
-				</span>
-			</div>
-				<img src="img/blue-gold-web.jpg" class="horizontal_img shadow" id="1">
-			</div>
+        <div id="landing">
+            <div>
+                <h3>Jonas Margraf</h3>
+            </div>
+            <img class="logo" src="svg/DrownInUrPresence.svg" />
+            <div>
+                <span class="amplitude-play enter">Enter</span>
+            </div>
+        </div> -->
 
-			<div class="bg" id="five">
-				<img src="img/som-browser.png" class="horizontal_img" id="1">
-			</div>
+        <!-- <div id="fps">0</div> -->
 
-			<div class="side_by_side">
-				<img src="img/feverdreamburn_ui.png" class="" id="1">
-				<img src="img/fnp_code.png" class="" id="1">
-			</div>
+        <div id="interface" class="no-background">
 
-			<div class="software">
-				<div class="software_wrapper">
-					<img src="img/processing-control.png" class="shadow" id="processing_control">
-					<img src="img/mubu-som-js-02.png" class="" id="mubu_som_js_02">
-					<img src="img/mubu-som-js-01.png" class="" id="mubu_som_js_01">
-					<img src="img/superbooth16.png" class="" id="superbooth16">
-				</div>
-			</div>
+            <div id="otium-button" class="cell interface-element hide">
+                <a href="https://otiumrec.bandcamp.com/" target="_blank" rel="noopener noreferrer">
+                    <img class="glow" src="svg/otium-logo.svg" />
+                </a>
+            </div>
 
-			<div class="bg" id="l">
-			<img src="img/red.jpg" class="horizontal_img shadow" id="1">
-			</div>
-			<div class="bg" id="m">
-			<img src="img/td_paint-01.png" class="horizontal_img" id="1">
-			</div>
+            <div id="info-button" class="cell interface-element hide">
+                <span id="info-button-open">info</span>
+                <img id="info-button-close" class="icon glow" style="display: none" src="svg/close.svg" />
+                <!-- <span class="material-icons md-48" id="info-button-icon">expand_more</span> -->
+            </div>
+            
+            <div id="player-or-info">
+                <div id="info" class="cell info-panel hide">
+                    <div id="info-text" class="cell info-panel hide">
+                        <p>
+                            Created by Jonas Margraf between Berlin, Paris, Los Angeles and Riyadh, <b>Drown In Ur Presence</b> is the first
+                            digital-only release on Ōtium. Based on his CGI experimentations and musical works, we teamed up to develop an
+                            enhanced digital experience that you can explore here.
+                            <br>
+                            <br>
+                            <b>Drown in Ur Presence</b> is critical fusion. Post-digital songs, born out of curiosity and earth-shattering
+                            moments.
+                            Flickery synths, glimmers of industrial rhythm and iridescent textures are coaxed into a sensitive and incisive
+                            vision of a highly-emotive pop record.
+                            <br>
+                            <br>
+                            Jonas’s creative practice is defined by similarities in process—techniques such as feedback loops, walls of noise
+                            and purely synthetic textures are applied to both audio & video contents. By discovering common characteristics
+                            across sounds, shapes and colors, he subtly gives perspective to the audiovisual correspondence of this
+                            all-encompassing piece.
+                        </p>
+                    </div>
+                    
+                    <div id="info-title" class="cell info-panel hide">
+                        <div id="info-title-header" class="cell info-panel hide">
+                            <!-- <h1>Drown In<br>Ur Presence</h1> -->
+                            <!-- <h2>Jonas Margraf</h2> -->
+                            <img class="logo" src="svg/DrownInUrPresence.svg" />
+                            <span id="bc-link"><a href="https://otiumrec.bandcamp.com/album/drown-in-ur-presence" target="_blank" rel="noopener noreferrer">Buy on Bandcamp ↗</a></span>
+                        </div>
+                    
+                        <div class="cell credits info-panel hide">
+                            <span>
+                                Sound / Visuals / Code
+                                <br>
+                                <a href="https://www.instagram.com/jonas.margraf/" target="_blank" rel="noopener noreferrer">Jonas
+                                    Margraf</a>
+                            </span>
+                        </div>
+                        <div class="cell credits info-panel hide">
+                            <span>Mastering
+                                <br>
+                                <a href="https://www.facebook.com/AgitPropStudio/" target="_blank" rel="noopener noreferrer">Agit
+                                    Prop
+                                    Studio</a>
+                            </span>
+                        </div>
+                        <div class="cell credits info-panel hide">
+                            <span>Design
+                                <br>
+                                <a href="https://www.instagram.com/benoitlefeuvre/" target="_blank" rel="noopener noreferrer">Benoît
+                                    Lefeuvre</a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
 
-			<div class="bg" id="end">
-				<!-- <p> -->
-				<!-- <div class="text"> -->
-				<img src="img/jonas_green_crop.jpg" class="square shadow" id="1">
-				<div class="text last">
-					<span class="highlight-shadow">
-						My full resume is available <a href="https://jonasmargraf.com/data/JonasMargraf_Resume.pdf" target="_blank">here</a>.
-						<br>
-						Find more of my work on <a href="https://github.com/jonasmargraf/" target="_blank">GitHub</a> and <a href="https://www.instagram.com/jonas.margraf/" target="_blank">Instagram</a>.
-						<br>
-						Get in touch: <a href="mailto:jonasmargraf@me.com">jonasmargraf@me.com</a>.
-					</span>
-				</div>
-			<!-- </p> -->
-			</div>
+                <div id="player" class="cell interface-element hide">
+                    <div id="song-title" class="player-container cell">
+                        <span id="song-index">01.</span>
+                        <span class="song-name" data-amplitude-song-info="name"></span>
+                    </div>
 
-		</div>
+                    <div id="transport" class="player-container cell">
+                        <span class="amplitude-prev icon" id="previous">
+                            <img class="icon glow" src="svg/prev.svg" />
+                        </span>
+                        <span class="amplitude-play-pause icon" id="play-pause">
+                            <img class="icon glow" id="play-icon" src="svg/play.svg" style="display: inline"/>
+                            <img class="icon glow" id="pause-icon" src="svg/pause.svg" style="display: none"/>
+                        </span>
+                        <span class="amplitude-next icon" id="next">
+                            <img class="icon glow" src="svg/next.svg" />
+                        </span>
+                    </div>
 
-	</body>
+                    <div id="mute-time" class="player-container cell">
+                        <span class="amplitude-mute icon" id="mute-button">
+                            <img class="icon glow" id="icon-sound-on" src="svg/sound-off.svg" style="display: none" />
+                            <img class="icon glow" id="icon-sound-off" src="svg/sound-on.svg" style="display: inline" />
+                        </span>
+                        <span id="time" class="amplitude-time-remaining"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script type="module" src="js/drown.js"></script>
+
+</body>
+
 </html>
